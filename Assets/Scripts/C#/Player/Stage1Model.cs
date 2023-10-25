@@ -24,6 +24,13 @@ public class Stage1Model : PlayerModel
         _tree = new BehaviourTree();
         _blackBoard = new BlackBoard(transform, _pa, _rb, _tree, _speed, _chargePower);
 
+        var skillSeq = new BehaviourSequence();
+        var skillNode = new BehaviourNormalSelector();
+        var skillLeaf = new SkillLeaf(_blackBoard);
+        skillNode.AddNode(skillLeaf);
+        skillSeq.AddSequenceNode(skillNode);
+        _tree.AddSeq(skillSeq);
+
         var skySeq = new BehaviourSequence();
         var skyNode = new BehaviourNormalSelector();
         var skyLeaf = new SkyLeaf(_blackBoard);
@@ -81,6 +88,7 @@ public class Stage1Model : PlayerModel
 
         if (leftRay.collider != null || rightRay.collider != null)
         {
+            _rb.velocity = Vector2.zero;
             _rb.sharedMaterial = _materials[0];
             _tree.CheckSeq(PlayerStates.Landing);
         }

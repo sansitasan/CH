@@ -178,7 +178,7 @@ public class SkyLeaf : BehaviourLeaf
 
     public override void Exit()
     {
-        _blackBoard.RD.velocity = Vector2.zero;
+        //_blackBoard.RD.velocity = Vector2.zero;
     }
 
     public override void Update()
@@ -210,7 +210,7 @@ public class SkillLeaf : BehaviourLeaf
 
     public override void Enter()
     {
-        _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * 10;
+        _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _blackBoard.ChargePower[0];
     }
 
     public override void Exit()
