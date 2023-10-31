@@ -118,19 +118,23 @@ public abstract class BehaveLeaf : BehaviourLeaf
 public class Stage1BehaveLeaf : BehaveLeaf
 {
     private float _chargeTime;
+    private Stage1BlackBoard _board;
 
-    public Stage1BehaveLeaf(BlackBoard board) : base(board) { }
+    public Stage1BehaveLeaf(BlackBoard board) : base(board) 
+    { 
+        _board = board as Stage1BlackBoard;
+    }
 
     protected override void Behave()
     {
         if (_chargeTime <= 1)
-            _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _blackBoard.ChargePower[0];
+            _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[0];
 
         else if (_chargeTime <= 2)
-            _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _blackBoard.ChargePower[1];
+            _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[1];
 
         else if (_chargeTime <= 3)
-            _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _blackBoard.ChargePower[2];
+            _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[2];
 
         _chargeTime = 0;
         _blackBoard.Tree.CheckSeq(PlayerStates.InTheSky);
@@ -178,7 +182,6 @@ public class SkyLeaf : BehaviourLeaf
 
     public override void Exit()
     {
-        _blackBoard.RD.velocity = Vector2.zero;
     }
 
     public override void Update()
@@ -189,7 +192,12 @@ public class SkyLeaf : BehaviourLeaf
 
 public class SkillLeaf : BehaviourLeaf
 {
-    public SkillLeaf(BlackBoard board) : base(board) { }
+    private Stage1BlackBoard _board;
+
+    public SkillLeaf(BlackBoard board) : base(board) 
+    {
+        _board = board as Stage1BlackBoard;
+    }
 
     public override SeqStates CheckLeaf(PlayerStates ps)
     {
@@ -210,12 +218,11 @@ public class SkillLeaf : BehaviourLeaf
 
     public override void Enter()
     {
-        _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * 10;
+        _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[0];
     }
 
     public override void Exit()
     {
-        _blackBoard.RD.velocity = Vector2.zero;
     }
 
     public override void Update()

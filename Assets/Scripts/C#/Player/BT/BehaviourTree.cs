@@ -232,21 +232,29 @@ public class BlackBoard : IDisposable
     public Transform Player { get; private set; }
     public int Speed;
     public Vector2 MoveDir { get; set; }
-    public int[] ChargePower { get; private set; }
 
-    public BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, int speed, int[] chargePower)
+    public BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, int speed)
     {
         PA = pa;
         RD = rd;
         Tree = tree;
         Player = t;
         Speed = speed;
-        ChargePower = chargePower;
     }
 
     public void Dispose()
     {
         RD = null;
         PA = null;
+    }
+}
+
+public class Stage1BlackBoard : BlackBoard
+{
+    public int[] ChargePower { get; private set; }
+
+    public Stage1BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, int speed, int[] chargePower) : base(t, pa, rd, tree, speed)
+    {
+        ChargePower = chargePower;
     }
 }
