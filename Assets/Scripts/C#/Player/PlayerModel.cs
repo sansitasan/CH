@@ -50,9 +50,7 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
 
     protected abstract void MakeBT();
 
-    public abstract void Skill();
-
-    public void PlayerInput(PlayerStates state)
+    public virtual void PlayerInput(PlayerStates state)
     {
         _tree.CheckSeq(state);
     }
@@ -63,8 +61,6 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
         _tree.CheckSeq(state);
         _pa.ChangeDir(vector);
     }
-
-    protected abstract void OnCollisionEnter2D(Collision2D collision);
 
     public void Dispose()
     {

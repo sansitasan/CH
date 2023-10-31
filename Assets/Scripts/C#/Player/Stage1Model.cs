@@ -22,7 +22,7 @@ public class Stage1Model : PlayerModel
             transform.GetChild(1).GetComponent<Animator>());
 
         _tree = new BehaviourTree();
-        _blackBoard = new BlackBoard(transform, _pa, _rb, _tree, _speed, _chargePower);
+        _blackBoard = new Stage1BlackBoard(transform, _pa, _rb, _tree, _speed, _chargePower);
 
         var skillSeq = new BehaviourSequence();
         var skillNode = new BehaviourNormalSelector();
@@ -59,11 +59,6 @@ public class Stage1Model : PlayerModel
         _tree.CheckSeq(PlayerStates.Idle);
     }
 
-    public override void Skill()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         _tree.Update();
@@ -81,7 +76,7 @@ public class Stage1Model : PlayerModel
         }
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         RaycastHit2D leftRay = Physics2D.Raycast(_rb.position - new Vector2(0.495f, 0), Vector2.down, 1, _rayMask);
         RaycastHit2D rightRay = Physics2D.Raycast(_rb.position + new Vector2(0.495f, 0), Vector2.down, 1, _rayMask);
