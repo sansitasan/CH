@@ -232,6 +232,7 @@ MonoBehaviour:
   - {fileID: 6200000, guid: 1b07af6321e6e79479fc06cf5bb2bf29, type: 2}
   - {fileID: 6200000, guid: 3dc83a11ae520cc488f2343a529a895b, type: 2}
   _chargePower: 0a0000000f00000014000000
+  _chargeTime: 1
 --- !u!61 &163048048
 BoxCollider2D:
   m_ObjectHideFlags: 0
