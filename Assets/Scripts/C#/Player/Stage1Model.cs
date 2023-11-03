@@ -7,6 +7,8 @@ public class Stage1Model : PlayerModel
     private PhysicsMaterial2D[] _materials;
     [SerializeField]
     private int[] _chargePower;
+    [SerializeField]
+    private float _chargeTime; 
 
     protected override void Init()
     {
@@ -22,7 +24,7 @@ public class Stage1Model : PlayerModel
             transform.GetChild(1).GetComponent<Animator>());
 
         _tree = new BehaviourTree();
-        _blackBoard = new Stage1BlackBoard(transform, _pa, _rb, _tree, _speed, _chargePower);
+        _blackBoard = new Stage1BlackBoard(transform, _pa, _rb, _tree, _speed, _chargePower, _chargeTime);
 
         var skillSeq = new BehaviourSequence();
         var skillNode = new BehaviourNormalSelector();

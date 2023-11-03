@@ -127,14 +127,14 @@ public class Stage1BehaveLeaf : BehaveLeaf
 
     protected override void Behave()
     {
-        if (_chargeTime <= 1)
-            _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[0];
-
-        else if (_chargeTime <= 2)
-            _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[1];
-
-        else if (_chargeTime <= 3)
-            _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[2];
+        for (int i = 0; i < _board.ChargePower.Length; ++i)
+        {
+            if (_chargeTime / _board.chargeTime <= i + 1)
+            {
+                _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[i];
+                break;
+            }
+        }
 
         _chargeTime = 0;
         _blackBoard.Tree.CheckSeq(PlayerStates.InTheSky);

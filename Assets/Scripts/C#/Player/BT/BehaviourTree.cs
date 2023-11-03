@@ -252,9 +252,11 @@ public class BlackBoard : IDisposable
 public class Stage1BlackBoard : BlackBoard
 {
     public int[] ChargePower { get; private set; }
+    public readonly float chargeTime;
 
-    public Stage1BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, int speed, int[] chargePower) : base(t, pa, rd, tree, speed)
+    public Stage1BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, int speed, int[] chargePower, float time) : base(t, pa, rd, tree, speed)
     {
         ChargePower = chargePower;
+        chargeTime = time;
     }
 }
