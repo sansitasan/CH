@@ -85,22 +85,22 @@ public class BehaviourSequence : IDisposable
 
     public SeqStates CheckSeq(PlayerStates ps)
     {
-        SeqStates state = SeqStates.Success;
+        PlayerStates pstate = PlayerStates.None;
         //Debug.Log(ps);
 
         for (int i = 0; i < _nodeList.Count; ++i)
         {
-            state = _nodeList[i].CheckNode(ps);
+            pstate = _nodeList[i].CheckNode(ps);
 
-            if (state == SeqStates.Running)
+            if (pstate == PlayerStates.None)
             {
-                CurNode = _nodeList[i];
-                return state;
+                return SeqStates.Fail;
             }
 
-            if (state == SeqStates.Fail)
+            else if (pstate != PlayerStates.Success)
             {
-                return state;
+                CurNode = _nodeList[i];
+                return SeqStates.Running;
             }
         }
 
@@ -109,7 +109,7 @@ public class BehaviourSequence : IDisposable
         for (int i = 0; i < _nodeList.Count; ++i)
             _nodeList[i].SeqState = SeqStates.Fail;
 
-        return state;
+        return SeqStates.Success;
     }
 
     public void CancelSeq()
@@ -144,7 +144,7 @@ public abstract class BehaviourSequenceNode : IDisposable
         SeqState = SeqStates.Fail;
     }
 
-    public abstract SeqStates CheckNode(PlayerStates ps);
+    public abstract PlayerStates CheckNode(PlayerStates ps);
 
     public virtual void CancelNode()
     {
@@ -171,6 +171,7 @@ public abstract class BehaviourLeaf : IDisposable
 {
     protected SeqStates _seqStates;
     protected BlackBoard _blackBoard;
+    public readonly PlayerStates State;
     public readonly string Name;
 
     public BehaviourLeaf(BlackBoard board) 
@@ -178,6 +179,11 @@ public abstract class BehaviourLeaf : IDisposable
         _seqStates = SeqStates.Fail;
         _blackBoard = board;
         Name = GetType().Name;
+    }
+
+    protected BehaviourLeaf(BlackBoard board, PlayerStates ps) : this(board)
+    {
+        State = ps;
     }
 
     public abstract SeqStates CheckLeaf(PlayerStates ps);
@@ -209,7 +215,7 @@ public class BehaviourNormalSelector : BehaviourSequenceNode
         _leafs.Add(leaf);
     }
 
-    public override SeqStates CheckNode(PlayerStates ps)
+    public override PlayerStates CheckNode(PlayerStates ps)
     {
         for (int i = 0; i < _leafs.Count; ++i)
         {
@@ -220,7 +226,15 @@ public class BehaviourNormalSelector : BehaviourSequenceNode
                 break;
             }
         }
-        return SeqState;
+
+        if (SeqState == SeqStates.Success)
+            return PlayerStates.Success;
+
+        else if (SeqState == SeqStates.Fail)
+            return PlayerStates.None;
+
+        else
+            return CurLeaf.State;
     }
 }
 

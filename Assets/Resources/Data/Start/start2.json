@@ -1,0 +1,444 @@
+{"scripts": [
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "꽤 많이 걸은것 같은데 생각보다 엄청...아얏?!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이1"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "드디어 도착했네."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "e",
+      "dialog": "이게뭐야? 아무것도 안보이는데 무언가가 가로막고 있어... "
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이1"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "여기가바로 '투명 미로'야. 미로의 벽도 하나도 안보이고, 내부도 복잡해서 용궁의 주인이 아니면 통과하지 못해."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "e",
+      "dialog": "여기를 통과하는 방법은 모르는거야?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이1"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "e",
+      "dialog": "미로니까 미로를 통과하면 되겠지만, 누가 미쳤다고 여길 들어가겠어?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이3"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "맞아! 이런곳에 갇혔다간 굶어죽기 딱이라고. "
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "뿡댕이들 생각보다 쓸모가 없네..."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이1"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이2"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "이년이?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이2"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "그럼 타비 너야말로 자신만만하게 따라오라 입을 털었는데 뭔가 방법이 있겠지?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "e",
+      "dialog": "어...음...에..."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이2"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "^세계 최고의 보물사냥꾼^이니까 이정도는 쉽게 통과하겠지 안그래?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이3"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "아무렴 세계 최고의 보물사냥꾼이자너~"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이5"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "최고라기엔 그냥 평범한 인간같은데 뭔가 특별한 능력이 있는거겠지. 특기 같은거라도 있을거아니야?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "e",
+      "dialog": "트,특기? 내가 음 게임도 잘하고, 똑똑하고 또..."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이3"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "그것들 다 모험가한태 필요 없는것 같은데?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "e",
+      "dialog": "무엇보다 귀여운거?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이1"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이2"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "얘 지금 뭐라는거임?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "c",
+      "dialog": "왜구래 나 귀엽잖아~?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#a1363d>화가많은 뿡댕이"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "하지마라."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "c",
+      "dialog": "우웅? 왜구뤵 뿡뒝아~? 따비 안기요오?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#a1363d>화가많은 뿡댕이"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "말린 혀 풀어라. 마지막 경고다."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "c",
+      "dialog": "따비! 안귀욥다고 해서 화나써! 훙훙!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#a1363d>화가많은 뿡댕이"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "이런 씨ㅣㅣㅣㅣㅣㅣㅣ!!!!!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#a1363d>화가많은 뿡댕이"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "[콰과과과과!!!!!]"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이1"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "저 녀석 야랄을 견디지 못하고 빔쏜다!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "s",
+      "dialog": "아니, 내 애교가 그렇게 빔을 쏠정도로 화날정도야...?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이1"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "솔직히 못참을만 했어."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이2"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "너는 어지간하면 애교하지마라. 제발."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이3"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "아오 눈아파 죽겠네. 저 놈 빔좀 누가 꺼봐!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "d",
+      "dialog": "잠깐만. 눈이 부실정도로 빛난다고?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      100,
+      100
+    ],
+    "data": {
+      "nameNstate": "h",
+      "dialog": "(이거 잘만 이용하면...)"
+    }
+  }
+]}

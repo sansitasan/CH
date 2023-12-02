@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class IdleLeaf : BehaviourLeaf
 {
-    public IdleLeaf(BlackBoard board) : base(board) { }
+    public IdleLeaf(BlackBoard board) : base(board, PlayerStates.Idle) {  }
 
     public override SeqStates CheckLeaf(PlayerStates ps)
     {
@@ -29,13 +29,15 @@ public class IdleLeaf : BehaviourLeaf
 
 public abstract class MoveLeaf : BehaviourLeaf
 {
-    public MoveLeaf(BlackBoard board) : base(board) { }
+    public MoveLeaf(BlackBoard board) : base(board, PlayerStates.Move) { }
 
     public override sealed SeqStates CheckLeaf(PlayerStates ps)
     {
-        if (ps == PlayerStates.Move && _seqStates == SeqStates.Fail)
+        if (ps == PlayerStates.Move)
+        {
             _seqStates = SeqStates.Running;
-        
+            Enter();
+        }
 
         else if (ps == PlayerStates.Idle)
             _seqStates = SeqStates.Fail;
@@ -43,6 +45,10 @@ public abstract class MoveLeaf : BehaviourLeaf
         return _seqStates;
     }
 
+    public override void Enter()
+    {
+        _blackBoard.PA.ChangeDir(_blackBoard.MoveDir);
+    }
 
     public override void CancelBehaviour()
     {
@@ -60,9 +66,6 @@ public class Stage1MoveLeaf : MoveLeaf
             * _blackBoard.Speed;
     }
 
-    public override void Enter()
-    {
-    }
 
     public override void Exit()
     {
@@ -73,10 +76,6 @@ public class Stage1MoveLeaf : MoveLeaf
 public class Stage2MoveLeaf : MoveLeaf
 {
     public Stage2MoveLeaf(BlackBoard board) : base(board) { }
-
-    public override void Enter()
-    {
-    }
 
     public override void Exit()
     {
@@ -92,7 +91,7 @@ public class Stage2MoveLeaf : MoveLeaf
 
 public abstract class BehaveLeaf : BehaviourLeaf
 {
-    public BehaveLeaf(BlackBoard board) : base(board) { }
+    public BehaveLeaf(BlackBoard board, PlayerStates ps) : base(board, ps) { }
 
     public override SeqStates CheckLeaf(PlayerStates ps)
     {
@@ -120,7 +119,7 @@ public class Stage1BehaveLeaf : BehaveLeaf
     private float _chargeTime;
     private Stage1BlackBoard _board;
 
-    public Stage1BehaveLeaf(BlackBoard board) : base(board) 
+    public Stage1BehaveLeaf(BlackBoard board) : base(board, PlayerStates.Behave)
     { 
         _board = board as Stage1BlackBoard;
     }
@@ -160,7 +159,7 @@ public class Stage1BehaveLeaf : BehaveLeaf
 
 public class SkyLeaf : BehaviourLeaf
 {
-    public SkyLeaf(BlackBoard board) : base(board) { }
+    public SkyLeaf(BlackBoard board) : base(board, PlayerStates.Behave) { }
 
     public override SeqStates CheckLeaf(PlayerStates ps)
     {
@@ -194,7 +193,7 @@ public class SkillLeaf : BehaviourLeaf
 {
     private Stage1BlackBoard _board;
 
-    public SkillLeaf(BlackBoard board) : base(board) 
+    public SkillLeaf(BlackBoard board) : base(board, PlayerStates.Skill)
     {
         _board = board as Stage1BlackBoard;
     }

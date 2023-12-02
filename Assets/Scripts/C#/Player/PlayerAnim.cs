@@ -7,25 +7,30 @@ public class PlayerAnim : IDisposable
 {
     private Animator _tabiAnim;
     private Animator _BDAnim;
-    public short Flip { get => _flip; }
-    private short _flip;
+    private SpriteRenderer _tabiSprite;
+    public short Flip { 
+        get{
+            if (_tabiSprite.flipX) return -1; 
+            else return 1;
+        }
+    }
 
-    public PlayerAnim(Animator tabiAnim, Animator bDAnim)
+    public PlayerAnim(Animator tabiAnim, Animator bDAnim, SpriteRenderer tabiSprite)
     {
         _tabiAnim = tabiAnim;
         _BDAnim = bDAnim;
-        _flip = 1;
+        _tabiSprite = tabiSprite;
     }
 
     public void ChangeDir(Vector2 dir)
     {
         if (dir.x > 0)
-            _flip = 1;
+            _tabiSprite.flipX = false;
         else if (dir.x < 0)
-            _flip = -1;
+            _tabiSprite.flipX = true;
     }
 
-    public void AnimChange()
+    public void ChangeAnim(PlayerStates state)
     {
 
     }

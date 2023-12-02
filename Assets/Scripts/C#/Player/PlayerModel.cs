@@ -17,7 +17,8 @@ public enum PlayerStates
     Skill = 5,
     Stage1 = 100,
     InTheSky = 101,
-    Landing = 102
+    Landing = 102,
+    Success = 99999
 }
 
 public abstract class PlayerModel : MonoBehaviour, IDisposable
@@ -59,7 +60,6 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
     {
         _blackBoard.MoveDir = vector;
         _tree.CheckSeq(state);
-        _pa.ChangeDir(vector);
     }
 
     public void Dispose()

@@ -21,7 +21,7 @@ public class Stage1Model : PlayerModel
     protected override void MakeBT()
     {
         _pa = new PlayerAnim(transform.GetChild(0).GetComponent<Animator>(), 
-            transform.GetChild(1).GetComponent<Animator>());
+            transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
 
         _tree = new BehaviourTree();
         _blackBoard = new Stage1BlackBoard(transform, _pa, _rb, _tree, _speed, _chargePower, _chargeTime);
