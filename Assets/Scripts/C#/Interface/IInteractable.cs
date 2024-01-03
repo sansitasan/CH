@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public void Interact(Transform t);
+    public bool Interact(Vector3 dir);
 }

@@ -190,7 +190,10 @@ public abstract class BehaviourLeaf : IDisposable
 
     public abstract void Update();
 
-    public abstract void Enter();
+    protected virtual void Enter()
+    {
+        _blackBoard.PA.ChangeAnim(State);
+    }
 
     public abstract void Exit();
 

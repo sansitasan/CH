@@ -32,7 +32,7 @@ public class PlayerAnim : IDisposable
 
     public void ChangeAnim(PlayerStates state)
     {
-
+        _tabiAnim.Play(state.ToString());
     }
 
     public void Dispose()

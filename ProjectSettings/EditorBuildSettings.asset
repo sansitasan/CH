@@ -29,4 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/7.TempScene.unity
     guid: 4aea0d45bd9b3124491c508a9b80425b
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/ScriptScene.unity
+    guid: 2befba0be43ea864f9fed841b9059d0e
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 93338a174a6ae504fae758cf59ee30a3, type: 2}

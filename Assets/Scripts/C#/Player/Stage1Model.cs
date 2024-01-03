@@ -13,16 +13,12 @@ public class Stage1Model : PlayerModel
     protected override void Init()
     {
         base.Init();
-        MakeBT();
         _rayMask = LayerMask.GetMask("Ground");
         _rb.sharedMaterial = _materials[0];
     }
 
     protected override void MakeBT()
     {
-        _pa = new PlayerAnim(transform.GetChild(0).GetComponent<Animator>(), 
-            transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
-
         _tree = new BehaviourTree();
         _blackBoard = new Stage1BlackBoard(transform, _pa, _rb, _tree, _speed, _chargePower, _chargeTime);
 
@@ -68,8 +64,8 @@ public class Stage1Model : PlayerModel
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        RaycastHit2D leftRay = Physics2D.Raycast(_rb.position - new Vector2(0.495f, 0), Vector2.down, 0.6f, _rayMask);
-        RaycastHit2D rightRay = Physics2D.Raycast(_rb.position + new Vector2(0.495f, 0), Vector2.down, 0.6f, _rayMask);
+        RaycastHit2D leftRay = Physics2D.Raycast(_rb.position - new Vector2(0.495f, 1.5f), Vector2.down, 0.6f, _rayMask);
+        RaycastHit2D rightRay = Physics2D.Raycast(_rb.position + new Vector2(0.495f, 1.5f), Vector2.down, 0.6f, _rayMask);
 
         if (leftRay.collider == null && rightRay.collider == null)
         {
@@ -80,8 +76,14 @@ public class Stage1Model : PlayerModel
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        RaycastHit2D leftRay = Physics2D.Raycast(_rb.position - new Vector2(0.495f, 0), Vector2.down, 1, _rayMask);
-        RaycastHit2D rightRay = Physics2D.Raycast(_rb.position + new Vector2(0.495f, 0), Vector2.down, 1, _rayMask);
+        Vector2 left = _rb.position - new Vector2(0.495f, 1.5f);
+        Vector2 right = _rb.position + new Vector2(0.495f, 1.5f);
+
+        RaycastHit2D leftRay = Physics2D.Raycast(left, Vector2.down, 0.6f, _rayMask);
+        RaycastHit2D rightRay = Physics2D.Raycast(right, Vector2.down, 0.6f, _rayMask);
+
+        Debug.DrawLine(left, left - Vector2.down * 0.6f, Color.red, 1);
+        Debug.DrawLine(right, right - Vector2.down * 0.6f, Color.red, 1);
 
         if (leftRay.collider != null || rightRay.collider != null)
         {

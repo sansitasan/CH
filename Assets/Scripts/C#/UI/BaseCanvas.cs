@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[ExecuteInEditMode]
 public class BaseCanvas : MonoBehaviour
 {
     protected Canvas _canvas;
@@ -10,10 +11,12 @@ public class BaseCanvas : MonoBehaviour
 
     void Awake()
     {
-        Init();
+        EditInit();
+        if (Application.isPlaying)
+            Playinit();
     }
 
-    protected virtual void Init()
+    protected virtual void EditInit()
     {
         _canvas = Util.GetOrAddComponent<Canvas>(gameObject);
         _canvasScaler = Util.GetOrAddComponent<CanvasScaler>(gameObject);
@@ -21,5 +24,10 @@ public class BaseCanvas : MonoBehaviour
         _canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         _canvasScaler.referenceResolution = new Vector2(1920, 1080);
         _canvas.worldCamera = Camera.main;
+    }
+
+    protected virtual void Playinit()
+    {
+
     }
 }

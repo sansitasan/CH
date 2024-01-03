@@ -28,16 +28,4 @@ public class BD : MonoBehaviour
 
         _trigger.enabled = false;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out IInteractable interactable))
-            interactable.Interact(transform);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out IInteractable interactable))
-            interactable.Interact(null);
-    }
 }

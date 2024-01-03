@@ -58,6 +58,7 @@ public class GameManager
         _savepath = Path.Combine(Application.persistentDataPath, "stage");
         _stage = LoadStage();
         _fadeCanvas = GameObject.Find("FadeCanvas").GetComponent<FadeCanvas>();
+        Application.targetFrameRate = 60;
     }
 
     public async UniTaskVoid SceneChangeAsync(SceneName prev, SceneName next, FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base)

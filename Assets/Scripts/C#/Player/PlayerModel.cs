@@ -16,8 +16,9 @@ public enum PlayerStates
     BehaveCancel = 4,
     Skill = 5,
     Stage1 = 100,
-    InTheSky = 101,
-    Landing = 102,
+    Jump = 101,
+    InTheSky = 102,
+    Landing = 103,
     Success = 99999
 }
 
@@ -39,6 +40,7 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
     void Awake()
     {
         Init();
+        MakeBT();
     }
 
     protected virtual void Init()
@@ -46,7 +48,9 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
         _rb = GetComponent<Rigidbody2D>();
         _cts = new CancellationTokenSource();
         PlayerController playerController = new PlayerController(GetComponent<PlayerInput>().actions, this);
+        _pa = new PlayerAnim(transform.GetChild(0).GetComponent<Animator>(), transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
         _disposeList.Add(playerController);
+        _disposeList.Add(_pa);
     }
 
     protected abstract void MakeBT();

@@ -18,12 +18,17 @@ public class FadeCanvas : BaseCanvas
         Circle
     }
 
-    protected override void Init()
+    protected override void EditInit()
     {
-        base.Init();
+        base.EditInit();
         _image = Util.GetOrAddComponent<Image>(transform.GetChild(0));
-        DontDestroyOnLoad(gameObject);
         _canvas.sortingOrder = 100;
+    }
+
+    protected override void Playinit()
+    {
+        base.Playinit();
+        DontDestroyOnLoad(gameObject);
     }
 
     public async UniTask FadeOutScene(float time = 0.5f, FadeMode mode = FadeMode.Base)
@@ -42,7 +47,7 @@ public class FadeCanvas : BaseCanvas
             temp -= Time.deltaTime;
             _m.SetFloat(_materialFade, 1 - temp / time);
         }
-        Debug.Log($"temp is {temp}, Fade is {_m.GetFloat(_materialFade)}");
+
     }
 
     public async UniTask FadeInScene(float time = 0.5f, FadeMode mode = FadeMode.Base)

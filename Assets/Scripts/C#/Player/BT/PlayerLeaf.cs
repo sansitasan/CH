@@ -11,11 +11,13 @@ public class IdleLeaf : BehaviourLeaf
 
     public override SeqStates CheckLeaf(PlayerStates ps)
     {
+        Enter();
         return SeqStates.Running;
     }
 
-    public override void Enter()
+    protected override void Enter()
     {
+        base.Enter();
     }
 
     public override void Exit()
@@ -45,8 +47,9 @@ public abstract class MoveLeaf : BehaviourLeaf
         return _seqStates;
     }
 
-    public override void Enter()
+    protected override void Enter()
     {
+        base.Enter();
         _blackBoard.PA.ChangeDir(_blackBoard.MoveDir);
     }
 
@@ -96,7 +99,10 @@ public abstract class BehaveLeaf : BehaviourLeaf
     public override SeqStates CheckLeaf(PlayerStates ps)
     {
         if (ps == PlayerStates.Behave && _seqStates == SeqStates.Fail)
+        {
+            Enter();
             _seqStates = SeqStates.Running;
+        }
 
         else if (ps == PlayerStates.BehaveCancel)
         {
@@ -104,6 +110,11 @@ public abstract class BehaveLeaf : BehaviourLeaf
             _seqStates = SeqStates.Fail;
         }
         return _seqStates;
+    }
+
+    protected override void Enter()
+    {
+        base.Enter();
     }
 
     protected abstract void Behave();
@@ -119,7 +130,7 @@ public class Stage1BehaveLeaf : BehaveLeaf
     private float _chargeTime;
     private Stage1BlackBoard _board;
 
-    public Stage1BehaveLeaf(BlackBoard board) : base(board, PlayerStates.Behave)
+    public Stage1BehaveLeaf(BlackBoard board) : base(board, PlayerStates.Jump)
     { 
         _board = board as Stage1BlackBoard;
     }
@@ -147,8 +158,9 @@ public class Stage1BehaveLeaf : BehaveLeaf
             _chargeTime += Time.fixedDeltaTime;
     }
 
-    public override void Enter()
+    protected override void Enter()
     {
+        base.Enter();
     }
 
     public override void Exit()
@@ -175,12 +187,14 @@ public class SkyLeaf : BehaviourLeaf
         return _seqStates;
     }
 
-    public override void Enter()
+    protected override void Enter()
     {
+        base.Enter();
     }
 
     public override void Exit()
     {
+        _blackBoard.PA.ChangeAnim(PlayerStates.Landing);
     }
 
     public override void Update()
@@ -215,7 +229,7 @@ public class SkillLeaf : BehaviourLeaf
         return _seqStates;
     }
 
-    public override void Enter()
+    protected override void Enter()
     {
         _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[0];
     }
