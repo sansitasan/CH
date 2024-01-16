@@ -47,6 +47,10 @@ public class PlayerAnim : IDisposable
             case PlayerStates.Landing:
                 _tabiAnim.SetBool("Jump", false);
                 break;
+
+            default:
+                _tabiAnim.Play(state.ToString());
+                break;
         }
     }
 

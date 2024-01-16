@@ -29,7 +29,7 @@ public class PlayerController : IDisposable
 
     private void Idle(CallbackContext ctx)
     {
-        _model.PlayerInput(PlayerStates.Idle);
+        _model.PlayerInput(PlayerStates.Idle, Vector2.zero);
         _bMove = false;
     }
 

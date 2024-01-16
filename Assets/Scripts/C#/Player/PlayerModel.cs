@@ -49,6 +49,7 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
         _cts = new CancellationTokenSource();
         PlayerController playerController = new PlayerController(GetComponent<PlayerInput>().actions, this);
         _pa = new PlayerAnim(transform.GetChild(0).GetComponent<Animator>(), transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
+        _disposeList.Add(_cts);
         _disposeList.Add(playerController);
         _disposeList.Add(_pa);
     }
@@ -69,7 +70,6 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
     public void Dispose()
     {
         _cts.Cancel();
-        _cts.Dispose();
         for (int i = 0; i < _disposeList.Count; ++i)
             _disposeList[i].Dispose();
     }
