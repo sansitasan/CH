@@ -290,6 +290,15 @@ SpriteAtlas:
   - {fileID: 1432138094, guid: b642be92238471f4ea2051a1236d0694, type: 3}
   - {fileID: -963842187, guid: b642be92238471f4ea2051a1236d0694, type: 3}
   - {fileID: 588775164, guid: b642be92238471f4ea2051a1236d0694, type: 3}
+  - {fileID: 1509409924, guid: e601cb8bc4dd8ec4586af455ff8559e5, type: 3}
+  - {fileID: 561811127, guid: e601cb8bc4dd8ec4586af455ff8559e5, type: 3}
+  - {fileID: -1857526, guid: e601cb8bc4dd8ec4586af455ff8559e5, type: 3}
+  - {fileID: -316684757, guid: e601cb8bc4dd8ec4586af455ff8559e5, type: 3}
+  - {fileID: -1919645577, guid: e601cb8bc4dd8ec4586af455ff8559e5, type: 3}
+  - {fileID: 1629280137, guid: e601cb8bc4dd8ec4586af455ff8559e5, type: 3}
+  - {fileID: 1355834685, guid: e601cb8bc4dd8ec4586af455ff8559e5, type: 3}
+  - {fileID: 555708831, guid: e601cb8bc4dd8ec4586af455ff8559e5, type: 3}
+  - {fileID: -778301090, guid: e601cb8bc4dd8ec4586af455ff8559e5, type: 3}
   m_PackedSpriteNamesToIndex:
   - Tile2_244
   - Tile2_245
@@ -543,6 +552,15 @@ SpriteAtlas:
   - Tile2_4
   - Tile2_197
   - Tile2_5
+  - 1703768063921_8
+  - 1703768063921_5
+  - 1703768063921_4
+  - 1703768063921_7
+  - 1703768063921_6
+  - 1703768063921_1
+  - 1703768063921_0
+  - 1703768063921_3
+  - 1703768063921_2
   m_RenderDataMap: {}
   m_Tag: New Sprite Atlas
   m_IsVariant: 0

@@ -114,7 +114,7 @@ public abstract class BehaveLeaf : BehaviourLeaf
 
     protected override void Enter()
     {
-        base.Enter();
+        //base.Enter();
     }
 
     protected abstract void Behave();
@@ -176,7 +176,11 @@ public class SkyLeaf : BehaviourLeaf
     public override SeqStates CheckLeaf(PlayerStates ps)
     {
         if (ps == PlayerStates.InTheSky && _seqStates == SeqStates.Fail)
+        {
             _seqStates = SeqStates.Running;
+            _blackBoard.PA.ChangeAnim(PlayerStates.Jump);
+
+        }
 
         else if (_seqStates == SeqStates.Running && ps == PlayerStates.Landing)
         {

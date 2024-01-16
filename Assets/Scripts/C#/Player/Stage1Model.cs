@@ -60,36 +60,69 @@ public class Stage1Model : PlayerModel
     private void FixedUpdate()
     {
         _tree.Update();
+        CheckGround();
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    public override void PlayerInput(PlayerStates state, Vector2 vector)
     {
-        RaycastHit2D leftRay = Physics2D.Raycast(_rb.position - new Vector2(0.495f, 1.5f), Vector2.down, 0.6f, _rayMask);
-        RaycastHit2D rightRay = Physics2D.Raycast(_rb.position + new Vector2(0.495f, 1.5f), Vector2.down, 0.6f, _rayMask);
+        if (vector == Vector2.up || vector == Vector2.down)
+        {
+            return;
+        }
+        base.PlayerInput(state, vector);
+    }
 
+    private void CheckGround()
+    {
+        Vector2 left = _rb.position - new Vector2(0.485f, 1.5f);
+        Vector2 right = _rb.position - new Vector2(-0.485f, 1.5f);
+
+        RaycastHit2D leftRay = Physics2D.Raycast(left, Vector2.down, 0.1f, _rayMask);
+        RaycastHit2D rightRay = Physics2D.Raycast(right, Vector2.down, 0.1f, _rayMask);
+        Debug.DrawLine(left, left - Vector2.down * 0.1f, Color.red, 1);
+        Debug.DrawLine(right, right - Vector2.down * 0.1f, Color.red, 1);
         if (leftRay.collider == null && rightRay.collider == null)
         {
             _rb.sharedMaterial = _materials[1];
             _tree.CheckSeq(PlayerStates.InTheSky);
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Vector2 left = _rb.position - new Vector2(0.495f, 1.5f);
-        Vector2 right = _rb.position + new Vector2(0.495f, 1.5f);
-
-        RaycastHit2D leftRay = Physics2D.Raycast(left, Vector2.down, 0.6f, _rayMask);
-        RaycastHit2D rightRay = Physics2D.Raycast(right, Vector2.down, 0.6f, _rayMask);
-
-        Debug.DrawLine(left, left - Vector2.down * 0.6f, Color.red, 1);
-        Debug.DrawLine(right, right - Vector2.down * 0.6f, Color.red, 1);
-
-        if (leftRay.collider != null || rightRay.collider != null)
+        else
         {
-            _rb.velocity = Vector2.zero;
+            //_rb.velocity = Vector2.zero;
             _rb.sharedMaterial = _materials[0];
             _tree.CheckSeq(PlayerStates.Landing);
         }
     }
+
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    RaycastHit2D leftRay = Physics2D.Raycast(_rb.position - new Vector2(0.485f, 1.5f), Vector2.down, 0.6f, _rayMask);
+    //    RaycastHit2D rightRay = Physics2D.Raycast(_rb.position - new Vector2(-0.485f, 1.5f), Vector2.down, 0.6f, _rayMask);
+    //
+    //    if (leftRay.collider == null && rightRay.collider == null)
+    //    {
+    //        _rb.sharedMaterial = _materials[1];
+    //        _tree.CheckSeq(PlayerStates.InTheSky);
+    //    }
+    //}
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Vector2 left = _rb.position - new Vector2(0.485f, 1.5f);
+    //    Vector2 right = _rb.position - new Vector2(-0.485f, 1.5f);
+    //
+    //    RaycastHit2D leftRay = Physics2D.Raycast(left, Vector2.down, 0.6f, _rayMask);
+    //    RaycastHit2D rightRay = Physics2D.Raycast(right, Vector2.down, 0.6f, _rayMask);
+    //
+    //    Debug.DrawLine(left, left - Vector2.down * 0.6f, Color.red, 1);
+    //    Debug.DrawLine(right, right - Vector2.down * 0.6f, Color.red, 1);
+    //
+    //    if (leftRay.collider != null || rightRay.collider != null)
+    //    {
+    //        _rb.velocity = Vector2.zero;
+    //        _rb.sharedMaterial = _materials[0];
+    //        _tree.CheckSeq(PlayerStates.Landing);
+    //    }
+    //}
 }

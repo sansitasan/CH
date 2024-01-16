@@ -60,7 +60,7 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
         _tree.CheckSeq(state);
     }
 
-    public void PlayerInput(PlayerStates state, Vector2 vector)
+    public virtual void PlayerInput(PlayerStates state, Vector2 vector)
     {
         _blackBoard.MoveDir = vector;
         _tree.CheckSeq(state);

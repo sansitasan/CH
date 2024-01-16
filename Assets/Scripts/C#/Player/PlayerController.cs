@@ -13,7 +13,7 @@ public class PlayerController : IDisposable
     private PlayerModel _model;
 
     private bool _bMove;
-    private Vector2 pos;
+    private Vector2 _pos;
     private CancellationTokenSource _moveCts = new CancellationTokenSource();
 
     public PlayerController(InputActionAsset iaa, PlayerModel model)
@@ -35,7 +35,7 @@ public class PlayerController : IDisposable
 
     private void Move(CallbackContext ctx)
     {
-        pos = ctx.ReadValue<Vector2>();
+        _pos = ctx.ReadValue<Vector2>();
         if (!_bMove)
         {
             _bMove = true;
@@ -47,7 +47,7 @@ public class PlayerController : IDisposable
     {
         while (_bMove)
         {
-            _model.PlayerInput(PlayerStates.Move, pos);
+            _model.PlayerInput(PlayerStates.Move, _pos);
             await UniTask.DelayFrame(1, cancellationToken: _moveCts.Token);
         }
     }

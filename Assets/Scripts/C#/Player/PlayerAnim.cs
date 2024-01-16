@@ -32,7 +32,22 @@ public class PlayerAnim : IDisposable
 
     public void ChangeAnim(PlayerStates state)
     {
-        _tabiAnim.Play(state.ToString());
+        switch (state)
+        {
+            case PlayerStates.Idle:
+                _tabiAnim.SetBool("Move", false);
+                break;
+            case PlayerStates.Move:
+                _tabiAnim.SetBool("Move", true);
+                break;
+            case PlayerStates.Jump:
+                _tabiAnim.Play(state.ToString());
+                _tabiAnim.SetBool("Jump", true);
+                break;
+            case PlayerStates.Landing:
+                _tabiAnim.SetBool("Jump", false);
+                break;
+        }
     }
 
     public void Dispose()
