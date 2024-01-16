@@ -130,7 +130,7 @@ public class Stage1BehaveLeaf : BehaveLeaf
     private float _chargeTime;
     private Stage1BlackBoard _board;
 
-    public Stage1BehaveLeaf(BlackBoard board) : base(board, PlayerStates.Jump)
+    public Stage1BehaveLeaf(BlackBoard board) : base(board, PlayerStates.Behave)
     { 
         _board = board as Stage1BlackBoard;
     }
@@ -141,7 +141,12 @@ public class Stage1BehaveLeaf : BehaveLeaf
         {
             if (_chargeTime / _board.chargeTime <= i + 1)
             {
-                _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[i];
+                if (_blackBoard.MoveDir == Vector2.zero)
+                {
+                    _blackBoard.RD.velocity = Vector2.up * _board.ChargePower[i];
+                }
+                else
+                    _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[i];
                 break;
             }
         }
@@ -176,7 +181,11 @@ public class SkyLeaf : BehaviourLeaf
     public override SeqStates CheckLeaf(PlayerStates ps)
     {
         if (ps == PlayerStates.InTheSky && _seqStates == SeqStates.Fail)
+        {
             _seqStates = SeqStates.Running;
+            _blackBoard.PA.ChangeAnim(PlayerStates.Jump);
+
+        }
 
         else if (_seqStates == SeqStates.Running && ps == PlayerStates.Landing)
         {

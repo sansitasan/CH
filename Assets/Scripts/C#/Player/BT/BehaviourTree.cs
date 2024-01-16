@@ -192,6 +192,7 @@ public abstract class BehaviourLeaf : IDisposable
 
     protected virtual void Enter()
     {
+        _blackBoard.PlayerState = State;
         _blackBoard.PA.ChangeAnim(State);
     }
 
@@ -249,6 +250,7 @@ public class BlackBoard : IDisposable
     public Transform Player { get; private set; }
     public int Speed;
     public Vector2 MoveDir { get; set; }
+    public PlayerStates PlayerState { get; set; }
 
     public BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, int speed)
     {

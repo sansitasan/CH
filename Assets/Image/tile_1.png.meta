@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -91,6 +91,42 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -6735,17 +6771,17 @@ TextureImporter:
       tile_1_108: 833433918
       tile_1_107: 962653259
       tile_1_130: -231380180
-      tile_1_216: 1494745566
+      tile_1_261: -1002173005
       tile_1_161: 118730700
+      tile_1_216: 1494745566
       tile_1_93: -1437984
       tile_1_149: 1445133716
       tile_1_190: -1766327903
       tile_1_245: -1405643021
       tile_1_81: 116709974
-      tile_1_20: 2048077255
-      tile_1_261: -1002173005
-      tile_1_206: 1353433004
       tile_1_297: 2072110623
+      tile_1_20: 2048077255
+      tile_1_206: 1353433004
       tile_1_46: -1023754969
       tile_1_96: -2094776459
       tile_1_242: 501661896
@@ -6780,11 +6816,11 @@ TextureImporter:
       tile_1_226: -1462194561
       tile_1_51: 793708718
       tile_1_277: 957290411
-      tile_1_43: -1478839639
+      tile_1_294: 1636836588
       tile_1_210: 1569863009
       tile_1_0: -491447867
       tile_1_109: -70658599
-      tile_1_294: 1636836588
+      tile_1_43: -1478839639
       tile_1_240: 2049461469
       tile_1_87: 1341266327
       tile_1_269: -950277216
@@ -6876,10 +6912,10 @@ TextureImporter:
       tile_1_138: -855262439
       tile_1_98: 987224291
       tile_1_119: 1218780829
-      tile_1_199: 1933039003
       tile_1_237: -234719356
-      tile_1_137: -494620244
       tile_1_241: -397696900
+      tile_1_199: 1933039003
+      tile_1_137: -494620244
       tile_1_2: -36179401
       tile_1_83: -2135500378
       tile_1_188: -666358085
