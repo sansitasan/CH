@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class DialogPanel : MonoBehaviour
+public class TestScript : MonoBehaviour
 {
     [SerializeField]
-    private GameScene _scene;
+    private TextAsset _script;
     private Image _image;
     private TextMeshProUGUI _name;
     private TextMeshProUGUI _dialog;
@@ -38,13 +37,7 @@ public class DialogPanel : MonoBehaviour
         _nextButton.onClick.AddListener(Click);
         _btalk = false;
         _dialogText = new StringBuilder();
-    }
-
-    public void StartScript(EventTypes types)
-    {
-        _scripts = ResourceManager.Instance.TryGetScript($"{types}{GameManager.Instance.CurStage}");
-        gameObject.SetActive(true);
-        Click();
+        _scripts = JsonUtility.FromJson<ScriptLoad>(_script.text).scripts;
     }
 
     private void Click()
@@ -56,9 +49,7 @@ public class DialogPanel : MonoBehaviour
     {
         if (_scripts.Count == _cnt)
         {
-            _scene.EndEvent();
-            gameObject.SetActive(false);
-            return;
+            Application.Quit();
         }
 
         if (_btalk)

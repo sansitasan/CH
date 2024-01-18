@@ -25,6 +25,8 @@ public class PlayerController : IDisposable
         _actions[1].performed += Behave;
         _actions[1].canceled += BehaveCancel;
         _actions[2].performed += Skill;
+        
+        _actions[0].actionMap.Disable();
     }
 
     private void Idle(CallbackContext ctx)
@@ -65,6 +67,16 @@ public class PlayerController : IDisposable
     private void Skill(CallbackContext ctx)
     {
         _model.PlayerInput(PlayerStates.Skill);
+    }
+
+    public void DisableInput()
+    {
+        _actions[0].actionMap.Disable();
+    }
+
+    public void EnableInput()
+    {
+        _actions[0].actionMap.Enable();
     }
 
     public void Dispose()

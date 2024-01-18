@@ -11,7 +11,7 @@ public class Stage2Model : PlayerModel
 
     private bool _bSkill;
 
-    protected override void Init()
+    public override void Init()
     {
         base.Init();
         _disposeList.Add(_wall);

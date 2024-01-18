@@ -3,10 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EventTypes
+{
+    None,
+    Start,
+    End
+}
+
 public class EventTrigger : MonoBehaviour
 {
+    public EventTypes Type;
+
+    private GameScene _scene;
+
+    private void Awake()
+    {
+        _scene = transform.parent.GetComponent<GameScene>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameObject.SetActive(false);
+        if (collision.CompareTag("Player"))
+        {
+            _scene.GetEvent(Type);
+            gameObject.SetActive(false);
+        }
     }
 }

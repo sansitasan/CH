@@ -11,7 +11,7 @@ public class Stage3Model : PlayerModel
     private bool _bSkill;
     private readonly string _sObstacle = "Obstacle";
 
-    protected override void Init()
+    public override void Init()
     {
         base.Init();
     }

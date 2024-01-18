@@ -32,26 +32,35 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
     protected BehaviourTree _tree;
     protected BlackBoard _blackBoard;
     protected PlayerAnim _pa;
+    protected PlayerController _controller;
     [SerializeField]
     protected int _speed;
 
     protected List<IDisposable> _disposeList = new List<IDisposable>();
 
-    void Awake()
-    {
-        Init();
-        MakeBT();
-    }
-
-    protected virtual void Init()
+    public virtual void Init()
     {
         _rb = GetComponent<Rigidbody2D>();
         _cts = new CancellationTokenSource();
-        PlayerController playerController = new PlayerController(GetComponent<PlayerInput>().actions, this);
+        _controller = new PlayerController(GetComponent<PlayerInput>().actions, this);
         _pa = new PlayerAnim(transform.GetChild(0).GetComponent<Animator>(), transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
         _disposeList.Add(_cts);
-        _disposeList.Add(playerController);
+        _disposeList.Add(_controller);
         _disposeList.Add(_pa);
+        MakeBT();
+    }
+
+    public async UniTask AfterScriptInit()
+    {
+        await _pa.StartFadeAsync();
+    }
+
+    public void Script(bool bStart)
+    {
+        if (bStart)
+            _controller.DisableInput();
+        else
+            _controller.EnableInput();
     }
 
     protected abstract void MakeBT();

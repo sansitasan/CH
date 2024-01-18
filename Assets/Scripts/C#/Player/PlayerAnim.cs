@@ -1,6 +1,8 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerAnim : IDisposable
@@ -8,6 +10,8 @@ public class PlayerAnim : IDisposable
     private Animator _tabiAnim;
     private Animator _BDAnim;
     private SpriteRenderer _tabiSprite;
+    private CancellationTokenSource _cts = new CancellationTokenSource();
+
     public short Flip { 
         get{
             if (_tabiSprite.flipX) return -1; 
@@ -20,6 +24,20 @@ public class PlayerAnim : IDisposable
         _tabiAnim = tabiAnim;
         _BDAnim = bDAnim;
         _tabiSprite = tabiSprite;
+        _tabiSprite.color = new Color(1, 1, 1, 0);
+    }
+
+    public async UniTask StartFadeAsync(float time = 1f)
+    {
+        _tabiSprite.color = new Color(1, 1, 1, 0);
+        float dt = 0f;
+
+        while (time > dt)
+        {
+            dt += Time.unscaledDeltaTime / time;
+            _tabiSprite.color = Color.Lerp(new Color(1, 1, 1, 0), Color.white, dt);
+            await UniTask.DelayFrame(1, cancellationToken: _cts.Token);
+        }
     }
 
     public void ChangeDir(Vector2 dir)
@@ -58,5 +76,7 @@ public class PlayerAnim : IDisposable
     {
         _tabiAnim = null;
         _BDAnim = null;
+        _cts.Cancel();
+        _cts.Dispose();
     }
 }

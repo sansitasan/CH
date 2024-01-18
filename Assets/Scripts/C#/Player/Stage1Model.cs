@@ -11,14 +11,17 @@ public class Stage1Model : PlayerModel
     private int[] _chargePower;
     [SerializeField]
     private float _chargeTime;
+    [SerializeField]
+    public float _gravityScale;
 
     private bool _bCheck;
 
-    protected override void Init()
+    public override void Init()
     {
         base.Init();
         _rayMask = LayerMask.GetMask("Ground");
         _rb.sharedMaterial = _materials[0];
+        _rb.gravityScale = _gravityScale;
     }
 
     protected override void MakeBT()
@@ -81,7 +84,7 @@ public class Stage1Model : PlayerModel
     private async UniTask CheckGround()
     {
         _bCheck = true;
-        if (_blackBoard.PlayerState == PlayerStates.Behave)
+        if (_blackBoard.PlayerState == PlayerStates.Behave || _blackBoard.PlayerState == PlayerStates.Skill)
         {
             await UniTask.WaitUntil(() => _blackBoard.PlayerState != PlayerStates.Behave, cancellationToken: _cts.Token);
 

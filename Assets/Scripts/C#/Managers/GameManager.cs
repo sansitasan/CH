@@ -49,7 +49,9 @@ public class GameManager
     public event Action<SceneName, SceneName> ChangeScene;
     public event Action<SceneName, SceneName> ActiveScene;
     public Stage Stage { get => _stage; }
+    public int CurStage { get => _curStage; }
     private Stage _stage;
+    private int _curStage;
     private FadeCanvas _fadeCanvas;
     private string _savepath;
 
@@ -72,7 +74,7 @@ public class GameManager
         ao.allowSceneActivation = false;
         GC.Collect();
         GC.WaitForPendingFinalizers();
-
+        _curStage = (int)next - 1;
         await UniTask.WhenAll(UniTask.WaitUntil(() => ao.progress >= 0.89), UniTask.Delay(TimeSpan.FromSeconds(2)));
         ao.allowSceneActivation = true;
         await UniTask.WaitUntil(() => SceneManager.GetActiveScene().buildIndex == (int)next);

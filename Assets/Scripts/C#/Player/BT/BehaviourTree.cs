@@ -16,7 +16,9 @@ public enum SeqStates
 [Serializable]
 public class BehaviourTree : IDisposable
 {
+    [SerializeField]
     private List<BehaviourSequence> _seqList = new List<BehaviourSequence>();
+    [SerializeField]
     private BehaviourLeaf _curLeaf;
     public string LeafName;
 
@@ -67,6 +69,7 @@ public class BehaviourTree : IDisposable
     }
 }
 
+[Serializable]
 public class BehaviourSequence : IDisposable
 {
     private List<BehaviourSequenceNode> _nodeList = null;
