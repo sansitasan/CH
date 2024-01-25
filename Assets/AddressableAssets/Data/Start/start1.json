@@ -1,498 +1,496 @@
-{
-  "scripts": [
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "h",
-        "dialog": "드디어...드디어 보이기 시작했어."
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "s",
-        "dialog": "얼마나 개고생을 하면서 여기까지 왔는지. 혼자서 외롭고 힘들어도 결국 여기까지 왔구나. 울지말자 정타비. 우는건 보물을 찾고나서니까."
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "저게 소문으로만 듣던 용궁..."
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "근데, 생각보다 엄청 높이 떠있는데? 저길 어떻게 올라가지? 흐음...어라?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "e",
-        "dialog": "방금 저기 뭔가 반짝이지 않았나?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "e",
-        "dialog": "저거 왜 점점 가까워지는...!"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>???"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "으아아아아악!!!!"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "e",
-        "dialog": "[철퍽!]"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "g",
-        "dialog": "으악?! 무ㅅ..! 우웻!퉷! 얼굴에 이거 뭐야?!"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "헥헥...발한번 헛딛었다가 하마터면 죽을뻔했네!"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "g",
-        "dialog": "뭐야 이 이상하게 생긴 슬라임은? 머리통에 이상한 자석도 달고있고, 몬스터가 말도해?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "이상하게 생긴 슬라임이라니! 몬스터도 아니야! 뿡댕이라는 이름이 있다고!"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "e",
-        "dialog": "뿡댕이? 신기한 이름이네 나는 타비야. 잠깐만...너 방금 저 위에서 떨어진거야?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "내가 원래 이런 실수를 안하는데, 용궁이 바닥 물기를 안닦았는지 미끄러워서 진짜..(뿡시렁뿡시렁)"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "(이 슬라임 말이 많네. 가만히 두다간 끝도없이 쫑알거리겠어.)"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "h",
-        "dialog": "큼큼, 아무튼 저기 용궁에는 너희같은 애들이 살고있는거야?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "음, 집주인이 외출중인 것 같길래, 잠깐 주인이 없는 집이 외롭지 않게 채워주고 있다랄까?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "s",
-        "dialog": "그러니까...무단으로 주거침입했다는거네?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "너가 뭘알아! 요즘 집값도 엄청 비싸고, 먹고살기 퍽퍽하다고! 한겨울에는 자석이 얼어서 부러질정도로 춥단말이야!"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "나처럼 귀엽고 연약한 슬라임은 그런 방법이 아니면 살아남을수 없어!"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "e",
-        "dialog": "귀엽다고? 너가?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "반응이 왜 그 따위니?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "g",
-        "dialog": "...."
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "g",
-        "dialog": "(뭐야 이 슬라임? 귀엽게 생겼는데 뭔가 꼴받아.)"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "아무튼간에 저기에 살고있다면, 너는 용궁으로 올라가는 방법을 알고있다는 얘기지?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "올라가는 길? 알고는 있지. 어휴 저걸 언제 또 올라갈지...(뿡시렁뿡시렁)"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "h",
-        "dialog": "그래? 마침 잘됐다! 나도 용궁에 올라가야 하는데 혹시 도와... "
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "내가 왜?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "e",
-        "dialog": "...."
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "내가 왜 너를 도와줘야 하냐고. \"대답\"."
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "뿡댕아, 어차피 너도 올라가야 되는거 아니야?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "맞아. 그런데 괜히 너가 말한대로 해주기 싫었어."
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "g",
-        "dialog": "뿡댕아. 너 혹시 인성 터졌니?"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "흥.(가슴이 두근거려서 솔직하게 말 못하겠어...이런 감정은 처음이야.)"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "(타비? 이 녀석을 만난 이후로 이 감정이 멈추질않아.)"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "(어째서 난 끝임없이 씨게 딱밤을 때리고 싶다는 감정을 느끼는걸까?)"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#4fa8e0>뿡댕이"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "d",
-        "dialog": "...어쩔 수 없네 용궁까지 이번만 임시동맹이다. 길안내는 내가 해줄태니 똑바로 따라와!"
-      }
-    },
-    {
-      "talkname": [
-        "<color=#D1F1FF>아라하시 타비"
-      ],
-      "discription": [
-        100,
-        100
-      ],
-      "data": {
-        "nameNstate": "h",
-        "dialog": "좋아 가자!"
-      }
+{"scripts":[
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      4,
+      "1"
+    ],
+    "data": {
+      "state": "7",
+      "dialog": "드디어...드디어 보이기 시작했어."
     }
-  ]
-}
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      3,
+      "1"
+    ],
+    "data": {
+      "state": "6",
+      "dialog": "얼마나 개고생을 하면서 여기까지 왔는지. 혼자서 외롭고 힘들어도 결국 여기까지 왔구나.\n울지말자 정타비. 우는건 보물을 찾고나서니까."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      3,
+      "1"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "저게 소문으로만 듣던 <b>용궁..."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      3,
+      "1"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "근데, 생각보다 엄청 높이 떠있는데? 저길 어떻게 올라가지? 흐음...어라?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "10",
+      "dialog": "방금 저기 뭔가 반짝이지 않았나?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "5",
+      "dialog": "저거 왜 점점 가까워지는...!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>???"
+    ],
+    "discription": [
+      1,
+      "0"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "으아아아아악!!!!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "5",
+      "dialog": "[철퍽!]"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "4",
+      "dialog": "으악?! 무ㅅ..! 우웻!퉷! 얼굴에 이거 뭐야?!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "헥헥...발한번 헛딛었다가 하마터면 죽을뻔했네!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "3",
+      "dialog": "뭐야 이 이상하게 생긴 슬라임은? 머리통에 이상한 자석도 달고있고, 몬스터가 말도해?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "이상하게 생긴 슬라임이라니! 몬스터도 아니야! 뿡댕이라는 이름이 있다고!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "5",
+      "dialog": "뿡댕이? 신기한 이름이네 나는 타비야. 잠깐만...너 방금 저 위에서 떨어진거야?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "내가 원래 이런 실수를 안하는데, 용궁이 바닥 물기를 안닦았는지 미끄러워서 진짜..(뿡시렁뿡시렁)"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "10",
+      "dialog": "(이 슬라임 말이 많네. 가만히 두다간 끝도없이 쫑알거리겠어.)"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "큼큼, 아무튼 저기 용궁에는 너희같은 애들이 살고있는거야?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "음, 집주인이 외출중인 것 같길래, 잠깐 주인이 없는 집이 외롭지 않게 채워주고 있다랄까?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "2",
+      "dialog": "그러니까...무단으로 주거침입했다는거네?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "너가 뭘알아! 요즘 집값도 엄청 비싸고, 먹고살기 퍽퍽하다고!/n 한겨울에는 자석이 얼어서 부러질정도로 춥단말이야!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "나처럼 귀엽고 연약한 슬라임은 그런 방법이 아니면 살아남을수 없어!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "10",
+      "dialog": "귀엽다고? 너가?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "반응이 왜 그 따위니?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "3",
+      "dialog": "...."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "3",
+      "dialog": "(뭐야 이 슬라임? 귀엽게 생겼는데 뭔가 꼴받아.)"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "아무튼간에 저기에 살고있다면, 너는 용궁으로 올라가는 방법을 알고있다는 얘기지?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "올라가는 길? 알고는 있지. 어휴 저걸 언제 또 올라갈지...(뿡시렁뿡시렁)"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "9",
+      "dialog": "그래? 마침 잘됐다! 나도 용궁에 올라가야 하는데 혹시 도와... "
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "내가 왜?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "3",
+      "dialog": "...."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "내가 왜 너를 도와줘야 하냐고. \"대답\"."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "10",
+      "dialog": "뿡댕아, 어차피 너도 올라가야 되는거 아니야?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "사실 맞아. 그런데 괜히 너가 말한대로 해주기 싫었어."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "3",
+      "dialog": "뿡댕아. 너 혹시 인성 터졌니?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "흥.(가슴이 두근거려서 솔직하게 말 못하겠어...이런 감정은 처음이야.)"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "(타비? 이 녀석을 만난 이후로 이 감정이 멈추질않아.)"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "(한대만 쌔게 때리고싶다.)"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "...어쩔 수 없네 용궁까지 이번만 임시동맹이다. 길안내는 내가 해줄태니 똑바로 따라와!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "좋아 가자!"
+    }
+  }
+]}

@@ -1,0 +1,94 @@
+{"scripts":[
+    
+    {
+        "talkname": [
+          "<color=#373584>정체모를 용"
+        ],
+        "discription": [
+          1,
+          "5"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "유니야~ 오늘 데이트 진짜 재미있었다 그지~?"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#b77de4>정체모를 유니콘"
+        ],
+        "discription": [
+          1,
+          "6"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "웅!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#b77de4>정체모를 유니콘"
+        ],
+        "discription": [
+          1,
+          "6"
+        ],
+        "data": {
+          "state": "2",
+          "dialog": "웅? 나니~?"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#373584>정체모를 용"
+        ],
+        "discription": [
+          1,
+          "5"
+        ],
+        "data": {
+          "state": "2",
+          "dialog": "왜 그래 유니유니야?"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#b77de4>정체모를 유니콘"
+        ],
+        "discription": [
+          1,
+          "6"
+        ],
+        "data": {
+          "state": "3",
+          "dialog": "칸나. 저거 떨어지는고 욘군 아니야?"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#373584>정체모를 용"
+        ],
+        "discription": [
+          1,
+          "5"
+        ],
+        "data": {
+          "state": "3",
+          "dialog": "에...? 우리 집이..."
+        }
+      },
+      {
+        "talkname": [
+          "<color=#b77de4>정체모를 유니콘"
+        ],
+        "discription": [
+          1,
+          "6"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "칸나 조졌꼬리."
+        }
+      }
+]}

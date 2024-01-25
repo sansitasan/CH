@@ -1,59 +1,48 @@
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public enum Emotions
+[Serializable]
+public class TResourceManager
 {
-    None,
-    Smile = 1,
-    Curious,
-    Disgusting,
-    Shy,
-    Embarrassment,
-    Sad,
-    Smile_Big,
-    Angry,
-    Quip,
-    Idle
-}
+    [Header("로드된 스크립트")]
+    [SerializeField]
+    private Util.SerializableDictionary<string, TextAsset> _scripts = new Util.SerializableDictionary<string, TextAsset>();
 
-public enum Characters
-{
-    None,
-    Tabi,
-    BD,
-    HBD,
-    BBD,
-    Kanna,
-    Yuni
-}
+    [Header("로드된 스프라이트")]
+    [SerializeField]
+    private Util.SerializableDictionary<string, Sprite> _sprites = new Util.SerializableDictionary<string, Sprite>();
 
-public class ResourceManager
-{
-    private Dictionary<string, TextAsset> _scripts = new Dictionary<string, TextAsset>();
-    private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
+    private static TResourceManager d_instance;
 
-    private static ResourceManager d_instance;
-    public static ResourceManager Instance { 
+    public static TResourceManager Instance
+    {
         get
         {
             if (d_instance == null)
             {
-                d_instance = new ResourceManager();
+                d_instance = new TResourceManager();
             }
 
             return d_instance;
-        } 
+        }
     }
 
-    public void Init() { }
-
-    private ResourceManager()
+    public async UniTask<bool> LoadAsyncAssets()
     {
-        LoadAsyncAll<TextAsset>("Scripts");
-        LoadAsyncAll<Sprite>("Image");
+        if (_scripts.Count != 0)
+            return true;
+
+        List<UniTask<bool>> tasks = new List<UniTask<bool>>();
+        tasks.Add(LoadAsyncAll<TextAsset>("Scripts"));
+        tasks.Add(LoadAsyncAll<Sprite>("Image"));
+
+        await UniTask.WhenAll(tasks);
+        return true;
     }
 
     public List<Script> TryGetScript(string path)
@@ -82,7 +71,12 @@ public class ResourceManager
         }
     }
 
-    private void LoadAsync<T>(string path)
+    public List<string> GetScriptName()
+    {
+        return _scripts.Keys.ToList();
+    }
+
+    private async UniTask LoadAsync<T>(string path)
     {
         if (_scripts.TryGetValue(path, out var obj) || _sprites.TryGetValue(path, out var obj1))
         {
@@ -100,21 +94,30 @@ public class ResourceManager
             {
                 _sprites.TryAdd(GetObjectName(path), op.Result as Sprite);
             }
+            Addressables.Release(asyncOperation);
         };
+
+        await UniTask.WaitUntil(() => asyncOperation.IsDone);
     }
 
-    private void LoadAsyncAll<T>(string path)
+    private async UniTask<bool> LoadAsyncAll<T>(string path)
     {
+        List<UniTask> tasks = new List<UniTask>();
         var asyncOperation = Addressables.LoadResourceLocationsAsync(path, typeof(T));
-
+        tasks.Add(UniTask.WaitUntil(() => asyncOperation.IsDone));
         asyncOperation.Completed += (op) =>
         {
             int total = op.Result.Count;
             for (int i = 0; i < total; i++)
             {
-                LoadAsync<T>(op.Result[i].PrimaryKey);
+                tasks.Add(LoadAsync<T>(op.Result[i].PrimaryKey));
             }
+            Addressables.Release(asyncOperation);
         };
+
+        await UniTask.WhenAll(tasks);
+
+        return true;
     }
 
     private string GetObjectName(string path)

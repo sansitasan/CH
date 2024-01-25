@@ -80,26 +80,26 @@ public class DialogPanel : MonoBehaviour
         try
         {
             _name.text = script.talkname[0];
-            _image.sprite = ResourceManager.Instance.GetSprite(script.data.nameNstate);
-            int len = script.data.dialog.Length;
+            _image.sprite = ResourceManager.Instance.GetSprite(script.character, script.emotion);
+            int len = script.dialog.Length;
             _dialogText.Clear();
             _dialogText.Capacity = len;
 
             for (int i = 0; i < len; ++i)
             {
-                if (script.data.dialog[i].Equals('<'))
+                if (script.dialog[i].Equals('<'))
                 {
                     while (true)
                     {
-                        _dialogText.Append(script.data.dialog[i]);
-                        if (script.data.dialog[i].Equals('>'))
+                        _dialogText.Append(script.dialog[i]);
+                        if (script.dialog[i].Equals('>'))
                             break;
                         ++i;
                     }
                 }
 
                 else
-                    _dialogText.Append(script.data.dialog[i]);
+                    _dialogText.Append(script.dialog[i]);
                 _dialog.text = _dialogText.ToString();
                 await UniTask.DelayFrame(1, cancellationToken: _cts.Token);
             }
@@ -107,7 +107,7 @@ public class DialogPanel : MonoBehaviour
 
         catch
         {
-            _dialog.text = script.data.dialog;
+            _dialog.text = script.dialog;
             _cts.Dispose();
             _cts = new CancellationTokenSource();
         }

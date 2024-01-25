@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class ScriptEdit : EditorWindow
+public class ScriptEditorWindow : EditorWindow
 {
     private Dictionary<SerializedObject, List<SerializedProperty>> Targets = new Dictionary<SerializedObject, List<SerializedProperty>>();
     private bool _bFocused;
@@ -21,12 +21,12 @@ public class ScriptEdit : EditorWindow
         }
     }
 
-
     [MenuItem("ScriptEdit/Test")]
-    static void OpenStage1()
+    static void OpenScriptEdit()
     {
-        var window = GetWindow<CustomEditorWindow>();
+        var window = GetWindow<ScriptEditorWindow>();
         window.titleContent.text = "Script";
+        window.Show();
     }
 
     private void OnFocus()
@@ -44,13 +44,13 @@ public class ScriptEdit : EditorWindow
         Targets.Clear();
 
         var allCustom = FindObjectOfType<TestScript>();
-        Debug.Log(allCustom != null);
+        
         if (allCustom != null)
         {
             var so = new SerializedObject(allCustom);
             var props = new List<SerializedProperty>()
             {
-                so.FindProperty("_script")
+                so.FindProperty("_scriptName")
             };
 
             Targets.TryAdd(so, props);
@@ -65,7 +65,9 @@ public class ScriptEdit : EditorWindow
             ++EditorGUI.indentLevel;
             foreach (var prop in pair.Value)
             {
-                EditorGUILayout.PropertyField(prop);
+                GUI.enabled = false;
+                EditorGUILayout.PropertyField(prop, GUIContent.none);
+                GUI.enabled = true;
             }
             --EditorGUI.indentLevel;
 
