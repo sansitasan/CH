@@ -120,6 +120,7 @@ public class TestScript : MonoBehaviour
     public void Clear()
     {
         CheckSafety();
+        _scriptName = string.Empty;
         _cts.Cancel();
         _cts.Dispose();
         _cnt = 0;

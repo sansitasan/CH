@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<color=#D1F1FF>\uC544\uB77C\uD558\uC2DC \uD0C0\uBE44"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7df2f7c3551293640a1e5b2ba9aebc7f, type: 2}
   m_sharedMaterial: {fileID: 2955172453666056546, guid: 7df2f7c3551293640a1e5b2ba9aebc7f, type: 2}
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 521f5366726864844a00d799a099cbf2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -790,37 +790,45 @@ MonoBehaviour:
   _resourceManager:
     _scripts:
       keys:
-      - End1
-      - End2
-      - End3
-      - End4
-      - Start1
-      - Start2
-      - Start3
-      - Start4
+      - end1
+      - end2
+      - end3
+      - end4
+      - end5
+      - eplilog1
+      - eplilog2
+      - start1
+      - start2
+      - start3
+      - start4
+      - start5
       - Stage0
       values:
       - {fileID: 4900000, guid: 75130c1b4561a0c4ba88a5dfd9a5c3b2, type: 3}
       - {fileID: 4900000, guid: 041baa0d655155349a6637bc5e51e07d, type: 3}
       - {fileID: 4900000, guid: bc9d453e468a6ab40b30a6715a68e49c, type: 3}
       - {fileID: 4900000, guid: b428738631ffa6e4991641fc7dd75197, type: 3}
+      - {fileID: 4900000, guid: 280a175bf2927414396d7a48e1caf379, type: 3}
+      - {fileID: 4900000, guid: e2e574fbb9d11e44e827fa763975aa91, type: 3}
+      - {fileID: 4900000, guid: dfccfd73e3bbdf0469a91e5300cc09ca, type: 3}
       - {fileID: 4900000, guid: ae235a9125727894a998d532c947a14d, type: 3}
       - {fileID: 4900000, guid: e17e38d3332b0b341877014b0789a59d, type: 3}
       - {fileID: 4900000, guid: 0b403ff0921315b40bd8d832215fdedf, type: 3}
       - {fileID: 4900000, guid: decd47d35e62c8148be85f73801e859b, type: 3}
+      - {fileID: 4900000, guid: fa0059125e7a9cd428b5ec9c7b5cda7c, type: 3}
       - {fileID: 4900000, guid: 39b08702b55f7d044b5a65ddef97e330, type: 3}
     _sprites:
       keys:
-      - a
-      - d
-      - g
-      - h
-      - KakaoTalk_20231219_204433761_01
-      - KakaoTalk_20231219_204433761_05
-      - KakaoTalk_20231219_204433761_07
-      - KakaoTalk_20231219_204433761_08
-      - KakaoTalk_20231219_204433761_09
-      - s
+      - Tabi_Angry
+      - Tabi_Curious
+      - Tabi_Disgusting
+      - Tabi_Embarrassment
+      - Tabi_Idle
+      - Tabi_Quip
+      - Tabi_Sad
+      - Tabi_Shy
+      - Tabi_Smile
+      - Tabi_Smile_Big
       - KakaoTalk_20231219_204716885
       - KakaoTalk_20231219_204716885_01
       - KakaoTalk_20231219_204716885_02
@@ -831,16 +839,16 @@ MonoBehaviour:
       - KakaoTalk_20231219_204716885_07
       - KakaoTalk_20231219_204716885_08
       values:
-      - {fileID: 21300000, guid: d884d6d3d3350f64884bca059b87f9ce, type: 3}
-      - {fileID: 21300000, guid: e20e0b3eee36a7d4fa7d6c9e3936d0d6, type: 3}
-      - {fileID: 21300000, guid: 7e2aef9af633b6a4eb4c5a674db1cc47, type: 3}
-      - {fileID: 21300000, guid: 2ec4afacbdb854843ab718f4dc859ec4, type: 3}
-      - {fileID: 21300000, guid: d6eb0ea580ee9c740a0bf46c624152ad, type: 3}
-      - {fileID: 21300000, guid: 26465ccb51c2ba040bc918c09f5ec3b6, type: 3}
-      - {fileID: 21300000, guid: a4f5a5ec975d28f4c89c614e4857708e, type: 3}
-      - {fileID: 21300000, guid: 271c1eefc666c3b4986cc4f191cb4ab5, type: 3}
-      - {fileID: 21300000, guid: e9cf03bcab12e4e4aa21c5c27ad3896c, type: 3}
-      - {fileID: 21300000, guid: f91561e74d41b8640a4c4b5782b819e8, type: 3}
+      - {fileID: 21300000, guid: d3df9d9360d025f4ea2b9db118f13ba2, type: 3}
+      - {fileID: 21300000, guid: bf144e6d3f91ae34abacb97bf2fa3581, type: 3}
+      - {fileID: 21300000, guid: d8a27111849951d42ab6d5d21088b52b, type: 3}
+      - {fileID: 21300000, guid: f22539386043278489770a80ca7b19df, type: 3}
+      - {fileID: 21300000, guid: 521f5366726864844a00d799a099cbf2, type: 3}
+      - {fileID: 21300000, guid: 274674cdec4f6b54e9a7e7d7dbd3c814, type: 3}
+      - {fileID: 21300000, guid: 1695c843fd9ce9841a01810bb6c891bb, type: 3}
+      - {fileID: 21300000, guid: 942bc87f8a889c04da3cb4ea663b81b9, type: 3}
+      - {fileID: 21300000, guid: f58ae261feab5474783cf5698d7c0210, type: 3}
+      - {fileID: 21300000, guid: b551095ea13975a4cb50aeac848aaea8, type: 3}
       - {fileID: 21300000, guid: e9c3ae144b3467f41b4515f53bb3a86d, type: 3}
       - {fileID: 21300000, guid: f97ffd71670f8794f94a60f7181860d5, type: 3}
       - {fileID: 21300000, guid: 0e920c5c672faa444a660e0f3ebf4335, type: 3}
@@ -850,8 +858,8 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 372e4ffeb899b5b4e86960487c96b812, type: 3}
       - {fileID: 21300000, guid: 1d385bcafe4dd0b4cba19c77895cc6a4, type: 3}
       - {fileID: 21300000, guid: 8c767b01d572cbe4abff7d38189a5a8e, type: 3}
-  <State>k__BackingField: 3
-  _scriptName: End1
+  <State>k__BackingField: 0
+  _scriptName: 
   _speed: 1
 --- !u!1 &1917783397
 GameObject:
@@ -911,8 +919,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD5E5\uD5E5...! \uC9C4\uC9DC \uC8FD\uC744\uBED4\uD588\uB124, \uACA8\uC6B0
-    \uC62C\uB77C\uC654\uC5B4!"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7df2f7c3551293640a1e5b2ba9aebc7f, type: 2}
   m_sharedMaterial: {fileID: 2955172453666056546, guid: 7df2f7c3551293640a1e5b2ba9aebc7f, type: 2}
