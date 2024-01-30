@@ -8330,13 +8330,7 @@ MonoBehaviour:
   _tree:
     _seqList: []
     LeafName: 
-  _speed: 5
-  _materials:
-  - {fileID: 6200000, guid: 1b07af6321e6e79479fc06cf5bb2bf29, type: 2}
-  - {fileID: 6200000, guid: 3dc83a11ae520cc488f2343a529a895b, type: 2}
-  _chargePower: 0a0000000f00000014000000
-  _chargeTime: 1
-  _gravityScale: 1
+  _data: {fileID: 0}
 --- !u!61 &163048048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16716,7 +16710,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689717350}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000011444092, y: 1.3333335, z: -10}
+  m_LocalPosition: {x: -0.000006357829, y: 1.3333335, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -17,6 +17,9 @@ public class TResourceManager
     [SerializeField]
     private Util.SerializableDictionary<string, Sprite> _sprites = new Util.SerializableDictionary<string, Sprite>();
 
+    [Header("로드된 스테이지별 데이터")]
+    private Util.SerializableDictionary<string, ScriptableObject> _SOs = new Util.SerializableDictionary<string, ScriptableObject>();
+
     private static TResourceManager d_instance;
 
     public static TResourceManager Instance
@@ -32,17 +35,25 @@ public class TResourceManager
         }
     }
 
-    public async UniTask<bool> LoadAsyncAssets()
+    public async UniTask LoadAsyncAssets()
     {
         if (_scripts.Count != 0)
-            return true;
+            return;
 
-        List<UniTask<bool>> tasks = new List<UniTask<bool>>();
+        var tasks = new List<UniTask>();
         tasks.Add(LoadAsyncAll<TextAsset>("Scripts"));
         tasks.Add(LoadAsyncAll<Sprite>("Image"));
+        tasks.Add(LoadAsyncAll<ScriptableObject>("SO"));
 
         await UniTask.WhenAll(tasks);
-        return true;
+        Debug.Log(_scripts.Count);
+    }
+
+    public async UniTask LoadAsyncSO()
+    {
+        if (_SOs.Count != 0)
+            return;
+        await LoadAsyncAll<ScriptableObject>("SO");
     }
 
     public List<Script> TryGetScript(string path)
@@ -71,6 +82,12 @@ public class TResourceManager
         }
     }
 
+    public ScriptableObject GetScriptableObject(int idx)
+    {
+        _SOs.TryGetValue($"Stage {idx} Data", out var value);
+        return value;
+    }
+
     public List<string> GetScriptName()
     {
         return _scripts.Keys.ToList();
@@ -94,17 +111,22 @@ public class TResourceManager
             {
                 _sprites.TryAdd(GetObjectName(path), op.Result as Sprite);
             }
+
+            else
+            {
+                _SOs.TryAdd(GetObjectName(path), op.Result as ScriptableObject);
+            }
             Addressables.Release(asyncOperation);
         };
 
         await UniTask.WaitUntil(() => asyncOperation.IsDone);
     }
 
-    private async UniTask<bool> LoadAsyncAll<T>(string path)
+    private async UniTask LoadAsyncAll<T>(string path)
     {
-        List<UniTask> tasks = new List<UniTask>();
+        var tasks = new List<UniTask>();
+        bool b = false;
         var asyncOperation = Addressables.LoadResourceLocationsAsync(path, typeof(T));
-        tasks.Add(UniTask.WaitUntil(() => asyncOperation.IsDone));
         asyncOperation.Completed += (op) =>
         {
             int total = op.Result.Count;
@@ -112,12 +134,14 @@ public class TResourceManager
             {
                 tasks.Add(LoadAsync<T>(op.Result[i].PrimaryKey));
             }
+
+            b = true;
             Addressables.Release(asyncOperation);
         };
 
-        await UniTask.WhenAll(tasks);
+        await UniTask.WaitUntil(() => b);
 
-        return true;
+        await UniTask.WhenAll(tasks);
     }
 
     private string GetObjectName(string path)

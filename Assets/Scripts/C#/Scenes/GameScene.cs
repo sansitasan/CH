@@ -24,7 +24,7 @@ public class GameScene : MonoBehaviour
     private async UniTask StartAsync()
     {
         _playerModel = FindObjectOfType<PlayerModel>();
-        _playerModel.Init();
+        _playerModel.Init(ResourceManager.Instance.GetScriptableObject());
         await _playerModel.AfterScriptInit();
         _playerModel.enabled = true;
         GetEvent(EventTypes.Start);

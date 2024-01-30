@@ -251,17 +251,17 @@ public class BlackBoard : IDisposable
     public Rigidbody2D RD { get; private set; }
     public BehaviourTree Tree { get; private set; }
     public Transform Player { get; private set; }
-    public int Speed;
     public Vector2 MoveDir { get; set; }
     public PlayerStates PlayerState { get; set; }
+    public StageData Data { get; private set; }
 
-    public BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, int speed)
+    public BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so)
     {
         PA = pa;
         RD = rd;
         Tree = tree;
         Player = t;
-        Speed = speed;
+        Data = so;
     }
 
     public void Dispose()
@@ -273,12 +273,10 @@ public class BlackBoard : IDisposable
 
 public class Stage1BlackBoard : BlackBoard
 {
-    public int[] ChargePower { get; private set; }
-    public readonly float chargeTime;
+    public new Stage1Data Data { get; private set; }
 
-    public Stage1BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, int speed, int[] chargePower, float time) : base(t, pa, rd, tree, speed)
+    public Stage1BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so) : base(t, pa, rd, tree, so)
     {
-        ChargePower = chargePower;
-        chargeTime = time;
+        Data = so as Stage1Data;
     }
 }

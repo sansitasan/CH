@@ -8,8 +8,6 @@ public class StartScene : MonoBehaviour
 {
     [SerializeField]
     private Button _startButton;
-    [SerializeField]
-    private Button _testButton;
 
     private void Awake()
     {
@@ -20,16 +18,10 @@ public class StartScene : MonoBehaviour
     private void Init()
     {
         _startButton.onClick.AddListener(ChangeScene);
-        _testButton.onClick.AddListener(TestAddScene);
     }
 
     private void ChangeScene()
     {
         GameManager.Instance.SceneChangeAsync(SceneName.StartScene, SceneName.LevelScene, FadeCanvas.FadeMode.Circle).Forget();
-    }
-
-    private void TestAddScene()
-    {
-        SceneManager.LoadScene("ScriptScene", LoadSceneMode.Additive);
     }
 }

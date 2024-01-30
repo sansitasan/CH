@@ -34,6 +34,7 @@ public class ResourceManager
 {
     private Dictionary<string, TextAsset> _scripts = new Dictionary<string, TextAsset>();
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
+    private Util.SerializableDictionary<string, StageData> _SOs = new Util.SerializableDictionary<string, StageData>();
 
     private static ResourceManager d_instance;
     public static ResourceManager Instance { 
@@ -54,6 +55,7 @@ public class ResourceManager
     {
         LoadAsyncAll<TextAsset>("Scripts");
         LoadAsyncAll<Sprite>("Image");
+        LoadAsyncAll<StageData>("SO");
     }
 
     public List<Script> TryGetScript(string path)
@@ -82,6 +84,11 @@ public class ResourceManager
         }
     }
 
+    public StageData GetScriptableObject()
+    {
+        return _SOs[$"Stage {GameManager.Instance.CurStage} Data"];
+    }
+
     private void LoadAsync<T>(string path)
     {
         if (_scripts.TryGetValue(path, out var obj) || _sprites.TryGetValue(path, out var obj1))
@@ -96,9 +103,15 @@ public class ResourceManager
             {
                 _scripts.TryAdd(GetObjectName(path), op.Result as TextAsset);
             }
+
             else if (typeof(T) == typeof(Sprite))
             {
                 _sprites.TryAdd(GetObjectName(path), op.Result as Sprite);
+            }
+
+            else
+            {
+                _SOs.TryAdd(GetObjectName(path), op.Result as StageData);
             }
         };
     }

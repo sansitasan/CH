@@ -1,7 +1,9 @@
+using Newtonsoft.Json.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScriptEditorWindow : EditorWindow
 {
@@ -29,6 +31,17 @@ public class ScriptEditorWindow : EditorWindow
         window.Show();
     }
 
+    [MenuItem("ScriptEdit/Test", true)]
+    static bool ValidScriptEdit()
+    {
+        bool b = SceneManager.GetActiveScene().name == "ScriptScene";
+        if (!b)
+        {
+            Debug.Log("You are not in Script Scene!");
+        }
+        return b;
+    }
+
     private void OnFocus()
     {
         _bFocused = true;
@@ -42,9 +55,13 @@ public class ScriptEditorWindow : EditorWindow
     private void OnGUI()
     {
         Targets.Clear();
+        DrawEditor();
+    }
 
+    private void DrawEditor()
+    {
         var t = FindObjectOfType<TestScript>();
-        
+
         if (t != null)
         {
             var so = new SerializedObject(t);

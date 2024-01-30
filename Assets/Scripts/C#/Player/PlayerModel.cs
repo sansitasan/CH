@@ -33,22 +33,22 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
     protected BlackBoard _blackBoard;
     protected PlayerAnim _pa;
     protected PlayerController _controller;
-    [SerializeField]
-    protected int _speed;
 
     protected List<IDisposable> _disposeList = new List<IDisposable>();
 
-    public virtual void Init()
+    public virtual void Init(StageData so)
     {
         _rb = GetComponent<Rigidbody2D>();
         _cts = new CancellationTokenSource();
         _controller = new PlayerController(GetComponent<PlayerInput>().actions, this);
-        _pa = new PlayerAnim(transform.GetChild(0).GetComponent<Animator>(), transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
         _disposeList.Add(_cts);
         _disposeList.Add(_controller);
         _disposeList.Add(_pa);
-        MakeBT();
+        DataInit(so);
+        MakeBT(so);
     }
+
+    protected abstract void DataInit(StageData so);
 
     public async UniTask AfterScriptInit()
     {
@@ -63,7 +63,7 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
             _controller.EnableInput();
     }
 
-    protected abstract void MakeBT();
+    protected abstract void MakeBT(StageData so);
 
     public virtual void PlayerInput(PlayerStates state)
     {

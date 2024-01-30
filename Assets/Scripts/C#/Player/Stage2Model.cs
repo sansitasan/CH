@@ -9,18 +9,27 @@ public class Stage2Model : PlayerModel
     [SerializeField]
     private WallBlink _wall;
 
+    [SerializeField]
+    private Stage2Data _data;
+
     private bool _bSkill;
 
-    public override void Init()
+    public override void Init(StageData so)
     {
-        base.Init();
+        _pa = new Player2DAnim(transform.GetChild(0).GetComponent<Animator>(), transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
+        base.Init(so);
         _disposeList.Add(_wall);
     }
 
-    protected override void MakeBT()
+    protected override void DataInit(StageData so)
+    {
+        _data = so as Stage2Data;
+    }
+
+    protected override void MakeBT(StageData so)
     {
         _tree = new BehaviourTree();
-        _blackBoard = new BlackBoard(transform, _pa, _rb, _tree, _speed);
+        _blackBoard = new BlackBoard(transform, _pa, _rb, _tree, so);
 
         var moveSeq = new BehaviourSequence();
         var moveNode = new BehaviourNormalSelector();

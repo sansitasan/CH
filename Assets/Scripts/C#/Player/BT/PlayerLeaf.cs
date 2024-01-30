@@ -66,7 +66,7 @@ public class Stage1MoveLeaf : MoveLeaf
     public override void Update()
     {
         _blackBoard.RD.velocity = new Vector3(_blackBoard.MoveDir.x, 0, 0).normalized 
-            * _blackBoard.Speed;
+            * _blackBoard.Data.Speed;
     }
 
 
@@ -88,7 +88,7 @@ public class Stage2MoveLeaf : MoveLeaf
     public override void Update()
     {
         _blackBoard.RD.MovePosition(_blackBoard.Player.position + new Vector3(_blackBoard.MoveDir.x, _blackBoard.MoveDir.y, 0) 
-            * _blackBoard.Speed * Time.fixedDeltaTime);
+            * _blackBoard.Data.Speed);
     }
 }
 
@@ -137,16 +137,16 @@ public class Stage1BehaveLeaf : BehaveLeaf
 
     protected override void Behave()
     {
-        for (int i = 0; i < _board.ChargePower.Length; ++i)
+        for (int i = 0; i < _board.Data.ChargePower.Length; ++i)
         {
-            if (_chargeTime / _board.chargeTime <= i + 1)
+            if (_chargeTime / _board.Data.ChargeTime <= i + 1)
             {
                 if (_blackBoard.MoveDir == Vector2.zero)
                 {
-                    _blackBoard.RD.velocity = Vector2.up * _board.ChargePower[i];
+                    _blackBoard.RD.velocity = Vector2.up * _board.Data.ChargePower[i];
                 }
                 else
-                    _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[i];
+                    _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.Data.ChargePower[i];
                 break;
             }
         }
@@ -240,7 +240,8 @@ public class SkillLeaf : BehaviourLeaf
 
     protected override void Enter()
     {
-        _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.ChargePower[0];
+        _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.Data.ChargePower[0];
+        _blackBoard.PA.ChangeAnim(PlayerStates.Jump);
     }
 
     public override void Exit()

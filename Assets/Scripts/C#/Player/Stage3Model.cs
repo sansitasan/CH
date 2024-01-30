@@ -10,16 +10,23 @@ public class Stage3Model : PlayerModel
 
     private bool _bSkill;
     private readonly string _sObstacle = "Obstacle";
+    [SerializeField]
+    private Stage3Data _data;
 
-    public override void Init()
+    public override void Init(StageData so)
     {
-        base.Init();
+        base.Init(so);
     }
 
-    protected override void MakeBT()
+    protected override void DataInit(StageData so)
+    {
+        _data = so as Stage3Data;
+    }
+
+    protected override void MakeBT(StageData so)
     {
         _tree = new BehaviourTree();
-        _blackBoard = new BlackBoard(transform, _pa, _rb, _tree, _speed);
+        _blackBoard = new BlackBoard(transform, _pa, _rb, _tree, so);
 
         var moveSeq = new BehaviourSequence();
         var moveNode = new BehaviourNormalSelector();

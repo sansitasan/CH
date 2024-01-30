@@ -6,28 +6,30 @@ public class Stage1Model : PlayerModel
 {
     private int _rayMask;
     [SerializeField]
-    private PhysicsMaterial2D[] _materials;
-    [SerializeField]
-    private int[] _chargePower;
-    [SerializeField]
-    private float _chargeTime;
-    [SerializeField]
-    public float _gravityScale;
+    private Stage1Data _data;
 
     private bool _bCheck;
+    private bool _bCool;
 
-    public override void Init()
+    public override void Init(StageData so)
     {
-        base.Init();
+        _pa = new Player1DAnim(transform.GetChild(0).GetComponent<Animator>(), transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
+        base.Init(so);
         _rayMask = LayerMask.GetMask("Ground");
-        _rb.sharedMaterial = _materials[0];
-        _rb.gravityScale = _gravityScale;
     }
 
-    protected override void MakeBT()
+    protected override void DataInit(StageData so)
+    {
+        _data = so as Stage1Data;
+
+        _rb.gravityScale = _data.GravityScale;
+        _rb.sharedMaterial = _data.GroundMaterial;
+    }
+
+    protected override void MakeBT(StageData so)
     {
         _tree = new BehaviourTree();
-        _blackBoard = new Stage1BlackBoard(transform, _pa, _rb, _tree, _speed, _chargePower, _chargeTime);
+        _blackBoard = new Stage1BlackBoard(transform, _pa, _rb, _tree, so);
 
         var skillSeq = new BehaviourSequence();
         var skillNode = new BehaviourNormalSelector();
@@ -71,6 +73,19 @@ public class Stage1Model : PlayerModel
             CheckGround().Forget();
     }
 
+    public override void PlayerInput(PlayerStates state)
+    {
+        if (state != PlayerStates.Skill)
+            base.PlayerInput(state);
+
+        else if (!_bCool)
+        {
+            base.PlayerInput(state);
+            _bCool = true;
+            SkillCoolTimeCheck().Forget();
+        }
+    }
+
     public override void PlayerInput(PlayerStates state, Vector2 vector)
     {
         if (vector == Vector2.up || vector == Vector2.down)
@@ -79,6 +94,20 @@ public class Stage1Model : PlayerModel
             return;
         }
         base.PlayerInput(state, vector);
+    }
+
+    private async UniTask SkillCoolTimeCheck()
+    {
+        //뿌대이 사라지기
+        float time = 0;
+        while (time < _data.SkillCoolTime)
+        {
+            await UniTask.DelayFrame(1, cancellationToken: _cts.Token);
+            time += Time.deltaTime;
+        }
+
+        _bCool = false;
+        //뿌대이 보이기
     }
 
     private async UniTask CheckGround()
@@ -101,14 +130,13 @@ public class Stage1Model : PlayerModel
 
         if (leftRay.collider == null && rightRay.collider == null)
         {
-            _rb.sharedMaterial = _materials[1];
+            _rb.sharedMaterial = _data.WallMaterial;
             _tree.CheckSeq(PlayerStates.InTheSky);
         }
 
         else
         {
-            //_rb.velocity = Vector2.zero;
-            _rb.sharedMaterial = _materials[0];
+            _rb.sharedMaterial = _data.GroundMaterial;
             _tree.CheckSeq(PlayerStates.Landing);
         }
         _bCheck = false;

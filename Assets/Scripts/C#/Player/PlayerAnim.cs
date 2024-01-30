@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class PlayerAnim : IDisposable
+public abstract class PlayerAnim : IDisposable
 {
-    private Animator _tabiAnim;
-    private Animator _BDAnim;
-    private SpriteRenderer _tabiSprite;
-    private CancellationTokenSource _cts = new CancellationTokenSource();
+    protected Animator _tabiAnim;
+    protected Animator _BDAnim;
+    protected SpriteRenderer _tabiSprite;
+    protected CancellationTokenSource _cts = new CancellationTokenSource();
 
     public short Flip { 
         get{
@@ -40,7 +40,7 @@ public class PlayerAnim : IDisposable
         }
     }
 
-    public void ChangeDir(Vector2 dir)
+    public virtual void ChangeDir(Vector2 dir)
     {
         if (dir.x > 0)
             _tabiSprite.flipX = false;
@@ -48,29 +48,7 @@ public class PlayerAnim : IDisposable
             _tabiSprite.flipX = true;
     }
 
-    public void ChangeAnim(PlayerStates state)
-    {
-        switch (state)
-        {
-            case PlayerStates.Idle:
-                _tabiAnim.SetBool("Move", false);
-                break;
-            case PlayerStates.Move:
-                _tabiAnim.SetBool("Move", true);
-                break;
-            case PlayerStates.Jump:
-                _tabiAnim.Play(state.ToString());
-                _tabiAnim.SetBool("Jump", true);
-                break;
-            case PlayerStates.Landing:
-                _tabiAnim.SetBool("Jump", false);
-                break;
-
-            default:
-                _tabiAnim.Play(state.ToString());
-                break;
-        }
-    }
+    public abstract void ChangeAnim(PlayerStates state);
 
     public void Dispose()
     {

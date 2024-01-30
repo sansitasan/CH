@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103d42ce3b6a29343bbf92b32522123d, type: 3}
+  m_Name: Stage 1 Data
+  m_EditorClassIdentifier: 
+  Speed: 5
+  ChargePower: 0a0000000f00000014000000
+  ChargeTime: 1
+  GravityScale: 1
+  SkillCoolTime: 10
+  GroundMaterial: {fileID: 6200000, guid: 1b07af6321e6e79479fc06cf5bb2bf29, type: 2}
+  WallMaterial: {fileID: 6200000, guid: 3dc83a11ae520cc488f2343a529a895b, type: 2}
