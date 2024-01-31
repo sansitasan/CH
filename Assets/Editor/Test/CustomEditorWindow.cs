@@ -16,9 +16,7 @@ public class CustomEditorWindow : EditorWindow
         LoadComplete
     }
     private States state;
-    private Dictionary<SerializedObject, List<SerializedProperty>> Targets = new Dictionary<SerializedObject, List<SerializedProperty>>();
     private List<Editor> SO = new List<Editor>();
-    private bool _bFocused;
     private static int _focusedIdx;
 
     private void Awake()
@@ -39,20 +37,6 @@ public class CustomEditorWindow : EditorWindow
                 SO.Add(Editor.CreateEditor(so));
         }
     }
-
-    private void Update()
-    {
-        if (!_bFocused)
-        {
-            foreach (var item in Targets)
-            {
-                item.Key.Update();
-            }
-
-            Repaint();
-        }
-    }
-
 
     [MenuItem("StageEdit/Stage1Data")]
     static void OpenStage1()
@@ -94,16 +78,6 @@ public class CustomEditorWindow : EditorWindow
         window.titleContent.text = "Stage5Data";
     }
 
-    private void OnFocus()
-    {
-        _bFocused = true;
-    }
-
-    private void OnLostFocus()
-    {
-        _bFocused = false;
-    }
-
     private void OnGUI()
     {
         switch (state)
@@ -115,8 +89,6 @@ public class CustomEditorWindow : EditorWindow
                 DrawSO(_focusedIdx);
                 break;
         }
-
-        //EditorGUILayout.LabelField("이동속도, 점프 파워, 점프 차지 기간, 중력 조절", EditorStyles.boldLabel);
     }
 
     private void DrawLoading()

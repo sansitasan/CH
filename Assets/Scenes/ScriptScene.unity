@@ -369,7 +369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530681423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 116.75432, y: 32.785423, z: -9.149582}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -790,18 +790,18 @@ MonoBehaviour:
   _resourceManager:
     _scripts:
       keys:
-      - end1
-      - end2
-      - end3
-      - end4
-      - end5
-      - eplilog1
-      - eplilog2
-      - start1
-      - start2
-      - start3
-      - start4
-      - start5
+      - End1
+      - End2
+      - End3
+      - End4
+      - End5
+      - Eplilog1
+      - Eplilog2
+      - Start1
+      - Start2
+      - Start3
+      - Start4
+      - Start5
       - Stage0
       values:
       - {fileID: 4900000, guid: 75130c1b4561a0c4ba88a5dfd9a5c3b2, type: 3}
