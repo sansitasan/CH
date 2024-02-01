@@ -42,7 +42,10 @@ public abstract class MoveLeaf : BehaviourLeaf
         }
 
         else if (ps == PlayerStates.Idle)
+        {
+            Exit();
             _seqStates = SeqStates.Fail;
+        }
 
         return _seqStates;
     }
@@ -69,7 +72,6 @@ public class Stage1MoveLeaf : MoveLeaf
             * _blackBoard.Data.Speed;
     }
 
-
     public override void Exit()
     {
         //_blackBoard.RD.velocity = Vector2.zero;
@@ -87,8 +89,8 @@ public class Stage2MoveLeaf : MoveLeaf
 
     public override void Update()
     {
-        _blackBoard.RD.MovePosition(_blackBoard.Player.position + new Vector3(_blackBoard.MoveDir.x, _blackBoard.MoveDir.y, 0) 
-            * _blackBoard.Data.Speed);
+        _blackBoard.RD.velocity = new Vector3(_blackBoard.MoveDir.x, _blackBoard.MoveDir.y, 0).normalized
+            * _blackBoard.Data.Speed;
     }
 }
 
@@ -184,7 +186,6 @@ public class SkyLeaf : BehaviourLeaf
         {
             _seqStates = SeqStates.Running;
             _blackBoard.PA.ChangeAnim(PlayerStates.Jump);
-
         }
 
         else if (_seqStates == SeqStates.Running && ps == PlayerStates.Landing)
@@ -246,6 +247,7 @@ public class SkillLeaf : BehaviourLeaf
 
     public override void Exit()
     {
+        _blackBoard.PA.ChangeAnim(PlayerStates.Landing);
     }
 
     public override void Update()

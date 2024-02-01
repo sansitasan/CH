@@ -13,7 +13,10 @@ public class GameScene : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.Instance.ActiveScene += Init;
+        if (GameManager.Instance.BEdit)
+            StartAsyncInEdit().Forget();
+        else
+            GameManager.Instance.ActiveScene += Init;
     }
 
     private void Init(SceneName prev, SceneName next)
@@ -28,6 +31,16 @@ public class GameScene : MonoBehaviour
         await _playerModel.AfterScriptInit();
         _playerModel.enabled = true;
         GetEvent(EventTypes.Start);
+    }
+
+    private async UniTask StartAsyncInEdit()
+    {
+        await TResourceManager.Instance.LoadAsyncAssets();
+        _playerModel = FindObjectOfType<PlayerModel>();
+        _playerModel.Init(TResourceManager.Instance.GetScriptableObject());
+        await _playerModel.AfterScriptInit();
+        _playerModel.enabled = true;
+        _playerModel.Script(false);
     }
 
     public void GetEvent(EventTypes type)

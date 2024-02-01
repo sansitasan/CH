@@ -20,8 +20,9 @@ public class Player1DAnim : PlayerAnim
                 _tabiAnim.SetBool("Move", true);
                 break;
             case PlayerStates.Jump:
-                _tabiAnim.Play(state.ToString());
-                _tabiAnim.SetBool("Jump", true);
+                _tabiAnim.Play(state.ToString(), 0, 0);
+                if (!_tabiAnim.GetBool("Jump"))
+                    _tabiAnim.SetBool("Jump", true);
                 break;
             case PlayerStates.Landing:
                 _tabiAnim.SetBool("Jump", false);

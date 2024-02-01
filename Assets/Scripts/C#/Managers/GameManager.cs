@@ -55,11 +55,20 @@ public class GameManager
     private FadeCanvas _fadeCanvas;
     private string _savepath;
 
+    public readonly bool BEdit = false;
+
     private GameManager()
     {
-        _savepath = Path.Combine(Application.persistentDataPath, "stage");
-        _stage = LoadStage();
-        _fadeCanvas = GameObject.Find("FadeCanvas").GetComponent<FadeCanvas>();
+        if (SceneManager.GetActiveScene().name != "0.StartScene")
+        {
+            BEdit = true;
+        }
+        if (!BEdit)
+        {
+            _savepath = Path.Combine(Application.persistentDataPath, "stage");
+            _stage = LoadStage();
+            _fadeCanvas = GameObject.Find("FadeCanvas").GetComponent<FadeCanvas>();
+        }
         Application.targetFrameRate = 60;
     }
 

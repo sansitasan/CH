@@ -204,7 +204,6 @@ public abstract class BehaviourLeaf : IDisposable
     public virtual void CancelBehaviour()
     {
         _seqStates = SeqStates.Fail;
-        Exit();
     }
 
     public virtual void Dispose()

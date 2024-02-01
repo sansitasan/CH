@@ -98,7 +98,6 @@ public class Stage1Model : PlayerModel
 
     private async UniTask SkillCoolTimeCheck()
     {
-        //뿌대이 사라지기
         float time = 0;
         while (time < _data.SkillCoolTime)
         {
@@ -107,7 +106,6 @@ public class Stage1Model : PlayerModel
         }
 
         _bCool = false;
-        //뿌대이 보이기
     }
 
     private async UniTask CheckGround()
@@ -140,5 +138,9 @@ public class Stage1Model : PlayerModel
             _tree.CheckSeq(PlayerStates.Landing);
         }
         _bCheck = false;
+    }
+
+    public override void EditInit(StageData so)
+    {
     }
 }

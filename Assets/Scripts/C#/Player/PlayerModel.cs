@@ -48,6 +48,8 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
         MakeBT(so);
     }
 
+    public abstract void EditInit(StageData so);
+
     protected abstract void DataInit(StageData so);
 
     public async UniTask AfterScriptInit()

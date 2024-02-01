@@ -103,4 +103,8 @@ public class Stage3Model : PlayerModel
         if (collision.CompareTag(_sObstacle))
             _obstacles.Remove(collision.transform);
     }
+
+    public override void EditInit(StageData so)
+    {
+    }
 }

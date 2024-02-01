@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Stage 2 Data
   m_EditorClassIdentifier: 
   Speed: 5
-  FadeTime:
-  - 0
-  Cooltime: 10
-  SkillCount: 0
+  FadeInTime: 0.5
+  FadeOutTime: 0.5
+  LightOnTime: 2
+  SkillCoolTime: 10
+  Intensity: 1
+  InnerCircleSize: 0
+  OuterCircleSize: 2
+  FallOffStrength: 0.5
+  MaxCircleSize: 5

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class TResourceManager
@@ -46,7 +47,6 @@ public class TResourceManager
         tasks.Add(LoadAsyncAll<ScriptableObject>("SO"));
 
         await UniTask.WhenAll(tasks);
-        Debug.Log(_scripts.Count);
     }
 
     public async UniTask LoadAsyncSO()
@@ -86,6 +86,11 @@ public class TResourceManager
     {
         _SOs.TryGetValue($"Stage {idx} Data", out var value);
         return value;
+    }
+
+    public StageData GetScriptableObject()
+    {
+        return _SOs[$"Stage {SceneManager.GetActiveScene().buildIndex - 1} Data"] as StageData;
     }
 
     public List<string> GetScriptName()
