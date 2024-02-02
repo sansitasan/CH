@@ -89,6 +89,11 @@ public class ResourceManager
         return _SOs[$"Stage {GameManager.Instance.CurStage} Data"];
     }
 
+    public StageData GetScriptableObject(int idx)
+    {
+        return _SOs[$"Stage {idx} Data"];
+    }
+
     private void LoadAsync<T>(string path)
     {
         if (_scripts.TryGetValue(path, out var obj) || _sprites.TryGetValue(path, out var obj1))
