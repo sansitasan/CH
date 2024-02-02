@@ -82,10 +82,9 @@ public class TResourceManager
         }
     }
 
-    public ScriptableObject GetScriptableObject(int idx)
+    public StageData GetScriptableObject(int idx)
     {
-        _SOs.TryGetValue($"Stage {idx} Data", out var value);
-        return value;
+        return _SOs[$"Stage {idx} Data"] as StageData;
     }
 
     public StageData GetScriptableObject()

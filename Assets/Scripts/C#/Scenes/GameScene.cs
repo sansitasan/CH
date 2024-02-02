@@ -11,6 +11,8 @@ public class GameScene : MonoBehaviour
     [SerializeField]
     private DialogPanel _dialogPanel;
 
+    public int Stage;
+
     private void Awake()
     {
         if (GameManager.Instance.BEdit)
@@ -37,7 +39,7 @@ public class GameScene : MonoBehaviour
     {
         await TResourceManager.Instance.LoadAsyncAssets();
         _playerModel = FindObjectOfType<PlayerModel>();
-        _playerModel.Init(TResourceManager.Instance.GetScriptableObject());
+        _playerModel.Init(TResourceManager.Instance.GetScriptableObject(Stage));
         await _playerModel.AfterScriptInit();
         _playerModel.enabled = true;
         _playerModel.Script(false);
