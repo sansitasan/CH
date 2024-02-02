@@ -66,7 +66,7 @@ Material:
     - _DistortionStrengthScaled: 0.1
     - _DstBlend: 0
     - _EnableExternalAlpha: 0
-    - _Fade: 0.015125869
+    - _Fade: 0.011571206
     - _FlipbookBlending: 0
     - _FlipbookMode: 0
     - _Mode: 0
