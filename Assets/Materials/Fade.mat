@@ -66,10 +66,10 @@ Material:
     - _DistortionStrengthScaled: 0.1
     - _DstBlend: 0
     - _EnableExternalAlpha: 0
-    - _Fade: 0.011571206
+    - _Fade: 0.010397015
     - _FlipbookBlending: 0
     - _FlipbookMode: 0
-    - _Mode: 0
+    - _Mode: 1
     - _QueueOffset: 0
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
