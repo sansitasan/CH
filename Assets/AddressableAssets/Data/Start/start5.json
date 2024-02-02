@@ -23,7 +23,20 @@
         ],
         "data": {
           "state": "1",
-          "dialog": "뿡끼얏호우!"
+          "dialog": "뿡끼얏호우! 저거! 저거! 그 유명한 용궁의 보석!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#4fa8e0>뿡댕이2"
+        ],
+        "discription": [
+          1,
+          "2"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "먼저 잡는 뿡댕이가 임자다!!!"
         }
       },
       {
@@ -106,6 +119,32 @@
       },
       {
         "talkname": [
+          "<color=#4fa8e0>뿡댕이2"
+        ],
+        "discription": [
+          1,
+          "2"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "[달칵]"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "5",
+          "dialog": "응? 뿡댕아 너 지금 뭘 건들인거야...?"
+        }
+      },
+      {
+        "talkname": [
           "<color=#8182b8>???"
         ],
         "discription": [
@@ -119,7 +158,7 @@
       },
       {
         "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
+          "<color=#4fa8e0>뿡댕이2"
         ],
         "discription": [
           1,
@@ -127,7 +166,7 @@
         ],
         "data": {
           "state": "1",
-          "dialog": "어? 방금 저 보물상자가..."
+          "dialog": "뭐긴뭐야 용궁에서 제일 귀하다는..."
         }
       },
       {

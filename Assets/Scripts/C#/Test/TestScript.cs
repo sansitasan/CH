@@ -35,6 +35,7 @@ public class TestScript : MonoBehaviour
     private int _speed = 1;
 
     private Image _image;
+    private Sprite _temp;
     private TextMeshProUGUI _name;
     private TextMeshProUGUI _dialog;
     private StringBuilder _dialogText;
@@ -133,7 +134,14 @@ public class TestScript : MonoBehaviour
         try
         {
             _name.text = script.talkname[0];
-            _image.sprite = TResourceManager.Instance.GetSprite(script.character, script.emotion);
+            _temp = TResourceManager.Instance.GetSprite(script.character, script.emotion);
+            if (_temp != null)
+            {
+                _image.sprite = _temp;
+                _image.color = Color.white;
+            }
+            else
+                _image.color = Color.clear;
             int len = script.dialog.Length;
 
             if (_dialogText == null)

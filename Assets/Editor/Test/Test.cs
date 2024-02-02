@@ -3,38 +3,20 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(BehaviourTree))]
-public class Test : PropertyDrawer
+public class Test : EditorWindow
 {
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-    {
-        //base.OnGUI(position, property, label);
-
-        GUI.Box(position, GUIContent.none, GUI.skin.window);
-
-        EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
-        ++EditorGUI.indentLevel;
-
-        var rt = new Rect(position.x, position.y + GUIStyle.none.CalcSize(label).y + 2, position.width, 16);
-        foreach(SerializedProperty prop in property)
-        {
-            EditorGUI.PropertyField(rt, prop);
-            rt.y += 18;
-        }
-
-        GUI.color = Color.white;
-
-        --EditorGUI.indentLevel;
-    }
-
-    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-    {
-        int cnt = 0;
-        foreach(var prop in property)
-        {
-            ++cnt;
-        }
-
-        return EditorGUIUtility.singleLineHeight * (cnt + 1) + 6;
-    }
+    //private Object _t;
+    //private SerializedObject _s;
+    //
+    //[MenuItem("Test/Test")]
+    //static void OpenStage()
+    //{
+    //    var window = GetWindow<Test>();
+    //    window.titleContent.text = "Test";
+    //}
+    //
+    //private void OnGUI()
+    //{
+    //    _t = EditorGUILayout.ObjectField("테스트", _t, typeof(StageData), true);
+    //}
 }
