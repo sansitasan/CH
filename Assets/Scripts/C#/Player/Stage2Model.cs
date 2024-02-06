@@ -17,7 +17,7 @@ public class Stage2Model : PlayerModel
 
     public override void Init(StageData so)
     {
-        _pa = new Player2DAnim(transform.GetChild(0).GetComponent<Animator>(), transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
+        _pa = new Player2DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject);
         base.Init(so);
         _light = GetComponentInChildren<Light2D>();
     }

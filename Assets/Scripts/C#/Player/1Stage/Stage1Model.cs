@@ -9,11 +9,10 @@ public class Stage1Model : PlayerModel
     private Stage1Data _data;
 
     private bool _bCheck;
-    private bool _bCool;
 
     public override void Init(StageData so)
     {
-        _pa = new Player1DAnim(transform.GetChild(0).GetComponent<Animator>(), transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
+        _pa = new Player1DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject);
         base.Init(so);
         _rayMask = LayerMask.GetMask("Ground");
     }
@@ -78,11 +77,10 @@ public class Stage1Model : PlayerModel
         if (state != PlayerStates.Skill)
             base.PlayerInput(state);
 
-        else if (!_bCool)
+        else if (!_blackBoard.PA.BCoolTime)
         {
+            _blackBoard.PA.UseSkill(_data.SkillCoolTime).Forget();
             base.PlayerInput(state);
-            _bCool = true;
-            SkillCoolTimeCheck().Forget();
         }
     }
 
@@ -94,18 +92,6 @@ public class Stage1Model : PlayerModel
             return;
         }
         base.PlayerInput(state, vector);
-    }
-
-    private async UniTask SkillCoolTimeCheck()
-    {
-        float time = 0;
-        while (time < _data.SkillCoolTime)
-        {
-            await UniTask.DelayFrame(1, cancellationToken: _cts.Token);
-            time += Time.deltaTime;
-        }
-
-        _bCool = false;
     }
 
     private async UniTask CheckGround()
