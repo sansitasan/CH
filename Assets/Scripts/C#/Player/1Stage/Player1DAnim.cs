@@ -7,7 +7,12 @@ using UnityEngine;
 
 public class Player1DAnim : PlayerAnim
 {
-    public Player1DAnim(GameObject tabi, GameObject BD) : base(tabi, BD) { }
+    private Rigidbody2D _rb;
+
+    public Player1DAnim(GameObject tabi, GameObject BD, Rigidbody2D rb) : base(tabi, BD) 
+    {
+        _rb = rb;
+    }
 
     public override void ChangeAnim(PlayerStates state)
     {
@@ -27,7 +32,8 @@ public class Player1DAnim : PlayerAnim
                 if (!_tabiAnim.GetBool("Jump"))
                 {
                     _tabiAnim.SetBool("Jump", true);
-                    _BDAnim.SetBool("Jump", true);
+                    if (_rb.velocity.y > 0)
+                        _BDAnim.SetBool("Jump", true);
                 }
                 break;
             case PlayerStates.Landing:

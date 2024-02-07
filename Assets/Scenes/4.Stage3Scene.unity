@@ -1920,6 +1920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883c220486fb8f343b5c3f4a12ea0f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerModel: {fileID: 538202467}
   _dialogPanel: {fileID: 1253262698}
   Stage: 3
 --- !u!4 &478050387

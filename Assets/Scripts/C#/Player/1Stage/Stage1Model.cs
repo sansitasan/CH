@@ -7,12 +7,15 @@ public class Stage1Model : PlayerModel
     private int _rayMask;
     [SerializeField]
     private Stage1Data _data;
+    [SerializeField]
+    private Animator _skillAnim;
 
     private bool _bCheck;
 
     public override void Init(StageData so)
     {
-        _pa = new Player1DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject);
+        _rb = GetComponent<Rigidbody2D>();
+        _pa = new Player1DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, _rb);
         base.Init(so);
         _rayMask = LayerMask.GetMask("Ground");
     }
@@ -79,9 +82,16 @@ public class Stage1Model : PlayerModel
 
         else if (!_blackBoard.PA.BCoolTime)
         {
+            SkillEffect();
             _blackBoard.PA.UseSkill(_data.SkillCoolTime).Forget();
             base.PlayerInput(state);
         }
+    }
+
+    private void SkillEffect()
+    {
+        _skillAnim.gameObject.SetActive(true);
+        _skillAnim.Play("Skill", 0, 0);
     }
 
     public override void PlayerInput(PlayerStates state, Vector2 vector)
@@ -109,8 +119,6 @@ public class Stage1Model : PlayerModel
 
         RaycastHit2D leftRay = Physics2D.Raycast(left, Vector2.down, 0.1f, _rayMask);
         RaycastHit2D rightRay = Physics2D.Raycast(right, Vector2.down, 0.1f, _rayMask);
-        Debug.DrawLine(left, left - Vector2.down * 0.1f, Color.red, 1);
-        Debug.DrawLine(right, right - Vector2.down * 0.1f, Color.red, 1);
 
         if (leftRay.collider == null && rightRay.collider == null)
         {
