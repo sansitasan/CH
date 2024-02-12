@@ -18,6 +18,7 @@ public abstract class PlayerAnim : IDisposable
     protected bool _bCoolTime;
     public bool BCoolTime { get => _bCoolTime; }
     public Vector2 LookDir { get; protected set; }
+    protected PlayerModel _model;
 
     public short Flip { 
         get{
@@ -26,7 +27,7 @@ public abstract class PlayerAnim : IDisposable
         }
     }
 
-    public PlayerAnim(GameObject tabi, GameObject BD)
+    public PlayerAnim(GameObject tabi, GameObject BD, PlayerModel model)
     {
         _tabiAnim = tabi.GetComponent<Animator>();
         _BDAnim = BD.GetComponent<Animator>();
@@ -35,6 +36,7 @@ public abstract class PlayerAnim : IDisposable
         _BDTransform = BD.GetComponent<Transform>();
         _BDOriginPos = _BDTransform.localPosition;
         _BDFlipPos = new Vector3(-_BDOriginPos.x, _BDOriginPos.y, _BDOriginPos.z);
+        _model = model;
     }
 
     public async UniTask StartFadeAsync(float time = 1f)

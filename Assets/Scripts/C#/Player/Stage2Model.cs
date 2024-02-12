@@ -23,7 +23,7 @@ public class Stage2Model : PlayerModel
 
     public override void Init(StageData so)
     {
-        _pa = new Player2DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject);
+        _pa = new Player2DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, this);
         base.Init(so);
         _light = GetComponentInChildren<Light2D>();
         _skillCoolTime = _skillAnim.runtimeAnimatorController.animationClips[0].length;

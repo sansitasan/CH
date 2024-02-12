@@ -9,7 +9,7 @@ public class Player1DAnim : PlayerAnim
 {
     private Rigidbody2D _rb;
 
-    public Player1DAnim(GameObject tabi, GameObject BD, Rigidbody2D rb) : base(tabi, BD) 
+    public Player1DAnim(GameObject tabi, GameObject BD, Rigidbody2D rb, PlayerModel model) : base(tabi, BD, model) 
     {
         _rb = rb;
     }
