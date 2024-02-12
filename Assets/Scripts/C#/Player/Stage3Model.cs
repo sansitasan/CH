@@ -15,7 +15,7 @@ public class Stage3Model : PlayerModel
 
     public override void Init(StageData so)
     {
-        _pa = new Player2DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject);
+        _pa = new Player2DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, this);
         base.Init(so);
     }
 
