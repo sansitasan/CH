@@ -33,6 +33,17 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
     protected BlackBoard _blackBoard;
     protected PlayerAnim _pa;
     protected PlayerController _controller;
+    public Vector2 LookDir { get { return _lookDir; }
+        set 
+        {
+            if (value != _lookDir)
+            {
+
+            }
+            _lookDir = value;
+        }
+    }
+    private Vector2 _lookDir;
 
     protected List<IDisposable> _disposeList = new List<IDisposable>();
 

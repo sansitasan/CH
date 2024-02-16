@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameScene : MonoBehaviour
 {
+    [SerializeField]
     private PlayerModel _playerModel;
     [SerializeField]
     private DialogPanel _dialogPanel;
@@ -28,7 +29,6 @@ public class GameScene : MonoBehaviour
     }
     private async UniTask StartAsync()
     {
-        _playerModel = FindObjectOfType<PlayerModel>();
         _playerModel.Init(ResourceManager.Instance.GetScriptableObject());
         await _playerModel.AfterScriptInit();
         _playerModel.enabled = true;

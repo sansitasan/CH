@@ -15,6 +15,7 @@ public class Stage3Model : PlayerModel
 
     public override void Init(StageData so)
     {
+        _pa = new Player2DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, this);
         base.Init(so);
     }
 
@@ -62,15 +63,16 @@ public class Stage3Model : PlayerModel
     private async UniTaskVoid SkillAsync()
     {
         int count = _obstacles.Count;
-        if (count > 0 && _blackBoard.MoveDir != Vector2.zero)
+
+        if (count > 0)
         {
             float dis = 1.4f;
             Vector3 temp;
             Transform near = null;
             for (int i = 0; i < count; ++i)
             {
-                temp = _obstacles[i].position - transform.position;
-                if (dis > temp.magnitude && Vector3.Dot(_blackBoard.MoveDir, temp) > 0.708f)
+                temp = _obstacles[i].position - (transform.position - Vector3.up * 0.7f);
+                if (dis > temp.magnitude && Vector3.Dot(_blackBoard.PA.LookDir, temp) > 0.708f)
                 {
                     dis = temp.magnitude;
                     near = _obstacles[i];
@@ -79,12 +81,11 @@ public class Stage3Model : PlayerModel
 
             if (near != null)
             {
-                bool t = near.GetComponent<IInteractable>().Interact(_blackBoard.MoveDir);
-                Debug.Log(t);
+                bool t = near.GetComponent<IInteractable>().Interact(_blackBoard.PA.LookDir);
                 await UniTask.DelayFrame(60);
             }
-            _bSkill = false;
         }
+        _bSkill = false;
     }
 
     private void FixedUpdate()

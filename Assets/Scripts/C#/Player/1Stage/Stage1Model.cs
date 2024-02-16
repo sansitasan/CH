@@ -7,13 +7,15 @@ public class Stage1Model : PlayerModel
     private int _rayMask;
     [SerializeField]
     private Stage1Data _data;
+    [SerializeField]
+    private Animator _skillAnim;
 
     private bool _bCheck;
-    private bool _bCool;
 
     public override void Init(StageData so)
     {
-        _pa = new Player1DAnim(transform.GetChild(0).GetComponent<Animator>(), transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
+        _rb = GetComponent<Rigidbody2D>();
+        _pa = new Player1DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, _rb, this);
         base.Init(so);
         _rayMask = LayerMask.GetMask("Ground");
     }
@@ -78,12 +80,18 @@ public class Stage1Model : PlayerModel
         if (state != PlayerStates.Skill)
             base.PlayerInput(state);
 
-        else if (!_bCool)
+        else if (!_blackBoard.PA.BCoolTime)
         {
+            SkillEffect();
+            _blackBoard.PA.UseSkill(_data.SkillCoolTime).Forget();
             base.PlayerInput(state);
-            _bCool = true;
-            SkillCoolTimeCheck().Forget();
         }
+    }
+
+    private void SkillEffect()
+    {
+        _skillAnim.gameObject.SetActive(true);
+        _skillAnim.Play("Skill", 0, 0);
     }
 
     public override void PlayerInput(PlayerStates state, Vector2 vector)
@@ -94,18 +102,6 @@ public class Stage1Model : PlayerModel
             return;
         }
         base.PlayerInput(state, vector);
-    }
-
-    private async UniTask SkillCoolTimeCheck()
-    {
-        float time = 0;
-        while (time < _data.SkillCoolTime)
-        {
-            await UniTask.DelayFrame(1, cancellationToken: _cts.Token);
-            time += Time.deltaTime;
-        }
-
-        _bCool = false;
     }
 
     private async UniTask CheckGround()
@@ -123,8 +119,6 @@ public class Stage1Model : PlayerModel
 
         RaycastHit2D leftRay = Physics2D.Raycast(left, Vector2.down, 0.1f, _rayMask);
         RaycastHit2D rightRay = Physics2D.Raycast(right, Vector2.down, 0.1f, _rayMask);
-        Debug.DrawLine(left, left - Vector2.down * 0.1f, Color.red, 1);
-        Debug.DrawLine(right, right - Vector2.down * 0.1f, Color.red, 1);
 
         if (leftRay.collider == null && rightRay.collider == null)
         {

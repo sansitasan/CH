@@ -16,6 +16,6 @@ MonoBehaviour:
   ChargePower: 0a0000000f00000014000000
   ChargeTime: 1
   GravityScale: 1
-  SkillCoolTime: 1
+  SkillCoolTime: 10
   GroundMaterial: {fileID: 6200000, guid: 1b07af6321e6e79479fc06cf5bb2bf29, type: 2}
   WallMaterial: {fileID: 6200000, guid: 3dc83a11ae520cc488f2343a529a895b, type: 2}

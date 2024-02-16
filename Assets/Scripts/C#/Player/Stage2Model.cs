@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class Stage2Model : PlayerModel
 {
@@ -12,14 +13,20 @@ public class Stage2Model : PlayerModel
 
     [SerializeField]
     private Light2D _light;
+    [SerializeField]
+    private Animator _skillAnim;
+    [SerializeField]
+    private Image _skillImg;
 
+    private float _skillCoolTime;
     private bool _bCool;
 
     public override void Init(StageData so)
     {
-        _pa = new Player2DAnim(transform.GetChild(0).GetComponent<Animator>(), transform.GetChild(1).GetComponent<Animator>(), transform.GetChild(0).GetComponent<SpriteRenderer>());
+        _pa = new Player2DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, this);
         base.Init(so);
         _light = GetComponentInChildren<Light2D>();
+        _skillCoolTime = _skillAnim.runtimeAnimatorController.animationClips[0].length;
     }
 
     protected override void DataInit(StageData so)
@@ -64,6 +71,8 @@ public class Stage2Model : PlayerModel
         float time = 0;
         float basicSize = _light.pointLightOuterRadius;
 
+        await SkillEffectAsync();
+
         while (time < _data.FadeInTime)
         {
             await UniTask.DelayFrame(1, cancellationToken: _cts.Token);
@@ -88,6 +97,46 @@ public class Stage2Model : PlayerModel
         }
 
         _light.pointLightOuterRadius = basicSize;
+    }
+
+    private async UniTask SkillEffectAsync()
+    {
+        float time = 0;
+        Time.timeScale = 0;
+        Script(true);
+        _blackBoard.PA.UseSkill(_data.SkillCoolTime).Forget();
+        _skillAnim.gameObject.SetActive(true);
+        _skillAnim.Play("Skill", 0, 0);
+
+        while (time < _skillCoolTime * 2)
+        {
+            time += Time.unscaledDeltaTime;
+            _skillImg.color = Color.Lerp(new Color(1, 1, 1, 0), Color.white, time);
+            await UniTask.DelayFrame(1, cancellationToken: _cts.Token);
+        }
+        _skillImg.color = Color.white;
+        time = 0;
+        while (time < _skillCoolTime * 3)
+        {
+            time += Time.unscaledDeltaTime;
+            await UniTask.DelayFrame(1, cancellationToken: _cts.Token);
+        }
+
+        time = 0;
+        while (time < _skillCoolTime * 2)
+        {
+            time += Time.unscaledDeltaTime;
+            _skillImg.color = Color.Lerp(Color.white, new Color(1, 1, 1, 0), time);
+            await UniTask.DelayFrame(1, cancellationToken: _cts.Token);
+        }
+
+        _skillImg.color = new Color(1, 1, 1, 0);
+        _skillAnim.gameObject.SetActive(false);
+
+        await UniTask.DelayFrame(15, cancellationToken: _cts.Token);
+
+        Time.timeScale = 1;
+        Script(false);
     }
 
     private async UniTask SkillCoolTimeCheck()
