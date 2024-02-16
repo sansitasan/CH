@@ -244,17 +244,19 @@ public class BehaviourNormalSelector : BehaviourSequenceNode
     }
 }
 
+[Serializable]
 public class BlackBoard : IDisposable
 {
-    public PlayerAnim PA { get; private set; }
+    public CharacterAnim PA { get; private set; }
     public Rigidbody2D RD { get; private set; }
     public BehaviourTree Tree { get; private set; }
     public Transform Player { get; private set; }
+    [field:SerializeField]
     public Vector2 MoveDir { get; set; }
     public PlayerStates PlayerState { get; set; }
     public StageData Data { get; private set; }
 
-    public BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so)
+    public BlackBoard(Transform t, CharacterAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so)
     {
         PA = pa;
         RD = rd;
@@ -274,8 +276,19 @@ public class Stage1BlackBoard : BlackBoard
 {
     public new Stage1Data Data { get; private set; }
 
-    public Stage1BlackBoard(Transform t, PlayerAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so) : base(t, pa, rd, tree, so)
+    public Stage1BlackBoard(Transform t, CharacterAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so) : base(t, pa, rd, tree, so)
     {
         Data = so as Stage1Data;
+    }
+}
+
+public class Stage2BlackBoard : BlackBoard
+{
+    public new Stage2Data Data { get; private set; }
+
+
+    public Stage2BlackBoard(Transform t, CharacterAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so) : base(t, pa, rd, tree, so)
+    {
+        Data = so as Stage2Data;
     }
 }

@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FadeCanvas : BaseCanvas
@@ -29,6 +30,7 @@ public class FadeCanvas : BaseCanvas
     {
         base.Playinit();
         DontDestroyOnLoad(gameObject);
+        SceneManager.activeSceneChanged += SetCamera;
     }
 
     public async UniTask FadeOutScene(float time = 0.5f, FadeMode mode = FadeMode.Base)
@@ -66,5 +68,10 @@ public class FadeCanvas : BaseCanvas
         }
         _image.gameObject.SetActive(false);
         _canvas.gameObject.SetActive(false);
+    }
+
+    private void SetCamera(Scene cur, Scene next)
+    {
+        _canvas.worldCamera = Camera.main;
     }
 }

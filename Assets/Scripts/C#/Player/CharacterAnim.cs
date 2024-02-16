@@ -1,10 +1,11 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public abstract class CharacterAnim : MonoBehaviour
+public abstract class CharacterAnim : IDisposable
 {
     protected Animator _anim;
     protected SpriteRenderer _sprite;
@@ -30,7 +31,7 @@ public abstract class CharacterAnim : MonoBehaviour
         _cts = new CancellationTokenSource();
     }
 
-    public async UniTask StartFadeAsync(float time = 1f)
+    public virtual async UniTask StartFadeAsync(float time = 1f)
     {
         _sprite.color = new Color(1, 1, 1, 0);
         float dt = 0f;
@@ -45,7 +46,7 @@ public abstract class CharacterAnim : MonoBehaviour
         }
     }
 
-    public async UniTask UseSkill(float time)
+    public virtual async UniTask UseSkill(float time)
     {
         _bCoolTime = true;
         _sprite.color = new Color(1, 1, 1, 0);
