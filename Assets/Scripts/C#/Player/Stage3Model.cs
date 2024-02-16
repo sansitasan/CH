@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -15,7 +16,7 @@ public class Stage3Model : PlayerModel
 
     public override void Init(StageData so)
     {
-        _pa = new Player2DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, this);
+        _pa = new Character2DAnim(transform.GetChild(0).gameObject);
         base.Init(so);
     }
 
@@ -72,16 +73,16 @@ public class Stage3Model : PlayerModel
             for (int i = 0; i < count; ++i)
             {
                 temp = _obstacles[i].position - (transform.position - Vector3.up * 0.7f);
-                if (dis > temp.magnitude && Vector3.Dot(_blackBoard.PA.LookDir, temp) > 0.708f)
-                {
-                    dis = temp.magnitude;
-                    near = _obstacles[i];
-                }
+                //if (dis > temp.magnitude && Vector3.Dot(_blackBoard.PA.LookDir, temp) > 0.708f)
+                //{
+                //    dis = temp.magnitude;
+                //    near = _obstacles[i];
+                //}
             }
 
             if (near != null)
             {
-                bool t = near.GetComponent<IInteractable>().Interact(_blackBoard.PA.LookDir);
+                //bool t = near.GetComponent<IInteractable>().Interact(_blackBoard.PA.LookDir);
                 await UniTask.DelayFrame(60);
             }
         }

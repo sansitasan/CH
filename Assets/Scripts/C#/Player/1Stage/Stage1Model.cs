@@ -15,7 +15,7 @@ public class Stage1Model : PlayerModel
     public override void Init(StageData so)
     {
         _rb = GetComponent<Rigidbody2D>();
-        _pa = new Player1DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, _rb, this);
+        _pa = new Character1DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, _rb);
         base.Init(so);
         _rayMask = LayerMask.GetMask("Ground");
     }

@@ -58,6 +58,7 @@ public class DialogPanel : MonoBehaviour
         if (_scripts.Count == _cnt)
         {
             _scene.EndEvent();
+            _cnt = 0;
             gameObject.SetActive(false);
             return;
         }

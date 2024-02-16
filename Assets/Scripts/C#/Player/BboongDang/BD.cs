@@ -8,32 +8,32 @@ using UnityEngine;
 
 public class BD : MonoBehaviour, IDisposable
 {
-    private PlayerStates _ps;
+    private PlayerStates _state;
     private Vector2 _curLookDir;
+    private Vector2 _curMoveDir;
     private Rigidbody2D _rb;
 
-    private Queue<Vector3> _posQueue;
-    private Queue<Vector2> _dirQueue;
+    [SerializeField]
     private BehaviourTree _tree;
+    [SerializeField]
     private BlackBoard _blackBoard;
-    private PlayerAnim _pa;
+    private CharacterAnim _pa;
+    [SerializeField]
+    private Transform _player;
 
     private List<IDisposable> _disposeList = new List<IDisposable>();
 
     public void Init(StageData data)
     {
-        _ps = PlayerStates.Idle;
         _rb = GetComponent<Rigidbody2D>();
-        _posQueue = new Queue<Vector3>(10);
-        _dirQueue = new Queue<Vector2>(10);
-        //_pa = new PlayerAnim(gameObject)
+        _pa = new Character2DAnim(gameObject);
         MakeBT(data);
     }
 
     private void MakeBT(StageData so)
     {
         _tree = new BehaviourTree();
-        _blackBoard = new BlackBoard(transform, _pa, _rb, _tree, so);
+        _blackBoard = new Stage2BlackBoard(transform, _pa, _rb, _tree, so);
 
         var moveSeq = new BehaviourSequence();
         var moveNode = new BehaviourNormalSelector();
@@ -46,7 +46,26 @@ public class BD : MonoBehaviour, IDisposable
 
         _disposeList.Add(_tree);
         _disposeList.Add(_blackBoard);
+        _blackBoard.MoveDir = Vector2.down;
+        _curLookDir = Vector2.down;
         _tree.CheckSeq(PlayerStates.Idle);
+    }
+
+    private void Update()
+    {
+        Vector3 dir = (_player.position - transform.position).normalized;
+        float dis = (_player.position - transform.position).magnitude;
+
+        if (dis > 1.5f)
+        {
+            _blackBoard.MoveDir = dir;
+            _tree.CheckSeq(PlayerStates.Move);
+        }
+
+        else 
+        {
+            _tree.CheckSeq(PlayerStates.Idle);
+        }
     }
 
     private void FixedUpdate()
@@ -54,25 +73,21 @@ public class BD : MonoBehaviour, IDisposable
         _tree.Update();
     }
 
-    private void CheckDir()
+    public void UseSkill(float time)
     {
-        if (_posQueue.Count < 0) return;
-
-        if (Vector3.Distance(_posQueue.Peek(), transform.position) < 0.5f)
-        {
-            _posQueue.Dequeue();
-            _curLookDir = _dirQueue.Dequeue();
-        }
+        _pa.UseSkill(time).Forget();
     }
 
-    public void ChangeDir(Vector3 pos, Vector2 dir)
+    public async UniTask AfterScriptInit()
     {
-        _posQueue.Enqueue(pos);
-        _dirQueue.Enqueue(dir);
+        await _pa.StartFadeAsync();
     }
 
     public void Dispose()
     {
-        throw new NotImplementedException();
+        foreach (var dispose in _disposeList)
+        {
+            dispose.Dispose();
+        }
     }
 }

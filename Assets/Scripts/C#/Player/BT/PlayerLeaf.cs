@@ -241,6 +241,7 @@ public class SkillLeaf : BehaviourLeaf
 
     protected override void Enter()
     {
+        _blackBoard.PlayerState = State;
         _blackBoard.RD.velocity = new Vector2(_blackBoard.PA.Flip * 0.5f, 0.866f).normalized * _board.Data.ChargePower[0];
         _blackBoard.PA.ChangeAnim(PlayerStates.Jump);
     }

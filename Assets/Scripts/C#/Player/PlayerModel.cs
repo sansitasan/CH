@@ -31,14 +31,14 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
     [SerializeField]
     protected BehaviourTree _tree;
     protected BlackBoard _blackBoard;
-    protected PlayerAnim _pa;
+    protected CharacterAnim _pa;
     protected PlayerController _controller;
     public Vector2 LookDir { get { return _lookDir; }
         set 
         {
             if (value != _lookDir)
             {
-
+                //뿌대이에게 알리기
             }
             _lookDir = value;
         }

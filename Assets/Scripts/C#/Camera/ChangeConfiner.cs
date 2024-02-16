@@ -25,6 +25,8 @@ public class ChangeConfiner : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (transform.position.y > 80f) return;
+
         if (collision.gameObject.layer == 8 && collision != _prevCollider)
         {
             _confiner.m_BoundingShape2D = _prevCollider;

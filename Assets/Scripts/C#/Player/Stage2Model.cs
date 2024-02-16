@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
@@ -17,13 +18,15 @@ public class Stage2Model : PlayerModel
     private Animator _skillAnim;
     [SerializeField]
     private Image _skillImg;
+    [SerializeField]
+    private BD _bd;
 
     private float _skillCoolTime;
     private bool _bCool;
 
     public override void Init(StageData so)
     {
-        _pa = new Player2DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, this);
+        _pa = new Character2DAnim(transform.GetChild(0).gameObject);
         base.Init(so);
         _light = GetComponentInChildren<Light2D>();
         _skillCoolTime = _skillAnim.runtimeAnimatorController.animationClips[0].length;
@@ -37,7 +40,7 @@ public class Stage2Model : PlayerModel
     protected override void MakeBT(StageData so)
     {
         _tree = new BehaviourTree();
-        _blackBoard = new BlackBoard(transform, _pa, _rb, _tree, so);
+        _blackBoard = new Stage2BlackBoard(transform, _pa, _rb, _tree, so);
 
         var moveSeq = new BehaviourSequence();
         var moveNode = new BehaviourNormalSelector();
@@ -103,8 +106,8 @@ public class Stage2Model : PlayerModel
     {
         float time = 0;
         Time.timeScale = 0;
+        _bd.UseSkill(_data.SkillCoolTime);
         Script(true);
-        _blackBoard.PA.UseSkill(_data.SkillCoolTime).Forget();
         _skillAnim.gameObject.SetActive(true);
         _skillAnim.Play("Skill", 0, 0);
 

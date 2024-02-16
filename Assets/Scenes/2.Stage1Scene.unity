@@ -8237,9 +8237,9 @@ GameObject:
   - component: {fileID: 163048046}
   - component: {fileID: 163048048}
   - component: {fileID: 163048049}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14200,6 +14200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerModel: {fileID: 163048047}
   _dialogPanel: {fileID: 1533370417}
+  _bd: {fileID: 0}
   Stage: 1
 --- !u!4 &977322972
 Transform:
@@ -16266,13 +16267,13 @@ GameObject:
   - component: {fileID: 1271072909}
   - component: {fileID: 1271072908}
   - component: {fileID: 1271072910}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1271072908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16297,7 +16298,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &1271072909
 Transform:
@@ -16307,8 +16308,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271072907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23, y: 7.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 23, y: 100, z: 0}
+  m_LocalScale: {x: 45, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 977322972}
@@ -16326,7 +16327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91e4363d8efe5c45bd5588fa54ba8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 2
 --- !u!1 &1432065810
 GameObject:
   m_ObjectHideFlags: 0
