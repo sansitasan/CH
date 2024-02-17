@@ -15,6 +15,8 @@ public class GameScene : MonoBehaviour
     private BD _bd;
 
     public int Stage;
+    public int MaxCount;
+    private int _count;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class GameScene : MonoBehaviour
             StartAsyncInEdit().Forget();
         else
             GameManager.Instance.ActiveScene += Init;
+        MaxCount = transform.childCount - 1;
     }
 
     private void Init(SceneName prev, SceneName next)
@@ -67,8 +70,26 @@ public class GameScene : MonoBehaviour
 
     public void GetEvent(EventTypes type)
     {
-        _dialogPanel.StartScript(type);
-        _playerModel.Script(true);
+        if (type != EventTypes.Middle)
+        {
+            _dialogPanel.StartScript(type);
+            _playerModel.Script(true);
+        }
+
+        else
+        {
+            ++_count;
+            if (_count == MaxCount)
+            {
+                _dialogPanel.StartScript(EventTypes.End);
+                _playerModel.Script(true);
+            }
+
+            else
+            {
+                //다른 이벤트
+            }
+        }
     }
 
     public void EndEvent()

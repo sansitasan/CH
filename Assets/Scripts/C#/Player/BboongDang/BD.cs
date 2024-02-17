@@ -20,12 +20,14 @@ public class BD : MonoBehaviour, IDisposable
     private CharacterAnim _pa;
     [SerializeField]
     private Transform _player;
+    private Collider2D _col;
 
     private List<IDisposable> _disposeList = new List<IDisposable>();
 
     public void Init(StageData data)
     {
         _rb = GetComponent<Rigidbody2D>();
+        _col = GetComponent<Collider2D>();
         _pa = new Character2DAnim(gameObject);
         MakeBT(data);
     }
@@ -56,16 +58,31 @@ public class BD : MonoBehaviour, IDisposable
         Vector3 dir = (_player.position - transform.position).normalized;
         float dis = (_player.position - transform.position).magnitude;
 
-        if (dis > 1.5f)
+        if (dis > 1.5f && dis < 10f)
         {
             _blackBoard.MoveDir = dir;
             _tree.CheckSeq(PlayerStates.Move);
+        }
+
+        else if (dis >= 10f)
+        {
+            DisableCollider().Forget();
         }
 
         else 
         {
             _tree.CheckSeq(PlayerStates.Idle);
         }
+    }
+
+    private async UniTask DisableCollider()
+    {
+        _col.enabled = false;
+        while ((_player.position - transform.position).magnitude > 1.5f)
+        {
+            await UniTask.DelayFrame(1);
+        }
+        _col.enabled = true;
     }
 
     private void FixedUpdate()

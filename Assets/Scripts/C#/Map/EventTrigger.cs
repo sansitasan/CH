@@ -7,6 +7,7 @@ public enum EventTypes
 {
     None,
     Start,
+    Middle,
     End
 }
 
