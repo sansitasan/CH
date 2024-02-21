@@ -77,7 +77,7 @@ public class Stage3Model : PlayerModel
             for (int i = 0; i < count; ++i)
             {
                 temp = _obstacles[i].position - transform.position;
-                if (dis > temp.magnitude && Vector3.Dot(_pa.LookDir, temp) > 0.708f)
+                if (dis > temp.magnitude && Vector3.Dot(_pa.LookDir, temp.normalized) > 0.708f)
                 {
                     dis = temp.magnitude;
                     near = _obstacles[i];

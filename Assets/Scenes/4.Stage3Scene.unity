@@ -2452,6 +2452,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1128002945
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6136328075080340104, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_Name
+      value: Obstacle(3Stage) (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340105, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340111, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
 --- !u!1 &1194656898
 GameObject:
   m_ObjectHideFlags: 0
@@ -8960,6 +9025,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle(3Stage)
       objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340105, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 648792641, guid: 57e5c1b6db5f8fa489776f3fa017124f, type: 3}
+    - target: {fileID: 6136328075080340105, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -9002,6 +9075,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136328075080340110, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340111, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136328075080340111, guid: d10fb585e650b6644930f7c730ddb64c, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9301,6 +9382,10 @@ PrefabInstance:
     - target: {fileID: 7825566584375949249, guid: 86edb802278254d4e8ec3852439b5a74, type: 3}
       propertyPath: m_Name
       value: Laser(3Stage)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825566584375949251, guid: 86edb802278254d4e8ec3852439b5a74, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7825566584375949276, guid: 86edb802278254d4e8ec3852439b5a74, type: 3}
       propertyPath: m_RootOrder

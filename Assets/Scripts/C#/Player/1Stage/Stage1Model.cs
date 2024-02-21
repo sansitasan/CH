@@ -109,11 +109,16 @@ public class Stage1Model : PlayerModel
     private async UniTask CheckGround()
     {
         _bCheck = true;
-        if (_blackBoard.PlayerState == PlayerStates.Behave || _blackBoard.PlayerState == PlayerStates.Skill)
+        if (_blackBoard.PlayerState == PlayerStates.Behave)
         {
             await UniTask.WaitUntil(() => _blackBoard.PlayerState != PlayerStates.Behave, cancellationToken: _cts.Token);
-
             await UniTask.DelayFrame(30, cancellationToken: _cts.Token);
+        }
+
+        else if (_blackBoard.PlayerState == PlayerStates.Skill)
+        {
+            await UniTask.DelayFrame(30, cancellationToken: _cts.Token);
+            _blackBoard.PlayerState = PlayerStates.Idle;
         }
         
         Vector2 left = _rb.position - new Vector2(0.45f, 1.125f);
