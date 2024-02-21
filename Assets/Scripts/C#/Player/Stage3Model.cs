@@ -13,10 +13,14 @@ public class Stage3Model : PlayerModel
     private readonly string _sObstacle = "Obstacle";
     [SerializeField]
     private Stage3Data _data;
+    [SerializeField]
+    private BD _bd;
+    private Character2DAnim _pa;
 
     public override void Init(StageData so)
     {
         _pa = new Character2DAnim(transform.GetChild(0).gameObject);
+        _disposeList.Add(_pa);
         base.Init(so);
     }
 
@@ -28,7 +32,7 @@ public class Stage3Model : PlayerModel
     protected override void MakeBT(StageData so)
     {
         _tree = new BehaviourTree();
-        _blackBoard = new BlackBoard(transform, _pa, _rb, _tree, so);
+        _blackBoard = new Stage3BlackBoard(transform, _pa, _rb, _tree, so);
 
         var moveSeq = new BehaviourSequence();
         var moveNode = new BehaviourNormalSelector();
@@ -72,17 +76,17 @@ public class Stage3Model : PlayerModel
             Transform near = null;
             for (int i = 0; i < count; ++i)
             {
-                temp = _obstacles[i].position - (transform.position - Vector3.up * 0.7f);
-                //if (dis > temp.magnitude && Vector3.Dot(_blackBoard.PA.LookDir, temp) > 0.708f)
-                //{
-                //    dis = temp.magnitude;
-                //    near = _obstacles[i];
-                //}
+                temp = _obstacles[i].position - transform.position;
+                if (dis > temp.magnitude && Vector3.Dot(_pa.LookDir, temp) > 0.708f)
+                {
+                    dis = temp.magnitude;
+                    near = _obstacles[i];
+                }
             }
 
             if (near != null)
             {
-                //bool t = near.GetComponent<IInteractable>().Interact(_blackBoard.PA.LookDir);
+                bool t = near.GetComponent<IInteractable>().Interact(_pa.LookDir);
                 await UniTask.DelayFrame(60);
             }
         }
@@ -108,5 +112,10 @@ public class Stage3Model : PlayerModel
 
     public override void EditInit(StageData so)
     {
+    }
+
+    public override async UniTask AfterScriptInit()
+    {
+        await _pa.StartFadeAsync();
     }
 }

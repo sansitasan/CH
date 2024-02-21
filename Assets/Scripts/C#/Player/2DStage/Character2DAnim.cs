@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Character2DAnim : CharacterAnim
 {
+    public Vector2 LookDir {  get; private set; }
     public Character2DAnim(GameObject go) : base(go) 
     {
 
@@ -19,20 +20,20 @@ public class Character2DAnim : CharacterAnim
         if (dir.y > 0.71f)
         {
             _anim.SetInteger("Y", 1);
-            //_model.LookDir = Vector2.up;
+            LookDir = Vector2.up;
         }
         else if (dir.y < -0.71f)
         {
             _anim.SetInteger("Y", -1);
-            //_model.LookDir = Vector2.down;
+            LookDir = Vector2.down;
         }
         else
         {
             _anim.SetInteger("Y", 0);
-            //if (_sprite.flipX)
-            //    _model.LookDir = Vector2.left;
-            //else
-            //    _model.LookDir = Vector2.right;
+            if (_sprite.flipX)
+                LookDir = Vector2.left;
+            else
+                LookDir = Vector2.right;
         }
     }
 

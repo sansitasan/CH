@@ -247,14 +247,14 @@ public class BehaviourNormalSelector : BehaviourSequenceNode
 [Serializable]
 public class BlackBoard : IDisposable
 {
-    public CharacterAnim PA { get; private set; }
+    public virtual CharacterAnim PA { get; protected set; }
     public Rigidbody2D RD { get; private set; }
     public BehaviourTree Tree { get; private set; }
     public Transform Player { get; private set; }
     [field:SerializeField]
     public Vector2 MoveDir { get; set; }
     public PlayerStates PlayerState { get; set; }
-    public StageData Data { get; private set; }
+    public StageData Data { get; protected set; }
 
     public BlackBoard(Transform t, CharacterAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so)
     {
@@ -286,9 +286,54 @@ public class Stage2BlackBoard : BlackBoard
 {
     public new Stage2Data Data { get; private set; }
 
-
     public Stage2BlackBoard(Transform t, CharacterAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so) : base(t, pa, rd, tree, so)
     {
         Data = so as Stage2Data;
     }
+}
+
+public class Stage3BlackBoard : BlackBoard
+{
+    public new Stage2Data Data { get; private set; }
+
+
+    public Stage3BlackBoard(Transform t, CharacterAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so) : base(t, pa, rd, tree, so)
+    {
+        Data = so as Stage2Data;
+    }
+}
+
+public class A
+{
+
+}
+
+public class B : A
+{
+    public void Test()
+    {
+
+    }
+}
+
+public class C : A
+{
+    //C는 Test 메서드가 필요없음
+}
+
+public class X
+{
+    protected A a;
+}
+
+public class Y : X
+{
+    //얘는 C를 쓰고 싶음 A에는 없고 C에만 있는 멤버 변수나 메서드가 없기에 그냥 부모가 들고 있는 A를 사용해도 됨
+    //A를 생성할 때 C를 넘겨서 생성해서 다운, 업 캐스팅 상관 X
+}
+
+public class Z : X
+{
+    //애는 B를 쓰고 싶음 근데 부모가 이미 A를 들고 있어서 B를 새로 들기에는 마음에 들지 않는 상황
+    //A를 생성할 때 B를 넘기긴 함
 }

@@ -21,6 +21,7 @@ public class BD : MonoBehaviour, IDisposable
     [SerializeField]
     private Transform _player;
     private Collider2D _col;
+    private MyTileMap _map;
 
     private List<IDisposable> _disposeList = new List<IDisposable>();
 
@@ -58,15 +59,14 @@ public class BD : MonoBehaviour, IDisposable
         Vector3 dir = (_player.position - transform.position).normalized;
         float dis = (_player.position - transform.position).magnitude;
 
-        if (dis > 1.5f && dis < 10f)
+        if (dis > 1.5f)
         {
             _blackBoard.MoveDir = dir;
+            if (dis >= 10f)
+            {
+                DisableCollider().Forget();
+            }
             _tree.CheckSeq(PlayerStates.Move);
-        }
-
-        else if (dis >= 10f)
-        {
-            DisableCollider().Forget();
         }
 
         else 

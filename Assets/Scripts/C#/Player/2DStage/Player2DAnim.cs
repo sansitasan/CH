@@ -20,14 +20,14 @@ public class Player2DAnim : PlayerAnim
         {
             _tabiAnim.SetInteger("Y", 1);
             _BDAnim.SetInteger("Y", 1);
-            _model.LookDir = Vector2.up;
+            LookDir = Vector2.up;
             _BDTransform.localPosition = new Vector3(_BDTransform.localPosition.x, -1, 0);
         }
         else if (dir.y < 0)
         {
             _tabiAnim.SetInteger("Y", -1);
             _BDAnim.SetInteger("Y", -1);
-            _model.LookDir = Vector2.down;
+            LookDir = Vector2.down;
             _BDTransform.localPosition = new Vector3(_BDTransform.localPosition.x, 1, 0);
         }
         else
@@ -35,9 +35,9 @@ public class Player2DAnim : PlayerAnim
             _tabiAnim.SetInteger("Y", 0);
             _BDAnim.SetInteger("Y", 0);
             if (_tabiSprite.flipX)
-                _model.LookDir = Vector2.left;
+                LookDir = Vector2.left;
             else
-                _model.LookDir = Vector2.right;
+                LookDir = Vector2.right;
         }
     }
 

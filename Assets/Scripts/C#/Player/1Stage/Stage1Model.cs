@@ -9,6 +9,7 @@ public class Stage1Model : PlayerModel
     private Stage1Data _data;
     [SerializeField]
     private Animator _skillAnim;
+    private Character1DAnim _pa;
 
     private bool _bCheck;
 
@@ -16,6 +17,7 @@ public class Stage1Model : PlayerModel
     {
         _rb = GetComponent<Rigidbody2D>();
         _pa = new Character1DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, _rb);
+        _disposeList.Add(_pa);
         base.Init(so);
         _rayMask = LayerMask.GetMask("Ground");
     }
@@ -136,5 +138,10 @@ public class Stage1Model : PlayerModel
 
     public override void EditInit(StageData so)
     {
+    }
+
+    public override async UniTask AfterScriptInit()
+    {
+        await _pa.StartFadeAsync();
     }
 }

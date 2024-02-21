@@ -20,6 +20,7 @@ public class Stage2Model : PlayerModel
     private Image _skillImg;
     [SerializeField]
     private BD _bd;
+    private Character2DAnim _pa;
 
     private float _skillCoolTime;
     private bool _bCool;
@@ -27,6 +28,7 @@ public class Stage2Model : PlayerModel
     public override void Init(StageData so)
     {
         _pa = new Character2DAnim(transform.GetChild(0).gameObject);
+        _disposeList.Add(_pa);
         base.Init(so);
         _light = GetComponentInChildren<Light2D>();
         _skillCoolTime = _skillAnim.runtimeAnimatorController.animationClips[0].length;
@@ -166,5 +168,10 @@ public class Stage2Model : PlayerModel
         _light.pointLightInnerRadius = _data.InnerCircleSize;
         _light.intensity = _data.Intensity;
         _light.falloffIntensity = _data.Intensity;
+    }
+
+    public override async UniTask AfterScriptInit()
+    {
+        await _pa.StartFadeAsync();
     }
 }

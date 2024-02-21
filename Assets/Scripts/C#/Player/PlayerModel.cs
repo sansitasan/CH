@@ -31,19 +31,7 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
     [SerializeField]
     protected BehaviourTree _tree;
     protected BlackBoard _blackBoard;
-    protected CharacterAnim _pa;
     protected PlayerController _controller;
-    public Vector2 LookDir { get { return _lookDir; }
-        set 
-        {
-            if (value != _lookDir)
-            {
-                //뿌대이에게 알리기
-            }
-            _lookDir = value;
-        }
-    }
-    private Vector2 _lookDir;
 
     protected List<IDisposable> _disposeList = new List<IDisposable>();
 
@@ -54,7 +42,6 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
         _controller = new PlayerController(GetComponent<PlayerInput>().actions, this);
         _disposeList.Add(_cts);
         _disposeList.Add(_controller);
-        _disposeList.Add(_pa);
         DataInit(so);
         MakeBT(so);
     }
@@ -63,10 +50,7 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
 
     protected abstract void DataInit(StageData so);
 
-    public async UniTask AfterScriptInit()
-    {
-        await _pa.StartFadeAsync();
-    }
+    public abstract UniTask AfterScriptInit();
 
     public void Script(bool bStart)
     {
