@@ -45,3 +45,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BGI
+    uniqueID: 960086027
+    locked: 0
+  - name: Background Objects
+    uniqueID: 3982082887
+    locked: 0
+  - name: Player
+    uniqueID: 1551237575
+    locked: 0
+  - name: Front Objects
+    uniqueID: 975626863
+    locked: 0
+  - name: Effects
+    uniqueID: 1164648843
+    locked: 0
+  - name: Stage UI
+    uniqueID: 3359106955
+    locked: 0
+  - name: Scripts Layer
+    uniqueID: 1187788201
+    locked: 0
+  - name: GUI
+    uniqueID: 2537435707
+    locked: 0

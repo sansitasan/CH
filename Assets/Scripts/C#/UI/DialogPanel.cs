@@ -43,7 +43,9 @@ public class DialogPanel : MonoBehaviour
 
     public void StartScript(EventTypes types)
     {
-        _scripts = ResourceManager.Instance.TryGetScript($"{types}{GameManager.Instance.CurStage}");
+        Debug.Log($"{types}{GameManager.Instance.CurStage}");
+        string targetName = $"{types}{GameManager.Instance.CurStage}".ToLower();
+        _scripts = ResourceManager.Instance.TryGetScript(targetName);
         gameObject.SetActive(true);
         Click();
     }
@@ -57,6 +59,7 @@ public class DialogPanel : MonoBehaviour
     {
         if (_scripts.Count == _cnt)
         {
+            Debug.Log(_scene != null ? _scene.name : "scene null");
             _scene.EndEvent();
             _cnt = 0;
             gameObject.SetActive(false);
