@@ -1,46 +1,88 @@
-using Assets.Scripts.LE_CORL.LevelContollers.Level4;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
+using TMPro;
 using UnityEngine;
-
+using UnityEngine.Playables;
 
 public class Level4MainContoller : MonoBehaviour
 {
-    [SerializeField] Transform roomEditingPointersParent;
+    [Header("Object Refer")]
+    [SerializeField] List<PlayerEventTrigger> trigger;
+    [Space(10)]
 
-    [SerializeField] List<Level4RoomRuleSet> rullsetDatas;
+    [Header("Timeline")]
+    [SerializeField] PlayableDirector playerableDicetor;
+    [SerializeField] TimelinePreferences[] timelinePreferences;
+    [Space(10)]
 
+    [Header("Datas")]
+    [SerializeField] List<Level4RoomRuleset> roomRulesets;
 
-    [ContextMenu("asd")]
-    void AddNewRoom()
+    public event EventHandler<RoomStateChangedEventArgs> OnRoomStateChanged;
+    public class RoomStateChangedEventArgs: EventArgs
     {
-        var ruleset = new Level4RoomRuleSet();
-
-        if(rullsetDatas == null) rullsetDatas = new List<Level4RoomRuleSet> ();
-        
-        ruleset.pointEnter = roomEditingPointersParent.GetChild(0).transform.position;
-        ruleset.pointA = roomEditingPointersParent.GetChild(1).transform.position;
-        ruleset.pointB = roomEditingPointersParent.GetChild(2).transform.position;
-        ruleset.pointExit = roomEditingPointersParent.GetChild(3).transform.position;
-
-        rullsetDatas.Add(ruleset);  
+        public bool isStartRoom;
+        public Level4RoomRuleset roomRulesetData;
     }
 
-    public void AddNewRoom_Editor() => AddNewRoom();
-
-
-
-    private void OnDrawGizmosSelected()
+    private void Awake()
     {
-        Vector2 pointA = roomEditingPointersParent.GetChild(1).transform.position;
-        Vector2 pointB = roomEditingPointersParent.GetChild(2).transform.position;
-        Vector2 aX_bY = new Vector2(pointA.x, pointB.y);
-        Vector2 bX_aY = new Vector2(pointB.x, pointA.y);
+        
+    }
 
-        Debug.DrawLine(pointA, aX_bY, Color.red);
-        Debug.DrawLine(aX_bY, pointB, Color.red);
-        Debug.DrawLine(pointB, bX_aY, Color.red);
-        Debug.DrawLine(bX_aY, pointA, Color.red);
+    private void OnEnable()
+    {
+        PlayerEventTrigger.OnPlayerEntered += PlayerEventTrigger_OnPlayerEntered;
+        PlayerEventTrigger.OnPlayerExited += PlayerEventTrigger_OnPlayerExited;
+        trigger[0].SetTriggerActivation(true);
+    }
+
+
+    private void PlayerEventTrigger_OnPlayerEntered(object sender, System.EventArgs e)
+    {
+        PlayerEventTrigger trigger = (PlayerEventTrigger)sender;
+        var id = trigger.EventID;
+        print($"player trigger enter: {id}");
+
+        if (!id.Contains("level4_"))
+            return;
+        if (id.Contains("room"))
+        {
+            int num = int.Parse(id.Split("room")[1]);
+            OnRoomStateChanged.Invoke(sender, new RoomStateChangedEventArgs
+            {
+                isStartRoom = true,
+                roomRulesetData = roomRulesets[num]
+            });
+        }
+    }
+
+
+    private void PlayerEventTrigger_OnPlayerExited(object sender, EventArgs e)
+    {
+        // 
+        PlayerEventTrigger trigger = (PlayerEventTrigger)sender;
+        var id = trigger.EventID;
+        print($"player trigger exit: {id}");
+    }
+
+    public void AddNewRoomData(Level4RoomRuleset roomRuleset)
+    {        if(roomRulesets == null)
+            roomRuleset = new Level4RoomRuleset();
+
+        roomRulesets.Add(roomRuleset);
+    }
+
+    [ContextMenu("Editor_SearchEventTriggersInChildren")]
+    public void FindAllEventTriggersInChildren()
+    {
+        var searched = GetComponentsInChildren<PlayerEventTrigger>();
+        foreach (var item in searched) 
+        {
+            if (trigger.Contains(item))
+                continue;
+            trigger.Add(item);
+        }
     }
 }

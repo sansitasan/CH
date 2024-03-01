@@ -1,15 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.LE_CORL.LevelContollers.Level4
+[CreateAssetMenu(fileName = "new Room (Level4)", menuName = "Datas", order = 0)]
+public class Level4RoomRuleset : ScriptableObject
 {
-    public class Level4RoomRuleSet : ScriptableObject
-    {
-        public Vector2 pointEnter, pointA, pointB, pointExit;
-
-        public int roomDuration = 30;
-        public int fallingObstaclesCountMax = 10;
-        public float fallingObstaclesMinDistancing = 1;
-        public AnimationCurve fallingObstacleRatio;
-    }
+    public Vector2 pointA, pointB;
+    public int roomDuration = 30;
+    public int fallingObstaclesCountMax = 10;
+    public float fallingObstaclesMinDistancing = 1;
+    public float fallingObtaclesGenerationTick = .2f;
+    public AnimationCurve fallingObstacleRatio;
 }

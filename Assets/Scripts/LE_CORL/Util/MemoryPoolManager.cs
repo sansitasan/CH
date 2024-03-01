@@ -7,6 +7,7 @@ public class MemoryPoolManager : MonoBehaviour
     [SerializeField] int GenerationDefaultCount = 15;
 
     private Dictionary<string, List<GameObject>> pools;
+    private Dictionary<string, GameObject> originals;
 
     public static MemoryPoolManager Instance { get; private set; } = null;
 
@@ -17,6 +18,7 @@ public class MemoryPoolManager : MonoBehaviour
         {
             Instance = this;
             pools = new Dictionary<string, List<GameObject>>();
+            originals = new Dictionary<string, GameObject>();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -35,7 +37,7 @@ public class MemoryPoolManager : MonoBehaviour
         }
 
         var pool = pools[objName];
-        var item = origianl != null ? origianl : GetGameObject(objName);
+        var item = origianl != null ? origianl : originals[objName];
 
         float increaseRatio = (11 / 9f);
         int generationCount = pool.Count == 0 ? GenerationDefaultCount 
@@ -58,6 +60,7 @@ public class MemoryPoolManager : MonoBehaviour
             Debug.LogError("이미 등록된 오브젝트 입니다");
             return;
         }
+        originals.Add(objName, original);
         pools.Add(objName, new List<GameObject>());
         GeneratePoolObjects(objName, original); 
     }
@@ -92,6 +95,11 @@ public class MemoryPoolManager : MonoBehaviour
         }
 
         await Task.Run(() => DeleteMemoryPool(objName));
+        await Task.Run(() => 
+        {
+            Destroy(originals[objName]);
+            originals.Remove(objName);
+        });
     }
 
     void DeleteMemoryPool(string objectName)

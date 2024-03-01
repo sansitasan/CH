@@ -7,6 +7,7 @@ public class FallingObstacleObject : MonoBehaviour
     [SerializeField] SpriteRenderer marker_SpriteRenderer;
     [SerializeField] Transform fallingObstacleTransform;
     [SerializeField] Transform falled_ObjectTransform;
+    [SerializeField] PlayerEventTrigger trigger;
     [Space]
     [SerializeField] float marker_Duration;
     [SerializeField] float falling_StartingHeight;
@@ -30,10 +31,14 @@ public class FallingObstacleObject : MonoBehaviour
         var falled_ObjectSpriteRenderer = falled_ObjectTransform.GetComponent<SpriteRenderer>();
         Color currentColor = falled_ObjectSpriteRenderer.color;
         falled_ObjectSpriteRenderer.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
+
+        trigger.GetComponent<CircleCollider2D>().radius = falling_TriggerCheckingRadius;
+        trigger.SetTriggerActivation(false);
     }
 
     private void OnEnable()
     {
+        Initialize();
         StartCoroutine (FallingObstacleAnimation());
     }
 
@@ -51,7 +56,6 @@ public class FallingObstacleObject : MonoBehaviour
         // falling enable, falling duration
         fallingObstacleTransform.gameObject.SetActive(true);
         float amount = 0;
-        int playerMask = 1 - LayerMask.GetMask("Player");
         while(amount <= 1)
         {
             float currentHeight = falling_StartingHeight * (1 - falling_Speed.Evaluate(amount));
@@ -60,17 +64,15 @@ public class FallingObstacleObject : MonoBehaviour
             // player trigger checking
             if(amount >= falling_TriggerCheckingAmount)
             {
-                var playerObject = Physics2D.OverlapCircle(transform.position, falling_TriggerCheckingRadius, playerMask);
-                if(playerObject != null)
-                {
-                    Debug.Log("player hit");
-                    // player.gameObject.GetComponent<Player>().GetDamage();
-                }
+                trigger.SetTriggerActivation(true);
             }
 
             amount += (Time.deltaTime / falling_Duration);
             yield return frame;
         }
+
+        // trigger disable
+        trigger.SetTriggerActivation(false);
 
         // falling disable
         fallingObstacleTransform.gameObject.SetActive(false);
@@ -99,9 +101,4 @@ public class FallingObstacleObject : MonoBehaviour
 
     [ContextMenu("Initialize")]
     public void Init_Editor() => Initialize();
-
-    private void OnDisable()
-    {
-        Initialize();
-    }
 }
