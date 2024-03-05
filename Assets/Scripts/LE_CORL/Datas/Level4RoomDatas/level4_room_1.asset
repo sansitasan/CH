@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96022927e4e1a4b4cba25090f5199996, type: 3}
-  m_Name: level4_room0
+  m_Name: level4_room_1
   m_EditorClassIdentifier: 
   pointA: {x: -11.44, y: 6.51}
   pointB: {x: 16.56, y: -8.51}
   roomDuration: 30
   fallingObstaclesCountMax: 10
-  fallingObstaclesMinDistancing: 5
+  fallingObstaclesMinDistancing: 1
   fallingObtaclesGenerationTick: 0.2
   fallingObstacleRatio:
     serializedVersion: 2

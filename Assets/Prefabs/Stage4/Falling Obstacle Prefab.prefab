@@ -9899,8 +9899,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   falling_Duration: 1.5
-  falling_TriggerCheckingAmount: 0.1
-  falling_TriggerCheckingRadius: 0.5
+  falling_TriggerCheckingAmount: 0.05
+  falling_TriggerCheckingRadius: 0.4
   falled_ObjectDuration: 1
   falled_DisableAnimDuration: 0.5
 --- !u!1 &6736407688117443827
@@ -10034,7 +10034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider2d: {fileID: 6395942429578223253}
-  eventID: level4_fallingObstacle
+  eventID: level4_fallingObstacle_
 --- !u!58 &6395942429578223253
 CircleCollider2D:
   m_ObjectHideFlags: 0

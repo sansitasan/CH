@@ -40,7 +40,7 @@ public class ELevel4RoomGeneratorCustomEditor : Editor
         {
             // m_roomGenerator.GenerateNewRoomData();
             int roomNum = m_roomGenerator.roomTriggerBundle.childCount;
-            string roomName = $"Room {roomNum}";
+            string roomName = $"room_{roomNum}";
             var go = new GameObject(roomName, typeof(BoxCollider2D), typeof(PlayerEventTrigger));
             go.transform.SetParent(m_roomGenerator.roomTriggerBundle);
 
@@ -54,14 +54,13 @@ public class ELevel4RoomGeneratorCustomEditor : Editor
             box.size = new Vector2(Mathf.Abs(pointA.x - pointB.x), Mathf.Abs(pointA.y - pointB.y));
             box.isTrigger = true;
 
-            string roomID = $"level4_room{roomNum}";
+            string roomID = $"level4_room_{roomNum}";
 
             var trigger = go.GetComponent<PlayerEventTrigger>();
             trigger.Init(roomID);
 
             Level4RoomRuleset data = ScriptableObject.CreateInstance<Level4RoomRuleset>();
-            string filePath = UnityEditor.AssetDatabase.GenerateUniqueAssetPath($"Assets/Scripts/LE_CORL/Datas/{roomID}.asset");
-            // string name = UnityEditor.AssetDatabase.GenerateUniqueAssetPath("Assets/NewScripableObject.asset");
+            string filePath = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(RoomGenerator.ROOM_DATA_PATH + $"{roomID}.asset");
 
             data.pointA = pointA;
             data.pointB = pointB;
@@ -73,8 +72,6 @@ public class ELevel4RoomGeneratorCustomEditor : Editor
 
             AssetDatabase.CreateAsset(data, filePath);
             AssetDatabase.SaveAssets();
-
-            m_roomGenerator.mainContoller.AddNewRoomData(data); 
 
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = data;

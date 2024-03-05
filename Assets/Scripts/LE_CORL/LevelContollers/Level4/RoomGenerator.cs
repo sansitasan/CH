@@ -5,7 +5,8 @@ using UnityEditor;
 
 public class RoomGenerator : MonoBehaviour
 {
-    public Level4MainContoller mainContoller;
+    public const string ROOM_DATA_PATH = "Assets/Scripts/LE_CORL/Datas/Level4RoomDatas/";
+
     public Transform roomTriggerBundle;
     public Transform pointA, pointB;
 

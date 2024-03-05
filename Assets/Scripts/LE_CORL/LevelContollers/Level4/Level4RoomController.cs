@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Build.Pipeline.Tasks;
 using UnityEngine;
@@ -13,21 +14,21 @@ public class Level4RoomController : MonoBehaviour
 
     const string FALLING_OBSTACLE_ID = "falling_obstacle";
     [SerializeField] GameObject fallingObstaclePrefab;
-    [SerializeField] Level4MainContoller mainController;
 
     IEnumerator roomPattern = null;
 
-    private void OnEnable()
-    {
-        
-        // 방 진입 이벤트 등록
-        mainController.OnRoomStateChanged += MainController_OnRoomStateChanged;
-    }
-
     private void Start()
     {
+        // 방 진입 이벤트 등록
+        Level4MainContoller.OnRoomStateChanged += MainController_OnRoomStateChanged;
+
         // 메모리풀 등록
         MemoryPoolManager.Instance.RegisterMemorypoolObj(FALLING_OBSTACLE_ID, fallingObstaclePrefab);
+    }
+    private void OnDisable()
+    {
+        Level4MainContoller.OnRoomStateChanged -= MainController_OnRoomStateChanged;
+        MemoryPoolManager.Instance.UnregisterMemoryPool(FALLING_OBSTACLE_ID);
     }
 
     private void MainController_OnRoomStateChanged(object sender, Level4MainContoller.RoomStateChangedEventArgs e)
@@ -35,7 +36,7 @@ public class Level4RoomController : MonoBehaviour
         if (e.isStartRoom)
         {
             currentRoomRuleset = e.roomRulesetData;
-            roomPattern = RoomPattern();
+            roomPattern = PlayRoomPattern();
             StartCoroutine(roomPattern);
         }
         else
@@ -46,7 +47,7 @@ public class Level4RoomController : MonoBehaviour
         }
     }
 
-    IEnumerator RoomPattern()
+    IEnumerator PlayRoomPattern()
     {
         var generationDelay = new WaitForSeconds(currentRoomRuleset.fallingObtaclesGenerationTick);
 
