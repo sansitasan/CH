@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -60,7 +61,7 @@ public class ELevel4RoomGeneratorCustomEditor : Editor
             trigger.Init(roomID);
 
             Level4RoomRuleset data = ScriptableObject.CreateInstance<Level4RoomRuleset>();
-            string filePath = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(RoomGenerator.ROOM_DATA_PATH + $"{roomID}.asset");
+            string filePath = UnityEditor.AssetDatabase.GenerateUniqueAssetPath(Path.Combine(RoomGenerator.ROOM_DATA_PATH,$"{roomID}.asset"));
 
             data.pointA = pointA;
             data.pointB = pointB;

@@ -4,6 +4,8 @@ using UnityEditor;
 using PlasticPipe.PlasticProtocol.Messages;
 using Unity.VisualScripting;
 using System.Collections.Generic;
+using System.Drawing.Printing;
+using System.IO;
 
 [CustomEditor(typeof(Level4MainContoller))]
 public class ELevel4MainControllerCustomEditor : Editor
@@ -102,13 +104,17 @@ public class ELevel4MainControllerCustomEditor : Editor
 
             if (GUILayout.Button(new GUIContent("데이터 불러오기", "지정된 경로의 RoomRulesetData 들을 모두 가져옴 (지정된 리스트 = 데이터 저장 장소"), GUILayout.Height(30)))
             {
-                var loaded = AssetDatabase.LoadAllAssetsAtPath(RoomGenerator.ROOM_DATA_PATH);
+                int count = m_Level4MainController.roomTriggersParent.childCount;
                 var tmp = new List<Level4RoomRuleset>();
-                if (loaded != null)
+
+                for (int i = 0; i < count; i++)
                 {
-                    foreach (var r in loaded)
+                    string path = Path.Combine(RoomGenerator.ROOM_DATA_PATH, $"level4_room_{i}.asset");
+                    var load = AssetDatabase.LoadAssetAtPath<Level4RoomRuleset>(path);
+                    if(load != null)
                     {
-                        tmp.Add(r.ConvertTo<Level4RoomRuleset>());
+                        Debug.Log("Load Data from: " + path + load.name);
+                        tmp.Add(load);
                     }
                 }
                 m_Level4MainController.ReloadRoomRulesetDatas(tmp);

@@ -400,13 +400,18 @@ MonoBehaviour:
   - {fileID: 809447189}
   - {fileID: 546139627}
   - {fileID: 1604229466}
+  - {fileID: 0}
+  - {fileID: 0}
   roomRulesets:
   - {fileID: 11400000, guid: 75fc379fa4c4b3d4ca3b37e8b0b1c2a9, type: 2}
   - {fileID: 11400000, guid: 252de2f9a597def4389c8fd2f32ab592, type: 2}
   - {fileID: 11400000, guid: 8ed15225c66bb1943825e4a378e40bbe, type: 2}
+  - {fileID: 11400000, guid: 4314a81ab4fc2ad44a0c0aa9c9fc8078, type: 2}
+  - {fileID: 11400000, guid: b1449f87e38c3934085abf8aba48d8f7, type: 2}
   player: {fileID: 1098595499}
   playerableDicetor: {fileID: 1847787558}
   timelinePreferences: []
+  roomTriggersParent: {fileID: 1193957490}
 --- !u!1 &151994327
 GameObject:
   m_ObjectHideFlags: 0
@@ -6184,7 +6189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857863066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.44, y: 6.51, z: 0}
+  m_LocalPosition: {x: -11.57, y: 6.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6272,9 +6277,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <vCam>k__BackingField: {fileID: 1859143111}
   <playerRenderer>k__BackingField: {fileID: 1381772855}
-  <skill>k__BackingField: {fileID: 11400000, guid: 422f2855db936784baa2572b916dde96, type: 2}
   moveSpeed: 10
   camFov: 7.5
+  <skill>k__BackingField: {fileID: 11400000, guid: 422f2855db936784baa2572b916dde96, type: 2}
 --- !u!61 &1098595500
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -18,6 +18,8 @@ public class Level4MainContoller : MonoBehaviour
     [SerializeField] PlayableDirector playerableDicetor;
     [SerializeField] TimelinePreferences[] timelinePreferences;
 
+    public Transform roomTriggersParent;
+
     public static event EventHandler<RoomStateChangedEventArgs> OnRoomStateChanged;
     public class RoomStateChangedEventArgs: EventArgs
     {
@@ -53,7 +55,7 @@ public class Level4MainContoller : MonoBehaviour
         if (id.Contains("room_"))
         {
             int num = int.Parse(id.Split("room_")[1]);
-            OnRoomStateChanged.Invoke(sender, new RoomStateChangedEventArgs
+            OnRoomStateChanged?.Invoke(sender, new RoomStateChangedEventArgs
             {
                 isStartRoom = true,
                 roomRulesetData = roomRulesets[num]

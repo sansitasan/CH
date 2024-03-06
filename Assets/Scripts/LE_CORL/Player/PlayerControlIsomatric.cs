@@ -14,12 +14,11 @@ public class PlayerControlIsomatric : MonoBehaviour
 
     [field: SerializeField] public CinemachineVirtualCamera vCam { get; private set; }
     [field: SerializeField] public SpriteRenderer playerRenderer { get; private set; }
-    [field: SerializeField] public PlayerSkillBase skill { get; private set; }
 
-
-    [Header("+ Stage")]
+    [Space(15)]
     [SerializeField] float moveSpeed;
     [SerializeField] float camFov;
+    [field: SerializeField] public PlayerSkillBase skill { get; private set; }
     
     Animator playerAnimator;
 
