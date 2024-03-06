@@ -1,679 +1,682 @@
-{"scripts":[
+{
+  
+  "scripts": [
 
     {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "보물이 한가득 쌓여있어. 이게 다 얼마야...?"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이3"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "뿡끼얏호우! 저거! 저거! 그 유명한 용궁의 보석!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이2"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "먼저 잡는 뿡댕이가 임자다!!!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "10",
-          "dialog": "진짜였어...용궁의 보물 진짜로 있는거였구나..."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "5",
-          "dialog": "모두가 무슨 보물사냥꾼이냐고./n 그런걸로 먹고 살수는 있을거 같냐고 했을때 꿋꿋이 계속 이 일을 하길 잘했어."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "좀 보라지! 나 결국엔 성공 하셨잖아!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이2"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "타비시치! 지금 감성 터질때야? 빨리 안쓸어담고 뭐해?!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "8",
-          "dialog": "아오 C발T야? 조금 감성적이게 내버려두면 안되겠어?"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "보물들은 너희가 챙기고 있어. 나는 일단 유메의 거울부ㅌ..."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이2"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "[달칵]"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "5",
-          "dialog": "응? 뿡댕아 너 지금 뭘 건들인거야...?"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#8182b8>???"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "[덜커덩]"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이2"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "뭐긴뭐야 용궁에서 제일 귀하다는..."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#8182b8>???"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "...보물."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#8182b8>???"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "[콰광!]"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "5",
-          "dialog": "히이이이익! 뭐야 저 괴물은?!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "쉿! 쉿! 소리내지마..!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#8182b8>???"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "인재...인재가 부족해..."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "5",
-          "dialog": "조용히...조용히 뒷걸음질로 도망쳐."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#8182b8>???"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "'꿈'..이루려면...더...보석함에 많은 보물...채워..."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "5",
-          "dialog": "힉!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "방금 눈마주친거 맞지?"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#8182b8>???"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "파란머리...보석..면접...내꺼."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#8182b8>???"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "보무우우우우우우우우우우우우우우울!!!!!!!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이2"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "ㅈ됐네."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "6",
-          "dialog": "꺄아아아아악!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "씨ㅣㅣㅣㅣㅣ 피지컬 쓰레기 저걸 잡히네! 저걸 또 어떻게 구하냐?!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이13"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "야, 뭐하는거야? 쟤한태 집중하는 사이에 빨리 보물들고 튀자."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "뭐?"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이13"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "어차피 타비한태 시선팔려서 우리는 보지도 않잖아. 이틈에 보물고 털고 빨리튀면 되는거아님?"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>자석이 큰 뿡댕이"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "그래도 나한태 자석 크다고 자존감을 높여주었는데. 그건 좀."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>흑화 뿡댕이"
-        ],
-        "discription": [
-          1,
-          "4"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "까매졌는데도 따비가 나 잡아줘써..."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이3"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "오랜만에 구수한 노래에 뿡광봉도 흔들었는데?"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이13"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "아니 내 말이 틀림? 그 정도로 정을 준것도 아니고, 갑자기 나를 쓰레기로 만드네;;"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "......"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "6",
-          "dialog": "으으으윽...아파...!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#8182b8>???"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "보물! 보물! 보물!!!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "에라이 씨뿡빵. 타비 버리자고 한 너 낫뿡댕."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이2"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "너는 6밴 쳐먹어라."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "",
-          "dialog": "가자!!! 타비지켜!!!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이들"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "타비지켜!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이들"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "[쿵!]"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "5",
-          "dialog": "꺄앗?!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "4",
-          "dialog": "뿡댕아...? 설마 날 도와주려고..."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이3"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "어휴 이상한거 잘못만나서 개고생하게 생겼네."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이2"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "이래서 큰돈벌게 해준다는 말은 믿으면 안됨ㅇㅇ."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "'최고의 보물사냥꾼'이랑 함께면 무너지기 전에 때려잡을수 있겠지?"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#8182b8>???"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "내 인..재...뺏어가려고...?"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "....당연하지!"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#D1F1FF>아라하시 타비"
-        ],
-        "discription": [
-          1,
-          "1"
-        ],
-        "data": {
-          "state": "9",
-          "dialog": "준비됐지, 뿡?"
-        }
-      },
-      {
-        "talkname": [
-          "<color=#4fa8e0>뿡댕이1"
-        ],
-        "discription": [
-          1,
-          "2"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "물론이지, 타."
-        }
-      },
-      {
-        "talkname": [
-          "<color=#8182b8>???"
-        ],
-        "discription": [
-          1,
-          "0"
-        ],
-        "data": {
-          "state": "1",
-          "dialog": "용서 못해!!!!!!!"
-        }
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "보물이 한가득 쌓여있어. 이게 다 얼마야...?"
       }
-]}
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이3"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "뿡끼얏호우! 저거! 저거! 그 유명한 용궁의 보석!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "먼저 잡는 뿡댕이가 임자다!!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "10",
+        "dialog": "진짜였어...용궁의 보물 진짜로 있는거였구나..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "모두가 무슨 보물사냥꾼이냐고./n 그런걸로 먹고 살수는 있을거 같냐고 했을때 꿋꿋이 계속 이 일을 하길 잘했어."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "좀 보라지! 나 결국엔 성공 하셨잖아!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "타비시치! 지금 감성 터질때야? 빨리 안쓸어담고 뭐해?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "8",
+        "dialog": "아오 C발T야? 조금 감성적이게 내버려두면 안되겠어?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "보물들은 너희가 챙기고 있어. 나는 일단 유메의 거울부ㅌ..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[달칵]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "응? 뿡댕아 너 지금 뭘 건들인거야...?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[덜커덩]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "뭐긴뭐야 용궁에서 제일 귀하다는..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "...보물."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[콰광!]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "히이이이익! 뭐야 저 괴물은?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "쉿! 쉿! 소리내지마..!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "인재...인재가 부족해..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "조용히...조용히 뒷걸음질로 도망쳐."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "'꿈'..이루려면...더...보석함에 많은 보물...채워..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "힉!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "방금 눈마주친거 맞지?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "파란머리...보석..면접...내꺼."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "보무우우우우우우우우우우우우우우울!!!!!!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "ㅈ됐네."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "6",
+        "dialog": "꺄아아아아악!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "씨ㅣㅣㅣㅣㅣ 피지컬 쓰레기 저걸 잡히네! 저걸 또 어떻게 구하냐?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이13"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "야, 뭐하는거야? 쟤한태 집중하는 사이에 빨리 보물들고 튀자."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "뭐?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이13"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "어차피 타비한태 시선팔려서 우리는 보지도 않잖아. 이틈에 보물고 털고 빨리튀면 되는거아님?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>자석이 큰 뿡댕이"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "그래도 나한태 자석 크다고 자존감을 높여주었는데. 그건 좀."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>흑화 뿡댕이"
+      ],
+      "discription": [
+        1,
+        "4"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "까매졌는데도 따비가 나 잡아줘써..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이3"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "오랜만에 구수한 노래에 뿡광봉도 흔들었는데?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이13"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "아니 내 말이 틀림? 그 정도로 정을 준것도 아니고, 갑자기 나를 쓰레기로 만드네;;"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "......"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "6",
+        "dialog": "으으으윽...아파...!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "보물! 보물! 보물!!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "에라이 씨뿡빵. 타비 버리자고 한 너 낫뿡댕."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "너는 6밴 쳐먹어라."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "",
+        "dialog": "가자!!! 타비지켜!!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이들"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "타비지켜!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이들"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[쿵!]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "꺄앗?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "4",
+        "dialog": "뿡댕아...? 설마 날 도와주려고..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이3"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "어휴 이상한거 잘못만나서 개고생하게 생겼네."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "이래서 큰돈벌게 해준다는 말은 믿으면 안됨ㅇㅇ."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "'최고의 보물사냥꾼'이랑 함께면 무너지기 전에 때려잡을수 있겠지?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "내 인..재...뺏어가려고...?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "....당연하지!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "9",
+        "dialog": "준비됐지, 뿡?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "물론이지, 타."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "용서 못해!!!!!!!"
+      }
+    }
+  ]
+}

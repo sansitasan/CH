@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class IdleLeaf : BehaviourLeaf
 {
@@ -80,17 +81,51 @@ public class Stage1MoveLeaf : MoveLeaf
 
 public class Stage2MoveLeaf : MoveLeaf
 {
-    public Stage2MoveLeaf(BlackBoard board) : base(board) { }
+    private BlackBoard2D _bB;
+
+    private struct MoveData
+    {
+        public readonly Vector3 Position;
+        public readonly Vector2 MoveDir;
+
+        public MoveData(Vector3 position, Vector2 moveDir)
+        {
+            Position = position;
+            MoveDir = moveDir;
+        }
+    }
+
+    private Queue<MoveData> _moveQueue = new Queue<MoveData>(20);
+
+    public Stage2MoveLeaf(BlackBoard board) : base(board) 
+    {
+        _bB = board as BlackBoard2D;
+        for (int i = 0; i < 10; ++i)
+        {
+            _moveQueue.Enqueue(new MoveData(_blackBoard.Player.position - Vector3.right * (1f - (float)i / 10), Vector2.right));
+        }
+    }
+
+    protected override void Enter()
+    {
+        base.Enter();
+        _bB.BD.UpdateAnim(PlayerStates.Move);
+    }
 
     public override void Exit()
     {
+        _bB.BD.UpdateAnim(PlayerStates.Idle);
         _blackBoard.RD.velocity = Vector2.zero;
     }
 
     public override void Update()
     {
+        MoveData data = _moveQueue.Dequeue();
+        _moveQueue.Enqueue(new MoveData(_blackBoard.Player.position, _blackBoard.MoveDir));
+        _bB.BD.SetMoveData(data.Position, data.MoveDir);
         _blackBoard.RD.velocity = new Vector3(_blackBoard.MoveDir.x, _blackBoard.MoveDir.y, 0).normalized
             * _blackBoard.Data.Speed;
+
     }
 }
 

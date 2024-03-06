@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -15,7 +16,11 @@ public class Stage3Model : PlayerModel
     private Stage3Data _data;
     [SerializeField]
     private BD _bd;
+
+    [SerializeField]
+    private TextMeshProUGUI _countText;
     private Character2DAnim _pa;
+    private int _count;
 
     public override void Init(StageData so)
     {
@@ -27,12 +32,14 @@ public class Stage3Model : PlayerModel
     protected override void DataInit(StageData so)
     {
         _data = so as Stage3Data;
+        _count = _data.MoveCount_1;
+        _countText.text = _count.ToString();
     }
 
     protected override void MakeBT(StageData so)
     {
         _tree = new BehaviourTree();
-        _blackBoard = new Stage3BlackBoard(transform, _pa, _rb, _tree, so);
+        _blackBoard = new Stage3BlackBoard(transform, _pa, _rb, _tree, so, _bd);
 
         var moveSeq = new BehaviourSequence();
         var moveNode = new BehaviourNormalSelector();
@@ -71,7 +78,7 @@ public class Stage3Model : PlayerModel
 
         if (count > 0)
         {
-            float dis = 1.4f;
+            float dis = 2.24f;
             Vector3 temp;
             Transform near = null;
             for (int i = 0; i < count; ++i)
@@ -86,6 +93,7 @@ public class Stage3Model : PlayerModel
 
             if (near != null)
             {
+                _countText.text = (--_count).ToString();
                 bool t = near.GetComponent<IInteractable>().Interact(_pa.LookDir);
                 await UniTask.DelayFrame(60);
             }

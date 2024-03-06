@@ -6,52 +6,43 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour, IInteractable
 {
-    private bool _bPush = true;
-    private List<Transform> _nearObstacles = new List<Transform>(10);
-    private readonly string _sObstacle = "Obstacle";
+    private Rigidbody2D _rb;
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!_rb.isKinematic && _rb.velocity.magnitude > 2f)
+        {
+            _rb.AddForce(-_rb.velocity.normalized * _rb.mass * 100, ForceMode2D.Force);
+        }
+    }
 
     public bool Interact(Vector3 dir)
     {
-        if (_bPush)
-            return Knockback(dir);
-        return false;
-    }
-
-    private bool Knockback(Vector3 dir)
-    {
-        if (CheckForward(dir))
+        if (_rb.isKinematic)
         {
-            _bPush = false;
-            DOTween.Sequence()
-                .AppendCallback(() => transform.DOMove(transform.position + dir, 0.2f).SetEase(Ease.OutCubic))
-                .AppendCallback(() => _bPush = true);
-            return true;
+            Push(dir);
         }
-        return false;
-    }
 
-    private bool CheckForward(Vector3 dir)
-    {
-        int count = _nearObstacles.Count;
-        for (int i = 0; i < count; ++i)
-        {
-            if (Vector3.Distance(_nearObstacles[i].position, transform.position + dir) < 0.1f)
-            {
-                return false;
-            }
-        }
         return true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Push(Vector3 dir)
     {
-        if (collision.CompareTag(_sObstacle))
-            _nearObstacles.Add(collision.transform);
+        _rb.isKinematic = false;
+        _rb.AddForce(dir * _rb.mass * 21.2f, ForceMode2D.Impulse);
+        CheckStop().Forget();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private async UniTask CheckStop()
     {
-        if (collision.CompareTag(_sObstacle))
-            _nearObstacles.Remove(collision.transform);
+        await UniTask.WaitUntil(() => _rb.velocity.magnitude < 1.2f);
+        _rb.velocity = Vector2.zero;
+        _rb.isKinematic = true;
+        transform.position = Vector3Int.RoundToInt(transform.position);
     }
 }

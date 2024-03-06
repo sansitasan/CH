@@ -30,7 +30,7 @@ public class Stage2Model : PlayerModel
         _pa = new Character2DAnim(transform.GetChild(0).gameObject);
         _disposeList.Add(_pa);
         base.Init(so);
-        _light = GetComponentInChildren<Light2D>();
+        _light = GetComponentInChildren<Light2D>(true);
         _skillCoolTime = _skillAnim.runtimeAnimatorController.animationClips[0].length;
     }
 
@@ -42,7 +42,7 @@ public class Stage2Model : PlayerModel
     protected override void MakeBT(StageData so)
     {
         _tree = new BehaviourTree();
-        _blackBoard = new Stage2BlackBoard(transform, _pa, _rb, _tree, so);
+        _blackBoard = new Stage2BlackBoard(transform, _pa, _rb, _tree, so, _bd);
 
         var moveSeq = new BehaviourSequence();
         var moveNode = new BehaviourNormalSelector();

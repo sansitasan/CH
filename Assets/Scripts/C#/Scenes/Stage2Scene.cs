@@ -33,27 +33,20 @@ public class Stage2Scene : GameScene
 
     protected override async UniTask StartAsync()
     {
-        _bd.Init(ResourceManager.Instance.GetScriptableObject());
+        _bd.Init(ResourceManager.Instance.GetScriptableObject(), _playerModel.transform.position + Vector3.left);
         _bd.AfterScriptInit().Forget();
 
         await base.StartAsync();
 
-        _bd.enabled = true;
     }
 
     protected override async UniTask StartAsyncInEdit()
     {
         await TResourceManager.Instance.LoadAsyncAssets();
-        if (_bd != null)
-        {
-            _bd.Init(TResourceManager.Instance.GetScriptableObject(Stage));
-            _bd.AfterScriptInit().Forget();
-        }
-        await base.StartAsyncInEdit();
 
-        if (_bd != null)
-        {
-            _bd.enabled = true;
-        }
+        _bd.Init(TResourceManager.Instance.GetScriptableObject(Stage), _playerModel.transform.position + Vector3.left);
+        _bd.AfterScriptInit().Forget();
+
+        await base.StartAsyncInEdit();
     }
 }

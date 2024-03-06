@@ -2,92 +2,41 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class BD : MonoBehaviour, IDisposable
+public class BD : MonoBehaviour
 {
-    private PlayerStates _state;
-    private Vector2 _curLookDir;
-    private Vector2 _curMoveDir;
+    private CharacterAnim _pa;
     private Rigidbody2D _rb;
 
-    [SerializeField]
-    private BehaviourTree _tree;
-    [SerializeField]
-    private BlackBoard _blackBoard;
-    private CharacterAnim _pa;
-    [SerializeField]
-    private Transform _player;
-    private Collider2D _col;
-    private MyTileMap _map;
+    private Vector2 _curMoveDir;
 
     private List<IDisposable> _disposeList = new List<IDisposable>();
 
-    public void Init(StageData data)
+    public void Init(StageData data, Vector3 startPos)
     {
         _rb = GetComponent<Rigidbody2D>();
-        _col = GetComponent<Collider2D>();
         _pa = new Character2DAnim(gameObject);
-        MakeBT(data);
+        transform.position = startPos;
     }
 
-    private void MakeBT(StageData so)
+    public void SetPos(Vector3 position)
     {
-        _tree = new BehaviourTree();
-        _blackBoard = new Stage2BlackBoard(transform, _pa, _rb, _tree, so);
-
-        var moveSeq = new BehaviourSequence();
-        var moveNode = new BehaviourNormalSelector();
-        var moveLeaf = new Stage2MoveLeaf(_blackBoard);
-        var idleLeaf = new IdleLeaf(_blackBoard);
-        moveNode.AddNode(moveLeaf);
-        moveNode.AddNode(idleLeaf);
-        moveSeq.AddSequenceNode(moveNode);
-        _tree.AddSeq(moveSeq);
-
-        _disposeList.Add(_tree);
-        _disposeList.Add(_blackBoard);
-        _blackBoard.MoveDir = Vector2.down;
-        _curLookDir = Vector2.down;
-        _tree.CheckSeq(PlayerStates.Idle);
+        transform.position = position;
     }
 
-    private void Update()
+    public void UpdateAnim(PlayerStates state)
     {
-        Vector3 dir = (_player.position - transform.position).normalized;
-        float dis = (_player.position - transform.position).magnitude;
-
-        if (dis > 1.5f)
-        {
-            _blackBoard.MoveDir = dir;
-            if (dis >= 10f)
-            {
-                DisableCollider().Forget();
-            }
-            _tree.CheckSeq(PlayerStates.Move);
-        }
-
-        else 
-        {
-            _tree.CheckSeq(PlayerStates.Idle);
-        }
+        _pa.ChangeAnim(state);
     }
 
-    private async UniTask DisableCollider()
+    public void SetMoveData(Vector3 position, Vector2 moveDir)
     {
-        _col.enabled = false;
-        while ((_player.position - transform.position).magnitude > 1.5f)
-        {
-            await UniTask.DelayFrame(1);
-        }
-        _col.enabled = true;
-    }
+        _rb.MovePosition(position);
 
-    private void FixedUpdate()
-    {
-        _tree.Update();
+        if (_curMoveDir != moveDir)
+            _pa.ChangeDir(moveDir);
+        _curMoveDir = moveDir;
     }
 
     public void UseSkill(float time)
