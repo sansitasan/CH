@@ -9,7 +9,7 @@ public class BaseCanvas : MonoBehaviour
     protected Canvas _canvas;
     private CanvasScaler _canvasScaler;
 
-    void Awake()
+    void Start()
     {
         EditInit();
         if (Application.isPlaying)
@@ -28,6 +28,12 @@ public class BaseCanvas : MonoBehaviour
 
     protected virtual void Playinit()
     {
-
+        if (GameScene.Instance == null)
+            return;
+        else
+        {
+            if (GameScene.Instance.UICam != null)
+                _canvas.worldCamera = GameScene.Instance.UICam;
+        }
     }
 }

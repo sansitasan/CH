@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,8 +26,8 @@ public class Stage3Model : PlayerModel
     public override void Init(StageData so)
     {
         _pa = new Character2DAnim(transform.GetChild(0).gameObject);
-        _disposeList.Add(_pa);
         base.Init(so);
+        _disposeList.Add(_pa);
     }
 
     public override void PlayerInput(PlayerStates state)

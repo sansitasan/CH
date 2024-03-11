@@ -34,10 +34,11 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
     protected BlackBoard _blackBoard;
     protected PlayerController _controller;
 
-    protected List<IDisposable> _disposeList = new List<IDisposable>();
+    protected List<IDisposable> _disposeList;
 
     public virtual void Init(StageData so)
     {
+        _disposeList = new List<IDisposable>();
         _rb = GetComponent<Rigidbody2D>();
         _cts = new CancellationTokenSource();
         _controller = new PlayerController(GetComponent<PlayerInput>().actions, this);

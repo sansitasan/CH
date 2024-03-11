@@ -15,6 +15,7 @@ public class GameScene : MonoBehaviour, IDisposable
 
     public static GameScene Instance { get => _instance; }
     private static GameScene _instance;
+    public Camera UICam;
 
     public int Stage;
 
