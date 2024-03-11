@@ -46,12 +46,19 @@ public class Player2DAnim : PlayerAnim
         switch (state)
         {
             case PlayerStates.Idle:
-                _tabiAnim.SetBool("Move", false);
+                _tabiAnim.SetInteger("State", 0);
                 _BDAnim.SetBool("Move", false);
                 break;
             case PlayerStates.Move:
-                _tabiAnim.SetBool("Move", true);
+                _tabiAnim.SetInteger("State", 1);
                 _BDAnim.SetBool("Move", true);
+                break;
+            case PlayerStates.Skill:
+                _tabiAnim.SetInteger("State", 2);
+                break;
+            case PlayerStates.Dead:
+                _tabiAnim.SetInteger("State", 3);
+                _BDAnim.SetBool("Move", false);
                 break;
         }
     }

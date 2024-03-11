@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {"scripts": [
     
   {
@@ -508,3 +509,518 @@
     }
   }
     ]}
+=======
+{
+  
+  "scripts": [
+
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "여기가 보물고...생각보다 쉽게 도착했네?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이3"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "근데 타비야, 저 문 앞에 로봇들은 뭐야? 엄청 위험해보이는데..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "-우우우우우웅"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "힉! 방금 이쪽 본거 아니야?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4b171b>자율요격로봇84"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[미인증 생명체 발견.]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4b171b>자율요격로봇84"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "",
+        "dialog": "[분석중...분석 완료 IQ97 이하. 지성부족. 작음. 입맛구림.]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "8",
+        "dialog": "뭐?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4b171b>자율요격로봇84"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[야생 소형누렁이로 판단됨. 제거합니다.]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "4",
+        "dialog": "저 깡통 지금 뭐라는거야? IQ97? 내 입맛이 어쨌다고? 왜 갑자기 나 억까해?;ㅁ;"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4b171b>자율요격로봇79"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[유해조수를 제거 프로토콜 작동. 사격개시! 사격개시!]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "공격한다! 울시간에 튀어!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "4",
+        "dialog": "으아아아앙!!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "4",
+        "dialog": "[잠시후]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "헉...헉..겨우 도망쳤네. 죽는줄 알았어."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "저런걸 경비병으로 세워놨을줄이야. 근데 너 진짜 IQ가 97..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "6",
+        "dialog": "안그래도 서우내서 눈물나니까 닥쳐! 어떻게 통과할지나 생각해!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        ""
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "방귀뀐놈이 성낸다더니."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "2",
+        "dialog": "뿌대이 조용! 어쨌든 입구를 막고있는 저것들을 어떻게든 처리 해야될탠데, 혹시 뿌대이 싸움 잘해?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "지금 우리 무시해? 뿡평이 얼마나 높은지 보여줘야겠구만."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이3"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "내가 왕년엔 혼자서도 저정도는 엣헴!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "7",
+        "dialog": "...(고작 슬라임 따위들이 이길거 같진않다. 다른방법을 찾아보자.)"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "2",
+        "dialog": "저 기계들 자세히보니까 전선이 한쪽으로 이어져있는데? 또 얼마나 많은게 숨겨져있을지 모르겠고..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "9",
+        "dialog": "그냥 용궁의 전력을 뚝 끊어버릴까?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "IQ97 다운 무식한 방법이네."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "8",
+        "dialog": "뭐?! 그럼 너는 더 좋은 방법 있어?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "좋은 아이디어인거 같아. 어서 용궁을 망치러가자!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[잠시후]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "10",
+        "dialog": "...영화 같은곳 보면 보통 이런곳이 전력실이잖아. 그렇지?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "그렇지, 전선도 다 여기로 이어져있고. 이상한 소리도 들리고 여기가 아닐수가 없어. 근데..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "저 로봇들은 왜 여기에도 있는거야?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "10",
+        "dialog": "다행히 잡동사니들을 전부 전력실에 쳐박아놓은 덕분에 우릴 찾지는 못하고있어.\n용궁주인이 청소상태가 좋지않아서 살았네."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이4"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "우우...쟤들 빔쏘는거 무섭다에요...닿으면 아픈걸로 안끝날거 같다에요..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "10",
+        "dialog": "용궁에 동력을 전달하는 '코어'가 어딘가에 있을거야. 조용히 그것만 훔쳐가면 돼."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "2",
+        "dialog": "그런데 고철들로 꽉 막혀있어서 한발자국도 움직이기 힘들어 어떻게..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "9",
+        "dialog": "어? 거기 자석 커보이는 뿡댕아 이리와봐!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>자석이 묵직한 뿡댕이"
+      ],
+      "discription": [
+        1,
+        "3"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "예? 무슨일이시죠?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "9",
+        "dialog": "너 자석이 좀 큰게 쓸모있어보인다 잠깐만 쓰자?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>자석이 묵직한 뿡댕이"
+      ],
+      "discription": [
+        1,
+        "3"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "헉! 저 이런건 처음인데...민감하니 사,살살 다뤄주세요오옷...!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "3",
+        "dialog": "....에휴."
+      }
+    }
+  ]
+}
+>>>>>>> KS

@@ -1,4 +1,6 @@
-{"scripts": [
+{
+  
+  "scripts": [
     {
       "talkname": [
         "<color=#D1F1FF>아라하시 타비"
@@ -726,4 +728,6 @@
         "state": "5",
         "dialog": ".....응?"
       }
-    }]}
+    }
+  ]
+}
