@@ -11,7 +11,6 @@ public class Stage3Model : PlayerModel
     private List<Transform> _obstacles = new List<Transform>(8);
 
     private bool _bSkill;
-    private readonly string _sObstacle = "Obstacle";
     [SerializeField]
     private Stage3Data _data;
     [SerializeField]
@@ -20,7 +19,8 @@ public class Stage3Model : PlayerModel
     [SerializeField]
     private TextMeshProUGUI _countText;
     private Character2DAnim _pa;
-    private int _count;
+    private int _levelCount;
+    private int _skillCount;
 
     public override void Init(StageData so)
     {
@@ -29,11 +29,38 @@ public class Stage3Model : PlayerModel
         base.Init(so);
     }
 
+    public override void PlayerInput(PlayerStates state)
+    {
+        if (state != PlayerStates.Skill)
+            base.PlayerInput(state);
+        else
+            Skill();
+    }
+
+    public override void EditInit(StageData so)
+    {
+    }
+
+    public override async UniTask AfterScriptInit()
+    {
+        await _pa.StartFadeAsync();
+    }
+
+    public override void Dispose()
+    {
+        _pa = null;
+        base.Dispose();
+    }
+
     protected override void DataInit(StageData so)
     {
+        ++_levelCount;
         _data = so as Stage3Data;
-        _count = _data.MoveCount_1;
-        _countText.text = _count.ToString();
+        if (_levelCount == 1)
+            _skillCount = _data.MoveCount_1;
+        else if (_levelCount == 2)
+            _skillCount = _data.MoveCount_2;
+        _countText.text = _skillCount.ToString();
     }
 
     protected override void MakeBT(StageData so)
@@ -41,10 +68,13 @@ public class Stage3Model : PlayerModel
         _tree = new BehaviourTree();
         _blackBoard = new Stage3BlackBoard(transform, _pa, _rb, _tree, so, _bd);
 
+        var deadLeaf = new DeadLeaf(_blackBoard);
+
         var moveSeq = new BehaviourSequence();
         var moveNode = new BehaviourNormalSelector();
         var moveLeaf = new Stage2MoveLeaf(_blackBoard);
         var idleLeaf = new IdleLeaf(_blackBoard);
+        moveNode.AddNode(deadLeaf);
         moveNode.AddNode(moveLeaf);
         moveNode.AddNode(idleLeaf);
         moveSeq.AddSequenceNode(moveNode);
@@ -53,14 +83,6 @@ public class Stage3Model : PlayerModel
         _disposeList.Add(_tree);
         _disposeList.Add(_blackBoard);
         _tree.CheckSeq(PlayerStates.Idle);
-    }
-
-    public override void PlayerInput(PlayerStates state)
-    {
-        if (state != PlayerStates.Skill)
-            base.PlayerInput(state);
-        else
-            Skill();
     }
 
     private void Skill()
@@ -93,9 +115,20 @@ public class Stage3Model : PlayerModel
 
             if (near != null)
             {
-                _countText.text = (--_count).ToString();
+                _countText.text = (--_skillCount).ToString();
                 bool t = near.GetComponent<IInteractable>().Interact(_pa.LookDir);
-                await UniTask.DelayFrame(60);
+                if (t)
+                {
+                    DisableInput(true);
+                    _pa.ChangeAnim(PlayerStates.Skill);
+                    _bd.UseSkill(true);
+                }
+                await UniTask.DelayFrame(10);
+                _pa.ChangeAnim(PlayerStates.Idle);
+                await UniTask.DelayFrame(20);
+                DisableInput(false);
+                _bd.UseSkill(false);
+                await UniTask.DelayFrame(30);
             }
         }
         _bSkill = false;
@@ -108,22 +141,13 @@ public class Stage3Model : PlayerModel
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(_sObstacle))
+        if (collision.TryGetComponent<IInteractable>(out var com))
             _obstacles.Add(collision.transform);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag(_sObstacle))
+        if (collision.TryGetComponent<IInteractable>(out var com))
             _obstacles.Remove(collision.transform);
-    }
-
-    public override void EditInit(StageData so)
-    {
-    }
-
-    public override async UniTask AfterScriptInit()
-    {
-        await _pa.StartFadeAsync();
     }
 }

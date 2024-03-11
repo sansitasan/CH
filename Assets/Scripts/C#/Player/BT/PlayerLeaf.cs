@@ -69,7 +69,7 @@ public class Stage1MoveLeaf : MoveLeaf
 
     public override void Update()
     {
-        _blackBoard.RD.velocity = new Vector3(_blackBoard.MoveDir.x, 0, 0).normalized 
+        _blackBoard.RD.velocity = new Vector2(_blackBoard.MoveDir.x, 0).normalized 
             * _blackBoard.Data.Speed;
     }
 
@@ -284,6 +284,43 @@ public class SkillLeaf : BehaviourLeaf
     public override void Exit()
     {
         _blackBoard.PA.ChangeAnim(PlayerStates.Landing);
+    }
+
+    public override void Update()
+    {
+
+    }
+}
+
+public class DeadLeaf : BehaviourLeaf
+{
+    public DeadLeaf(BlackBoard board) : base(board)
+    {
+
+    }
+
+    public override SeqStates CheckLeaf(PlayerStates ps)
+    {
+        if (ps == PlayerStates.Dead) {
+            Enter();
+            _seqStates = SeqStates.Running;
+        }
+
+        else
+            _seqStates = SeqStates.Fail;
+
+        return _seqStates;
+    }
+
+    protected override void Enter()
+    {
+        _blackBoard.PA.ChangeAnim(PlayerStates.Dead);
+        GameScene.Instance.Restart();
+    }
+
+    public override void Exit()
+    {
+
     }
 
     public override void Update()

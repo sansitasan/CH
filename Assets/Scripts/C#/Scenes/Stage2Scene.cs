@@ -21,7 +21,7 @@ public class Stage2Scene : GameScene
             if (_count == MaxCount)
             {
                 _dialogPanel.StartScript(EventTypes.End);
-                _playerModel.Script(true);
+                _playerModel.DisableInput(true);
             }
 
             else

@@ -8,21 +8,21 @@ public class BD : MonoBehaviour
 {
     private CharacterAnim _pa;
     private Rigidbody2D _rb;
+    private SpriteRenderer _sr;
 
     private Vector2 _curMoveDir;
-
-    private List<IDisposable> _disposeList = new List<IDisposable>();
 
     public void Init(StageData data, Vector3 startPos)
     {
         _rb = GetComponent<Rigidbody2D>();
+        _sr = GetComponent<SpriteRenderer>();
         _pa = new Character2DAnim(gameObject);
         transform.position = startPos;
     }
 
     public void SetPos(Vector3 position)
     {
-        transform.position = position;
+        _rb.position = position;
     }
 
     public void UpdateAnim(PlayerStates state)
@@ -39,6 +39,19 @@ public class BD : MonoBehaviour
         _curMoveDir = moveDir;
     }
 
+    public void UseSkill(bool bSkill)
+    {
+        if (bSkill)
+        {
+            _sr.color = Color.clear;
+        }
+
+        else
+        {
+            _sr.color = Color.white;
+        }
+    }
+
     public void UseSkill(float time)
     {
         _pa.UseSkill(time).Forget();
@@ -47,13 +60,5 @@ public class BD : MonoBehaviour
     public async UniTask AfterScriptInit()
     {
         await _pa.StartFadeAsync();
-    }
-
-    public void Dispose()
-    {
-        foreach (var dispose in _disposeList)
-        {
-            dispose.Dispose();
-        }
     }
 }

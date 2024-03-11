@@ -109,7 +109,7 @@ public class Stage2Model : PlayerModel
         float time = 0;
         Time.timeScale = 0;
         _bd.UseSkill(_data.SkillCoolTime);
-        Script(true);
+        DisableInput(true);
         _skillAnim.gameObject.SetActive(true);
         _skillAnim.Play("Skill", 0, 0);
 
@@ -141,7 +141,7 @@ public class Stage2Model : PlayerModel
         await UniTask.DelayFrame(15, cancellationToken: _cts.Token);
 
         Time.timeScale = 1;
-        Script(false);
+        DisableInput(false);
     }
 
     private async UniTask SkillCoolTimeCheck()

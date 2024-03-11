@@ -19,6 +19,7 @@ public enum PlayerStates
     Jump = 101,
     InTheSky = 102,
     Landing = 103,
+    Dead,
     Success = 99999
 }
 
@@ -42,6 +43,7 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
         _controller = new PlayerController(GetComponent<PlayerInput>().actions, this);
         _disposeList.Add(_cts);
         _disposeList.Add(_controller);
+        _disposeList.Add(_tree);
         DataInit(so);
         MakeBT(so);
     }
@@ -52,9 +54,9 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
 
     public abstract UniTask AfterScriptInit();
 
-    public void Script(bool bStart)
+    public void DisableInput(bool bDisable)
     {
-        if (bStart)
+        if (bDisable)
             _controller.DisableInput();
         else
             _controller.EnableInput();
@@ -73,10 +75,15 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
         _tree.CheckSeq(state);
     }
 
-    public void Dispose()
+    public virtual void Dispose()
     {
         _cts.Cancel();
+        _cts = null;
+        _controller = null;
+        _tree = null;
+        _blackBoard = null;
         for (int i = 0; i < _disposeList.Count; ++i)
             _disposeList[i].Dispose();
+        _disposeList.Clear();
     }
 }
