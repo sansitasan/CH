@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -60,6 +62,8 @@ public class ResourceManager
 
     public List<Script> TryGetScript(string path)
     {
+        Debug.Log(_scripts[path].text);
+
         if (_scripts.ContainsKey($"{path}"))
         {
             return JsonUtility.FromJson<ScriptLoad>(_scripts[path].text).GetScript();
@@ -118,6 +122,7 @@ public class ResourceManager
             {
                 _SOs.TryAdd(GetObjectName(path), op.Result as StageData);
             }
+            Debug.Log("Loaded file name = " + GetObjectName(path));
         };
     }
 

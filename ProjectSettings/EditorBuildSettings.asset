@@ -32,5 +32,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScriptScene.unity
     guid: 2befba0be43ea864f9fed841b9059d0e
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 2ab27c5371f17124b89af517fec7ae08
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 95656d2af69531848b8627d837a268e8
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 93338a174a6ae504fae758cf59ee30a3, type: 2}

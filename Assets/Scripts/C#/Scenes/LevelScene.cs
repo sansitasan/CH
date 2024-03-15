@@ -10,6 +10,7 @@ public class LevelScene : MonoBehaviour
     [SerializeField] 
     private Button[] _levelButtons;
 
+
     private void Awake()
     {
         Init();
@@ -26,9 +27,14 @@ public class LevelScene : MonoBehaviour
         GameManager.Instance.ChangeScene += Clear;
     }
 
+
+
+
+
     private void ChangeScene(int Scene)
     {
-        GameManager.Instance.SceneChangeAsync(SceneName.LevelScene, (SceneName)Scene).Forget();
+     //   GameManager.Instance.SceneChangeAsync(SceneName.LevelScene, (SceneName)Scene).Forget();
+     GameMainContoller.Instance.LoadScene(Scene);
     }
 
     private void Clear(SceneName prev, SceneName next)
