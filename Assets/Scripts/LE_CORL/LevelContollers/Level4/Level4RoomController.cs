@@ -1,12 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Build.Pipeline.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Level4RoomController : MonoBehaviour
 {
@@ -16,6 +10,7 @@ public class Level4RoomController : MonoBehaviour
     [SerializeField] GameObject fallingObstaclePrefab;
 
     IEnumerator roomPattern = null;
+    MemoryPoolManager poolManager = null;
 
     private void Start()
     {
@@ -23,12 +18,14 @@ public class Level4RoomController : MonoBehaviour
         Level4MainContoller.OnRoomStateChanged += MainController_OnRoomStateChanged;
 
         // 메모리풀 등록
-        MemoryPoolManager.Instance.RegisterMemorypoolObj(FALLING_OBSTACLE_ID, fallingObstaclePrefab);
+        poolManager = GameMainContoller.GetCore<MemoryPoolManager>();
+        poolManager.RegisterMemorypoolObj(FALLING_OBSTACLE_ID, fallingObstaclePrefab);
     }
     private void OnDisable()
     {
         Level4MainContoller.OnRoomStateChanged -= MainController_OnRoomStateChanged;
-        MemoryPoolManager.Instance.UnregisterMemoryPool(FALLING_OBSTACLE_ID);
+        poolManager.UnregisterMemoryPool(FALLING_OBSTACLE_ID);
+        poolManager = null;
     }
 
     private void MainController_OnRoomStateChanged(object sender, Level4MainContoller.RoomStateChangedEventArgs e)
@@ -88,7 +85,7 @@ public class Level4RoomController : MonoBehaviour
             // 생성
             foreach (var pos in positions)
             {
-                var go = MemoryPoolManager.Instance.GetGameObject(FALLING_OBSTACLE_ID);
+                var go = poolManager.GetGameObject(FALLING_OBSTACLE_ID);
                 go.transform.position = pos;
                 go.SetActive(true);
             }
