@@ -40,7 +40,6 @@ public class LoadingSceneController : MonoBehaviour
     {
         fadePanel.color = fadePanelColor;
         SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
-
         Fade(true).Forget();
     }
 

@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Prefabs/Laser(3Stage).prefab.meta
 guid: 86edb802278254d4e8ec3852439b5a74
 PrefabImporter:
+=======
+guid: 4242f81a7159cd849ad083bfcc033bf2
+DefaultImporter:
+>>>>>>> Stashed changes:Assets/Scenes/End1.json.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

@@ -1,13 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuUIController : MonoBehaviour
 {
-    [SerializeField] Button btn;
+    [SerializeField] Selectable first;
 
     private void OnEnable()
     {
-        btn.onClick.AddListener(() => print("menu btn click"));
+        first.Select();
     }
 }

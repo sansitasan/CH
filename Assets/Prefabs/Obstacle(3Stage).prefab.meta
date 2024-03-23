@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Prefabs/Obstacle(3Stage).prefab.meta
 guid: d10fb585e650b6644930f7c730ddb64c
 PrefabImporter:
+=======
+guid: 26a812093df01a6408a5ed80d7494353
+DefaultImporter:
+>>>>>>> Stashed changes:Assets/Scenes/End2.json.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

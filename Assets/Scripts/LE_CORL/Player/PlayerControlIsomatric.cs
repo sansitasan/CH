@@ -45,10 +45,10 @@ public class PlayerControlIsomatric : MonoBehaviour
         playerInput = input.Player_Isometric;
         playerInput.Move.performed += Move_performed;
         playerInput.Move.canceled += Move_canceled;
-        playerInput.Interaction.performed += Interaction_performed;
-        playerInput.Interaction.canceled += Interaction_canceled;
-        playerInput.Alt_Interaction.performed += Alt_Interaction_performed;
-        playerInput.Alt_Interaction.canceled += Alt_Interaction_canceled;
+        playerInput.Action1.performed += Interaction_performed;
+        playerInput.Action1.canceled += Interaction_canceled;
+        playerInput.Action2.performed += Alt_Interaction_performed;
+        playerInput.Action2.canceled += Alt_Interaction_canceled;
         playerInput.Enable();
     }
 
@@ -70,10 +70,10 @@ public class PlayerControlIsomatric : MonoBehaviour
     {
         playerInput.Move.performed -= Move_performed;
         playerInput.Move.canceled -= Move_canceled;
-        playerInput.Interaction.performed -= Interaction_performed;
-        playerInput.Interaction.canceled -= Interaction_canceled;
-        playerInput.Alt_Interaction.performed -= Alt_Interaction_performed;
-        playerInput.Alt_Interaction.canceled -= Alt_Interaction_canceled;
+        playerInput.Action1.performed -= Interaction_performed;
+        playerInput.Action1.canceled -= Interaction_canceled;
+        playerInput.Action2.performed -= Alt_Interaction_performed;
+        playerInput.Action2.canceled -= Alt_Interaction_canceled;
         playerInput.Disable();
     }
 
