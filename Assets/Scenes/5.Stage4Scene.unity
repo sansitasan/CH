@@ -286,7 +286,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4314a81ab4fc2ad44a0c0aa9c9fc8078, type: 2}
   - {fileID: 11400000, guid: b1449f87e38c3934085abf8aba48d8f7, type: 2}
   player: {fileID: 1098595499}
-  playerController: {fileID: 1098595502}
+  playerController: {fileID: 0}
   playerableDicetor: {fileID: 1847787558}
   timelinePreferences: []
   roomTriggersParent: {fileID: 1193957490}
@@ -6202,7 +6202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098595497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.94, y: 8.76, z: 0}
+  m_LocalPosition: {x: -1.85, y: 8.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6227,7 +6227,7 @@ MonoBehaviour:
   <playerRenderer>k__BackingField: {fileID: 1381772855}
   moveSpeed: 10
   camFov: 7.5
-  <skill>k__BackingField: {fileID: 11400000, guid: 422f2855db936784baa2572b916dde96, type: 2}
+  <skill>k__BackingField: {fileID: 0}
 --- !u!61 &1098595500
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6284,18 +6284,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1098595497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7287b59357d76904988ce17b7258e353, type: 3}
+  m_Script: {fileID: 11500000, guid: ec4890a61d9d8514f992c9776d58e94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionMap: 2
   vCam: {fileID: 1859143111}
   camFov: 7.5
   playerRenderer: {fileID: 1381772855}
   playerAnimator: {fileID: 1381772856}
-  moveSpeed: 10
-  skillCooldown: 10
-  skillDuration: 3
-  targetColor: {r: 1, g: 1, b: 1, a: 0.7019608}
+  moveSpeed: 5
+  skillCooldown: 5
+  skillDuration: 1
+  targetColor: {r: 0, g: 0, b: 0, a: 0.77254903}
 --- !u!114 &1167707096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6728,7 +6727,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1689717353}
   - component: {fileID: 1689717352}
-  - component: {fileID: 1689717351}
   - component: {fileID: 1689717354}
   - component: {fileID: 1689717355}
   m_Layer: 0
@@ -6738,14 +6736,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1689717351
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689717350}
-  m_Enabled: 1
 --- !u!20 &1689717352
 Camera:
   m_ObjectHideFlags: 0
@@ -6797,7 +6787,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689717350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.94, y: 8.76, z: -10}
+  m_LocalPosition: {x: -1.85, y: 8.87, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7112,20 +7102,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Asset: {fileID: -944628639613478452, guid: 4ebe4aabf834fce44898e8bf3459c141, type: 3}
   m_ActionId: 06441232-ee2e-4677-a4f3-53e8a1c021ef
---- !u!1 &1982980288 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5407951558323832963, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
-  m_PrefabInstance: {fileID: 770359055}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1982980290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1982980288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ed73c3f5a37904d8aedd111e64f6fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

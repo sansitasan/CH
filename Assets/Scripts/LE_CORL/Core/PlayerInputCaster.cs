@@ -1,4 +1,3 @@
-using Assets.Scripts.LE_CORL.Core;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -54,10 +53,18 @@ public class PlayerInputCaster : MonoBehaviour, ICore
         => currentController?.Player_Move_performed(obj);
     private void Player_Move_canceled(InputAction.CallbackContext obj)
         => currentController?.Player_Move_canceled(obj);
+
+    /// <summary>
+    /// 스페이스 바가 눌렸을 때 호출
+    /// </summary>
     private void Player_Action1_performed(InputAction.CallbackContext obj)
         => currentController?.Player_Action1_performed(obj);
     private void Player_Action1_canceled(InputAction.CallbackContext obj)
         => currentController?.Player_Action1_canceled(obj);
+
+    /// <summary>
+    /// m 키가 눌렸을 때 호출
+    /// </summary>
     private void Player_Action2_performed(InputAction.CallbackContext obj)
         => currentController?.Player_Action2_performed(obj);
     private void Player_Alt_Interaction_canceled(InputAction.CallbackContext obj)

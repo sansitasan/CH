@@ -1,4 +1,3 @@
-using Assets.Scripts.LE_CORL.Core;
 using Cinemachine;
 using System;
 using System.Collections;
@@ -45,11 +44,21 @@ public abstract class PlayerControllerBase : MonoBehaviour
     public abstract void UI_Escape(InputAction.CallbackContext callbackContext) ;
     */
 
-
+    /// <summary>
+    /// 방향키
+    /// </summary>
     public abstract void Player_Move_performed(InputAction.CallbackContext context) ;
     public abstract void Player_Move_canceled(InputAction.CallbackContext context) ;
+
+    /// <summary>
+    /// 스페이스 바
+    /// </summary>
     public abstract void Player_Action1_performed(InputAction.CallbackContext context) ;
     public virtual void Player_Action1_canceled(InputAction.CallbackContext context) { }
+
+    /// <summary>
+    /// m 키
+    /// </summary>
     public abstract void Player_Action2_performed(InputAction.CallbackContext context) ;
     public virtual void Player_Action2_canceled(InputAction.CallbackContext context) { }
 

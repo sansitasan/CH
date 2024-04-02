@@ -39,7 +39,7 @@ public class RoomGenerator : MonoBehaviour
     ///
     /// --------
 
-    public const string ROOM_DATA_PATH = "Assets/Scripts/LE_CORL/Datas/Level4RoomDatas";
+    public const string ROOM_DATA_PATH = "Assets/Scripts/LE_CORL/Datas/Level4";
 
     public Transform roomTriggerBundle;
     public Transform pointA, pointB;

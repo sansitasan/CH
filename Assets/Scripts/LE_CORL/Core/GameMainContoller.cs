@@ -159,3 +159,31 @@ public class GameMainContoller : MonoBehaviour
     }
 }
 
+/// 24.03.23 
+///     코어 업댓 2
+/// 
+///     Assets/Prefabs/Core/
+///         --- Main Controller --- 프리팹
+///         
+/// 코어 오브젝트 관련
+///     코어 오브젝트 하위에 EventSystem 배치,
+///     코어 오브젝트 하위에 AudioListener 배치
+/// 
+/// 코어 스크립트 관련
+///     싱글턴 저장 방식 일부 변경
+///     외부에서 접근 방식 일부 변경
+///     
+///     
+/// 씬 로드 관련
+///     씬 호출 순서 변경
+///         기존 | 메서드 호출 -> 로딩 씬 로드, 타겟 씬 로드 -> 로딩씬 언로드
+///         변경 | 메서드 호출 -> 로딩 씬 로드 -> 타겟 씬 로드 -> 로딩씬 언로드
+///     
+/// 인풋 관련
+///         오브젝트: 코어 프리팹 하위Player Input 
+///         스크립트: Player Input Caster 
+///         
+///         플레이어 컴포넌트: PlayerControllerBase
+///         
+///         
+///     

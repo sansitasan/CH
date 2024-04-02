@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level5Controller : MonoBehaviour
+public class Level5MapController : MonoBehaviour
 {
 
 }

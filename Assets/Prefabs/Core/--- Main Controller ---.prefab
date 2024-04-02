@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6299837226491139090}
   - component: {fileID: 770359058}
+  - component: {fileID: 227109385}
   m_Layer: 0
   m_Name: Player Input
   m_TagString: Untagged
@@ -122,6 +123,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8c437065f9dba4d976ee3670e5ed9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &227109385
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955740348750208365}
+  m_Enabled: 1
 --- !u!1 &7571034141248199737
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +185,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7571034142094062090}
   - component: {fileID: 7571034142094062089}
-  - component: {fileID: 1061271099}
   m_Layer: 0
   m_Name: --- Main Controller ---
   m_TagString: Untagged
@@ -215,14 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eba0d8e3e5539543805084057b46948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!81 &1061271099
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7571034142094062091}
-  m_Enabled: 1
 --- !u!1 &7571034142307313251
 GameObject:
   m_ObjectHideFlags: 0

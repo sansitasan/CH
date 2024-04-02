@@ -80,6 +80,13 @@ public class MemoryPoolManager : MonoBehaviour, ICore
         }
     }
 
+    public static void ReturnPooledObjectTransform(Transform tf)
+    {
+        tf.gameObject.SetActive(false);
+        var self = GameMainContoller.GetCore<MemoryPoolManager>();
+        tf.SetParent(self.transform);
+    }
+
     public static void UnregisterMemoerypool(string objName)
     {
         var self = GameMainContoller.GetCore<MemoryPoolManager>();
