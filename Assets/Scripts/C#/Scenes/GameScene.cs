@@ -13,6 +13,8 @@ public class GameScene : MonoBehaviour, IDisposable
     [SerializeField]
     protected DialogPanel _dialogPanel;
 
+    public EventTypes CurrentEventType { get; protected set; } 
+
     public static GameScene Instance { get => _instance; }
     private static GameScene _instance;
     public Camera UICam;
@@ -22,11 +24,12 @@ public class GameScene : MonoBehaviour, IDisposable
     private void Awake()
     {
         AwakeInit();
-        Vector3 x = new Vector3(10.92f, 11.4f, 11);
-        if (GameManager.Instance.BEdit)
-            StartAsyncInEdit().Forget();
+        //if (GameManager.Instance.BEdit)
+        //    StartAsyncInEdit().Forget();
+        if (GameMainContoller.Instance != null)
+            GameMainContoller.Instance.ActiveScene += Init;
         else
-            GameManager.Instance.ActiveScene += Init;
+            StartAsyncInEdit().Forget();
     }
 
     public virtual void Restart()
@@ -36,9 +39,10 @@ public class GameScene : MonoBehaviour, IDisposable
 
     public virtual void GetEvent(EventTypes type)
     {
+        CurrentEventType = type;
         if (type != EventTypes.Middle)
         {
-            _dialogPanel.StartScript(type);
+            GameMainContoller.Instance.LoadScriptsScene();
             _playerModel.DisableInput(true);
         }
     }
@@ -61,10 +65,14 @@ public class GameScene : MonoBehaviour, IDisposable
 
     protected virtual async UniTask StartAsync()
     {
-        _playerModel.Init(ResourceManager.Instance.GetScriptableObject());
+        char name = SceneManager.GetActiveScene().name[0];
+        int stage = name - '0' - 1;
+        GameMainContoller.GetCore<LResourcesManager>().TryGetStageData(stage, out var stageData);
+        _playerModel.Init(stageData);
         await _playerModel.AfterScriptInit();
         _playerModel.enabled = true;
         GetEvent(EventTypes.Start);
+        
     }
 
     protected virtual async UniTask StartAsyncInEdit()
@@ -77,9 +85,9 @@ public class GameScene : MonoBehaviour, IDisposable
         _playerModel.DisableInput(false);
     }
 
-    private void Init(SceneName prev, SceneName next)
+    private void Init()
     {
-        GameManager.Instance.ActiveScene -= Init;
+        GameMainContoller.Instance.ActiveScene -= Init;
         StartAsync().Forget();
     }
 }

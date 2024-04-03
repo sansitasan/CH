@@ -29,6 +29,7 @@ public class GameMainContoller : MonoBehaviour
     public static GameMainContoller Instance { get; private set; }
     public static bool IsIntitalized { get; private set; }
     static Dictionary<Type, ICore> cores;
+    public event Action ActiveScene;
 
     public static T GetCore<T>() where T : ICore
     {
@@ -102,6 +103,7 @@ public class GameMainContoller : MonoBehaviour
             UniTask.WaitUntil(() => !LoadingSceneController.OnAnimation)
             );
         await SceneManager.UnloadSceneAsync(OVERRIDE_LOADING_SCENE_ID).ToUniTask();
+        ActiveScene?.Invoke();
     }
 
     public void LoadScriptsScene()

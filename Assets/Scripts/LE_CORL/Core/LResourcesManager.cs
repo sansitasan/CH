@@ -42,7 +42,7 @@ public class LResourcesManager : MonoBehaviour, ICore
 
         LoadAsyncAll<TextAsset>("Scripts", () => { isScriptLoaded = true; Debug.Log("Script - loaded"); });
         LoadAsyncAll<Sprite>("Image", () => { isSpriteLoaded = true; Debug.Log("Sprites - loaded"); });
-        LoadAsyncAll<StageData>("SO", () => { isStageDataLoaded = true; Debug.Log("Script - loaded"); });
+        LoadAsyncAll<StageData>("SO", () => { isStageDataLoaded = true; Debug.Log("Data - loaded"); });
 
         await UniTask.WaitUntil(() => isScriptLoaded && isSpriteLoaded && isStageDataLoaded);
 

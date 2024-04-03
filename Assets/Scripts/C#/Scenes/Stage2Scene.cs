@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stage2Scene : GameScene
 {
@@ -33,7 +34,10 @@ public class Stage2Scene : GameScene
 
     protected override async UniTask StartAsync()
     {
-        _bd.Init(ResourceManager.Instance.GetScriptableObject(), _playerModel.transform.position + Vector3.left);
+        char name = SceneManager.GetActiveScene().name[0];
+        int stage = name - '0' - 1;
+        GameMainContoller.GetCore<LResourcesManager>().TryGetStageData(stage, out var stageData);
+        _bd.Init(stageData, _playerModel.transform.position + Vector3.left);
         _bd.AfterScriptInit().Forget();
 
         await base.StartAsync();
