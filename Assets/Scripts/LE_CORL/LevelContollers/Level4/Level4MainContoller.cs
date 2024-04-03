@@ -8,11 +8,14 @@ using Assets.Scripts.LE_CORL.Player;
 
 public class Level4MainContoller : MonoBehaviour
 {
+    public static Level4MainContoller Instance;
+
     [Header("Object Refer")]
     [SerializeField] List<PlayerEventTrigger> triggersInLevel;
     [SerializeField] List<Level4RoomRuleset> roomRulesets;
 
     [SerializeField] PlayerControlIsomatric player;
+    [SerializeField] PlayerControllerBase playerController;
 
     [Header("Timeline")]
     [SerializeField] PlayableDirector playerableDicetor;
@@ -31,7 +34,7 @@ public class Level4MainContoller : MonoBehaviour
 
     private void Awake()
     {
-        
+        Instance = this;
     }
 
     private void OnEnable()
@@ -72,7 +75,6 @@ public class Level4MainContoller : MonoBehaviour
         }
     }
 
-
     private void PlayerEventTrigger_OnPlayerExited(object sender, EventArgs e)
     {
         // 
@@ -81,35 +83,18 @@ public class Level4MainContoller : MonoBehaviour
         print($"player trigger exit: {id}");
     }
 
-    public void AddNewRoomData(Level4RoomRuleset roomRuleset)
-    {        if(roomRulesets == null)
-            roomRuleset = new Level4RoomRuleset();
-
-        roomRulesets.Add(roomRuleset);
-    }
-
-    [ContextMenu("Editor_SearchEventTriggersInChildren")]
-    public void FindAllEventTriggersInChildren()
-    {
-        var searched = GetComponentsInChildren<PlayerEventTrigger>();
-        foreach (var item in searched) 
-        {
-            if (triggersInLevel.Contains(item))
-                continue;
-            triggersInLevel.Add(item);
-        }
-    }
-
-
 
     bool IsGameOver()
     {
-        if (player.skill.m_SkillState == PlayerSkillBase.SkillState.OnActiating)
+        if (player?.skill.m_SkillState == PlayerSkillBase.SkillState.OnActiating ||
+            playerController?.SkillState == PlayerControllerBase.PlayerSkillState.OnActivating)
             return false;
         else
             return true;
     }
 
+
+    #region editor
 #if UNITY_EDITOR
     public void UpdateEventTriggerList()
     {
@@ -137,4 +122,5 @@ public class Level4MainContoller : MonoBehaviour
         roomRulesets = datas;
     }
 #endif
+    #endregion
 }

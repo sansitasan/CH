@@ -70,6 +70,20 @@ public static class Util
         }
     }
 
+    public static List<T> ShuffleList<T>(List<T> list, int seed)
+    {
+        System.Random r = new System.Random(seed);
+        for (int i = 0; i < list.Count - 1; i++)
+        {
+            int targetIDX = r.Next(i, list.Count);
+            T tmp = list[i];
+            list[i] = list[targetIDX];
+            list[targetIDX] = tmp;
+        }
+        return list;
+    }
+
+
     [Serializable]
     public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
     {
@@ -97,4 +111,5 @@ public static class Util
                 Add(keys[i], values[i]);
         }
     }
+
 }

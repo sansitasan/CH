@@ -417,7 +417,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Interaction"",
+                    ""name"": ""Action1"",
                     ""type"": ""Button"",
                     ""id"": ""c6fd81c7-1c61-4873-b5e5-cfe16dd19fc3"",
                     ""expectedControlType"": ""Button"",
@@ -426,7 +426,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Alt_Interaction"",
+                    ""name"": ""Action2"",
                     ""type"": ""Button"",
                     ""id"": ""240c61bd-7bfa-4659-b88b-0698babfd405"",
                     ""expectedControlType"": ""Button"",
@@ -562,7 +562,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interaction"",
+                    ""action"": ""Action1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -573,7 +573,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Alt_Interaction"",
+                    ""action"": ""Action2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -638,8 +638,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         // Player_Isometric
         m_Player_Isometric = asset.FindActionMap("Player_Isometric", throwIfNotFound: true);
         m_Player_Isometric_Move = m_Player_Isometric.FindAction("Move", throwIfNotFound: true);
-        m_Player_Isometric_Interaction = m_Player_Isometric.FindAction("Interaction", throwIfNotFound: true);
-        m_Player_Isometric_Alt_Interaction = m_Player_Isometric.FindAction("Alt_Interaction", throwIfNotFound: true);
+        m_Player_Isometric_Action1 = m_Player_Isometric.FindAction("Action1", throwIfNotFound: true);
+        m_Player_Isometric_Action2 = m_Player_Isometric.FindAction("Action2", throwIfNotFound: true);
         m_Player_Isometric_Pause = m_Player_Isometric.FindAction("Pause", throwIfNotFound: true);
         // Player_Side
         m_Player_Side = asset.FindActionMap("Player_Side", throwIfNotFound: true);
@@ -843,16 +843,16 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player_Isometric;
     private IPlayer_IsometricActions m_Player_IsometricActionsCallbackInterface;
     private readonly InputAction m_Player_Isometric_Move;
-    private readonly InputAction m_Player_Isometric_Interaction;
-    private readonly InputAction m_Player_Isometric_Alt_Interaction;
+    private readonly InputAction m_Player_Isometric_Action1;
+    private readonly InputAction m_Player_Isometric_Action2;
     private readonly InputAction m_Player_Isometric_Pause;
     public struct Player_IsometricActions
     {
         private @PlayerInputAction m_Wrapper;
         public Player_IsometricActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Isometric_Move;
-        public InputAction @Interaction => m_Wrapper.m_Player_Isometric_Interaction;
-        public InputAction @Alt_Interaction => m_Wrapper.m_Player_Isometric_Alt_Interaction;
+        public InputAction @Action1 => m_Wrapper.m_Player_Isometric_Action1;
+        public InputAction @Action2 => m_Wrapper.m_Player_Isometric_Action2;
         public InputAction @Pause => m_Wrapper.m_Player_Isometric_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player_Isometric; }
         public void Enable() { Get().Enable(); }
@@ -866,12 +866,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnMove;
-                @Interaction.started -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnInteraction;
-                @Interaction.performed -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnInteraction;
-                @Interaction.canceled -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnInteraction;
-                @Alt_Interaction.started -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnAlt_Interaction;
-                @Alt_Interaction.performed -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnAlt_Interaction;
-                @Alt_Interaction.canceled -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnAlt_Interaction;
+                @Action1.started -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnAction1;
+                @Action1.performed -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnAction1;
+                @Action1.canceled -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnAction1;
+                @Action2.started -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnAction2;
+                @Action2.performed -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnAction2;
+                @Action2.canceled -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnAction2;
                 @Pause.started -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_Player_IsometricActionsCallbackInterface.OnPause;
@@ -882,12 +882,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Interaction.started += instance.OnInteraction;
-                @Interaction.performed += instance.OnInteraction;
-                @Interaction.canceled += instance.OnInteraction;
-                @Alt_Interaction.started += instance.OnAlt_Interaction;
-                @Alt_Interaction.performed += instance.OnAlt_Interaction;
-                @Alt_Interaction.canceled += instance.OnAlt_Interaction;
+                @Action1.started += instance.OnAction1;
+                @Action1.performed += instance.OnAction1;
+                @Action1.canceled += instance.OnAction1;
+                @Action2.started += instance.OnAction2;
+                @Action2.performed += instance.OnAction2;
+                @Action2.canceled += instance.OnAction2;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
@@ -948,8 +948,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     public interface IPlayer_IsometricActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnInteraction(InputAction.CallbackContext context);
-        void OnAlt_Interaction(InputAction.CallbackContext context);
+        void OnAction1(InputAction.CallbackContext context);
+        void OnAction2(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
     }
     public interface IPlayer_SideActions

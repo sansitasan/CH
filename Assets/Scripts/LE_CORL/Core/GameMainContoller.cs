@@ -17,6 +17,7 @@ public interface ICore
     public void Disable();
 }
 
+[DefaultExecutionOrder(-1)]
 public class GameMainContoller : MonoBehaviour
 {
     const string BASE_LOBBY_SCENE_ID = "Lobby";
@@ -28,6 +29,7 @@ public class GameMainContoller : MonoBehaviour
 
     public static GameMainContoller Instance { get; private set; }
     public static bool IsIntitalized { get; private set; }
+    public static bool IsTest { get; private set; }
     static Dictionary<Type, ICore> cores;
 
     public static T GetCore<T>() where T : ICore
@@ -42,9 +44,7 @@ public class GameMainContoller : MonoBehaviour
 
     bool onLoadingScene = false;
     bool onScriptSceneOpen = false;
-    bool onMenuSceneOpen = false;
-
-
+    bool onPause;
 
     private void Awake()
     {
@@ -53,7 +53,6 @@ public class GameMainContoller : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             InitProject().Forget();
-
         }
         else
         {
@@ -64,6 +63,8 @@ public class GameMainContoller : MonoBehaviour
     async UniTaskVoid InitProject()
     {
         cores = new Dictionary<Type, ICore>();
+        var current = SceneManager.GetActiveScene().buildIndex;
+        IsTest = current != 0;
 
         var searched = GetComponentsInChildren<ICore>().ToList();
         foreach (var item in searched)
@@ -83,13 +84,17 @@ public class GameMainContoller : MonoBehaviour
         print("Main - ChangeActiveScene");
         Scene lastScene = SceneManager.GetActiveScene();
 
+        SceneManager.LoadScene(OVERRIDE_LOADING_SCENE_ID, LoadSceneMode.Additive);
+
+        await UniTask.WaitUntil(() => !LoadingSceneController.OnAnimation);
+
         var targetSceneLoader = SceneManager.LoadSceneAsync(targetSceneIDX, LoadSceneMode.Additive);
         targetSceneLoader.allowSceneActivation = false;
 
-        SceneManager.LoadScene(OVERRIDE_LOADING_SCENE_ID, LoadSceneMode.Additive);
-
-        await UniTask.WhenAll(UniTask.WaitUntil(() => targetSceneLoader.progress >= 0.89), UniTask.Delay(TimeSpan.FromSeconds(2)));
-        print("Main - target scene loaded");
+        await UniTask.WhenAll(
+            UniTask.WaitUntil(() => targetSceneLoader.progress >= 0.89),
+            UniTask.Delay(TimeSpan.FromSeconds(1.5f))
+            );
 
         targetSceneLoader.allowSceneActivation = true;
         Scene targetScene = SceneManager.GetSceneByBuildIndex(targetSceneIDX);
@@ -119,18 +124,20 @@ public class GameMainContoller : MonoBehaviour
     }
 
 
-    public void LoadMenuScene()
+    public bool GamePause()
     {
-        if (!onMenuSceneOpen)
+        if (!onPause)
         {
             SceneManager.LoadSceneAsync(OVERRIDE_SETTING_SCENE_ID, LoadSceneMode.Additive);
-            onMenuSceneOpen = true;
+            onPause = true;
         }
         else
         {
             SceneManager.UnloadSceneAsync(OVERRIDE_SETTING_SCENE_ID);
-            onMenuSceneOpen = false;
+            onPause = false;
         }
+        Time.timeScale = onPause ? 0.0f : 1.0f;
+        return onPause;
     }
 
     [ContextMenu("Print Core List")]
@@ -143,5 +150,40 @@ public class GameMainContoller : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        foreach (var item in cores)
+        {
+            item.Value.Disable();
+        }
+    }
 }
 
+/// 24.03.23 
+///     코어 업댓 2
+/// 
+///     Assets/Prefabs/Core/
+///         --- Main Controller --- 프리팹
+///         
+/// 코어 오브젝트 관련
+///     코어 오브젝트 하위에 EventSystem 배치,
+///     코어 오브젝트 하위에 AudioListener 배치
+/// 
+/// 코어 스크립트 관련
+///     싱글턴 저장 방식 일부 변경
+///     외부에서 접근 방식 일부 변경
+///     
+///     
+/// 씬 로드 관련
+///     씬 호출 순서 변경
+///         기존 | 메서드 호출 -> 로딩 씬 로드, 타겟 씬 로드 -> 로딩씬 언로드
+///         변경 | 메서드 호출 -> 로딩 씬 로드 -> 타겟 씬 로드 -> 로딩씬 언로드
+///     
+/// 인풋 관련
+///         오브젝트: 코어 프리팹 하위Player Input 
+///         스크립트: Player Input Caster 
+///         
+///         플레이어 컴포넌트: PlayerControllerBase
+///         
+///         
+///     

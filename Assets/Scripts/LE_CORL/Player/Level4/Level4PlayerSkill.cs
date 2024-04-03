@@ -12,7 +12,7 @@ namespace Assets.Scripts.LE_CORL.Player
         {
             m_SkillState = SkillState.OnActiating;
 
-            SpriteRenderer playerRenderer = playerMain.playerRenderer;
+            SpriteRenderer playerRenderer = player.playerRenderer;
 
             // Skill action logic
             playerRenderer.color = targetColor;
