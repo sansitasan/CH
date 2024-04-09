@@ -99,8 +99,20 @@ public class Level5PlayerController : PlayerControllerBase
 
     bool onMoveInput;
     Vector2 moveInput;
-
-    public override void Player_Action2_performed(InputAction.CallbackContext context) { }
+    bool pp;
+    public override void Player_Action2_performed(InputAction.CallbackContext context) 
+    {
+        if (!pp)
+        {
+            pp = true;
+            onRun = !onRun;
+            InvokePlayerStateChangeEvent_Editor();
+        }
+    }
+    public override void Player_Action2_canceled(InputAction.CallbackContext context)
+    {
+        pp = false;
+    }
 
     public override void Player_Move_performed(InputAction.CallbackContext context) 
     {

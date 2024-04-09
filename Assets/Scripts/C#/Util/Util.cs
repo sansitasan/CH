@@ -84,6 +84,35 @@ public static class Util
     }
 
 
+    public static int TryGetUnityObjectsOfTypeFromPath<T>(string path, out List<T> assetsFound) where T : UnityEngine.Object
+    {
+        string[] filePaths = System.IO.Directory.GetFiles(path);
+
+        int countFound = 0;
+        assetsFound = new List<T>();
+
+        Debug.Log(filePaths.Length);
+        if (filePaths == null || filePaths.Length <= 0)
+            return countFound;
+
+        for (int i = 0; i < filePaths.Length; i++)
+        {
+            UnityEngine.Object obj = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(filePaths[i]);
+            if (obj is T asset)
+            {
+                countFound++;
+                if (!assetsFound.Contains(asset))
+                {
+                    assetsFound.Add(asset);
+                }
+            }
+        }
+
+        return countFound;
+    }
+
+
+
     [Serializable]
     public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
     {
@@ -110,6 +139,7 @@ public static class Util
             for (int i = 0; i < keys.Count; i++)
                 Add(keys[i], values[i]);
         }
+
     }
 
 }

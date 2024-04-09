@@ -73,7 +73,6 @@ public class Level5MapBuilder : MonoBehaviour
     /// </summary>
     void GenerateNewMap()
     {
-        // 코인: 메모리풀 등록
         MemoryPoolManager.RegisterMemorypoolObj(COIN_OBJECTPOOLING_KEY, coinPrefab);
 
         if (currentMapRuleset == null)
@@ -212,6 +211,12 @@ public class Level5MapBuilder : MonoBehaviour
     public void UpdateMapRuleset_Editor()
     {
         UpdateMapRuleset(currentMapRuleset);
+    }
+
+    [ContextMenu("Editor: Test Generation")]
+    public void TestGeneration_Editor()
+    {
+        GenerateNewMap();
     }
 
 }
