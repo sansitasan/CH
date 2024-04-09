@@ -15,10 +15,9 @@ MonoBehaviour:
   chuckPrefabs:
   - {fileID: 4745057014771516193, guid: 1fbf76ece05981a46bcd3b2bcbbb2121, type: 3}
   - {fileID: 4745057014771516193, guid: 0c09c58c593c0254dbf8f7d497fbbb7a, type: 3}
+  - {fileID: 4745057014771516193, guid: 8b86d156bafd4d240a8300734334b981, type: 3}
   - {fileID: 4745057014771516193, guid: 4472b5c17c59c904e95c07fc14168d20, type: 3}
   - {fileID: 4745057014771516193, guid: 452b6514a86987f4e892fae57b89aa3a, type: 3}
-  - {fileID: 4745057014771516193, guid: 8b86d156bafd4d240a8300734334b981, type: 3}
   seed: 134
-  emptyChunkLenght: 4
+  emptyChunkLenght: 5
   trapDistancing: 5
-  chunkMoveSpeed: 6.1

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017226315801138858}
   m_Layer: 0
-  m_Name: Silver coin position ex
+  m_Name: Silver coin position
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5175636115748154469}
   m_Layer: 0
-  m_Name: Silver coin position ex (3)
+  m_Name: Gold coin position
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3063011510449102636}
   m_Layer: 0
-  m_Name: Silver coin position ex (1)
+  m_Name: Gold coin position
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2674798218859985921}
   m_Layer: 0
-  m_Name: Silver coin position ex (1)
+  m_Name: Silver coin position
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4745057013131993858}
   m_Layer: 0
-  m_Name: Silver Coins
+  m_Name: ---- Silver Coins ----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4745057013554349474}
   m_Layer: 0
-  m_Name: Gold Coins
+  m_Name: ---- Gold Coins ----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2443644821538057484}
   m_Layer: 0
-  m_Name: Silver coin position ex (2)
+  m_Name: Silver coin position
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -417,7 +417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3468178230889275822}
   m_Layer: 0
-  m_Name: Silver coin position ex (2)
+  m_Name: Gold coin position
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

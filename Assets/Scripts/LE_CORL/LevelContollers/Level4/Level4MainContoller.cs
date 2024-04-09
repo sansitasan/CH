@@ -23,8 +23,6 @@ public class Level4MainContoller : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] GameObject[] fallingObjectPrefabs;
 
-    public Transform roomTriggersParent;
-
     public static event EventHandler OnGameOver;
 
 
