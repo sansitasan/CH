@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Assets.Scripts.LE_CORL.Player.PlayerSkillBase;
 
 public abstract class PlayerControllerBase : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public abstract class PlayerControllerBase : MonoBehaviour
     [SerializeField] protected float camFov;
 
     public abstract PlayerSkillState SkillState { get; }
+    public static event EventHandler<SkillState> OnPlayerSkillStateChanged;
+    public class PlayerSkillStateChangedEventArgs : EventArgs
+    {
+
+    }
 
     private void OnEnable() => Init();
     private void OnDisable() => Disable();

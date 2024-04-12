@@ -241,7 +241,7 @@ public class Level5MapBuilder : MonoBehaviour
 }
 
 
-/// 240410: 5스테 업데이트
+/// 240410: 5스테 기능 업데이트 level5 func update
 /// 
 /// 맵 관련
 ///     맵 빌더: 설정 값을 읽어와 맵 오브젝트를 생성하는 기능
