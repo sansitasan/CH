@@ -20,6 +20,7 @@ public interface ICore
 [DefaultExecutionOrder(-1)]
 public class GameMainContoller : MonoBehaviour
 {
+    public const int LOBBY_SCENE_IDX = 1;
     const string BASE_LOBBY_SCENE_ID = "Lobby";
     const string BASE_STAGE_SCENE_ID = "Stage";
     const string OVERRIDE_LOADING_SCENE_ID = "Loading";
@@ -79,6 +80,8 @@ public class GameMainContoller : MonoBehaviour
     }
 
     public void LoadScene(int targetScene) => ChangeActiveScene(targetScene).Forget();
+    public void ReloadScene() => ChangeActiveScene(SceneManager.GetActiveScene().buildIndex).Forget();
+    public void LoadLobby() => ChangeActiveScene(1).Forget();
 
     async UniTaskVoid ChangeActiveScene(int targetSceneIDX)
     {

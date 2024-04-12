@@ -8,27 +8,21 @@ using Assets.Scripts.LE_CORL.Player;
 
 public class Level4MainContoller : MonoBehaviour
 {
+    public const string FALLING_OBJECT_ID = "falling_object_";
+
     public static Level4MainContoller Instance;
 
     [Header("Object Refer")]
-    [SerializeField] List<PlayerEventTrigger> triggersInLevel;
-    [SerializeField] List<Level4RoomRuleset> roomRulesets;
+    [SerializeField] List<PlayerEventTrigger> timelineTriggers;
 
-    [SerializeField] PlayerControlIsomatric player;
     [SerializeField] PlayerControllerBase playerController;
 
     [Header("Timeline")]
     [SerializeField] PlayableDirector playerableDicetor;
-    [SerializeField] TimelinePreferences[] timelinePreferences;
 
-    public Transform roomTriggersParent;
+    [Header("Prefabs")]
+    [SerializeField] GameObject[] fallingObjectPrefabs;
 
-    public static event EventHandler<RoomStateChangedEventArgs> OnRoomStateChanged;
-    public class RoomStateChangedEventArgs: EventArgs
-    {
-        public bool isStartRoom;
-        public Level4RoomRuleset roomRulesetData;
-    }
     public static event EventHandler OnGameOver;
 
 
@@ -37,14 +31,28 @@ public class Level4MainContoller : MonoBehaviour
         Instance = this;
     }
 
+
     private void OnEnable()
     {
         PlayerEventTrigger.OnPlayerEntered += PlayerEventTrigger_OnPlayerEntered;
         PlayerEventTrigger.OnPlayerExited += PlayerEventTrigger_OnPlayerExited;
 
-        triggersInLevel[0].SetTriggerActivation(true);
+        // 메모리풀 등록
+        for (int i = 0; i < fallingObjectPrefabs.Length; i++)
+        {
+            var go = fallingObjectPrefabs[i];
+            var id = FALLING_OBJECT_ID + i;
+            MemoryPoolManager.RegisterMemorypoolObj(id, go);
+        }
     }
 
+    private void OnDestroy()
+    {
+        PlayerEventTrigger.OnPlayerEntered -= PlayerEventTrigger_OnPlayerEntered;
+        PlayerEventTrigger.OnPlayerExited -= PlayerEventTrigger_OnPlayerExited;
+
+        Instance = null;
+    }
 
     private void PlayerEventTrigger_OnPlayerEntered(object sender, System.EventArgs e)
     {
@@ -55,72 +63,33 @@ public class Level4MainContoller : MonoBehaviour
         if (!id.StartsWith("level4_"))
             return;
 
-        if (id.Contains("room_"))
-        {
-            int num = int.Parse(id.Split("room_")[1]);
-            OnRoomStateChanged?.Invoke(sender, new RoomStateChangedEventArgs
-            {
-                isStartRoom = true,
-                roomRulesetData = roomRulesets[num]
-            });
-        }
         else if (id.Contains("timeline_"))
         {
 
         }
-        else if (id.Contains("fallingObstacle_"))
+        else if (id.Contains("fallingObject_"))
         {
-            if (IsGameOver())
-                Debug.Log("GameOver");
+
         }
     }
 
     private void PlayerEventTrigger_OnPlayerExited(object sender, EventArgs e)
     {
-        // 
+        return;
+        /*
         PlayerEventTrigger trigger = (PlayerEventTrigger)sender;
         var id = trigger.EventID;
         print($"player trigger exit: {id}");
+        */
     }
 
-
-    bool IsGameOver()
+    public void GameOver(PlayerControllerBase player)
     {
-        if (player?.skill.m_SkillState == PlayerSkillBase.SkillState.OnActiating ||
-            playerController?.SkillState == PlayerControllerBase.PlayerSkillState.OnActivating)
-            return false;
-        else
-            return true;
+        print("game over");
     }
 
-
-    #region editor
-#if UNITY_EDITOR
-    public void UpdateEventTriggerList()
+    public void PlayTimeline(TimelinePreferences timeline)
     {
-        if(triggersInLevel == null)
-            triggersInLevel = new List<PlayerEventTrigger>();
-        else
-            triggersInLevel.Clear();
-
-        var searched = GetComponentsInChildren<PlayerEventTrigger>();
-        foreach (var item in searched)
-        {
-            if (triggersInLevel.Contains(item))
-                continue;
-            triggersInLevel.Add(item);
-        }
+        playerableDicetor.Play();
     }
-
-    public void ReloadRoomRulesetDatas(List<Level4RoomRuleset> datas)
-    {
-        if (roomRulesets == null)
-            roomRulesets = new List<Level4RoomRuleset>();
-        else
-            roomRulesets.Clear();
-
-        roomRulesets = datas;
-    }
-#endif
-    #endregion
 }

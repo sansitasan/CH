@@ -1,27 +1,25 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.LE_CORL.Player
+public class Level4PlayerSkill : MonoBehaviour
 {
-    public class Level4PlayerSkill : PlayerSkillBase
+
+
+    SpriteRenderer m_spriteRenderer;
+    PlayerControllerBase ctrl;
+    float predelay;
+
+    public void InitSkillInfo(PlayerControllerBase player, float predelay)
     {
-        [SerializeField] Color targetColor;
-        [SerializeField] float duration;
+        ctrl = player;
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
+        this.predelay = predelay;
+        gameObject.SetActive(false);
+    }
 
-        protected override IEnumerator SkillLogic()
-        {
-            m_SkillState = SkillState.OnActiating;
-
-            SpriteRenderer playerRenderer = player.playerRenderer;
-
-            // Skill action logic
-            playerRenderer.color = targetColor;
-
-            yield return new WaitForSeconds(duration);
-
-            playerRenderer.color = Color.white; 
-
-            SetStateCooldonw();
-        }
+    private void OnEnable()
+    {
+        
     }
 }

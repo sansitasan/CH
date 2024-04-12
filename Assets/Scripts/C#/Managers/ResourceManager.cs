@@ -122,7 +122,6 @@ public class ResourceManager
             {
                 _SOs.TryAdd(GetObjectName(path), op.Result as StageData);
             }
-            Debug.Log("Loaded file name = " + GetObjectName(path));
         };
     }
 

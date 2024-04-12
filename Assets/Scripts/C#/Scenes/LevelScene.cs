@@ -27,7 +27,10 @@ public class LevelScene : MonoBehaviour
         GameManager.Instance.ChangeScene += Clear;
     }
 
-
+    private void Start()
+    {
+        _levelButtons[0].Select();
+    }
 
 
 

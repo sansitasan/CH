@@ -1,5 +1,8 @@
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 
@@ -10,7 +13,7 @@ public class TimerController : MonoBehaviour
     [SerializeField] Color highlightColor;
 
     TextMeshProUGUI mText;
-    IEnumerator timerCoroutin = null;
+    CancellationTokenSource token;
 
     private void Awake()
     {
@@ -20,22 +23,27 @@ public class TimerController : MonoBehaviour
 
     private void Start()
     {
-        Level4MainContoller.OnRoomStateChanged += Level4MainContoller_OnRoomStateChanged;
+        Level4RoomController.OnAnyRoomStateChanged += Level4RoomController_OnAnyRoomStateChanged;
     }
     private void OnDisable()
     {
-        Level4MainContoller.OnRoomStateChanged -= Level4MainContoller_OnRoomStateChanged;
+        Level4RoomController.OnAnyRoomStateChanged -= Level4RoomController_OnAnyRoomStateChanged;
     }
 
-    private void Level4MainContoller_OnRoomStateChanged(object sender, Level4MainContoller.RoomStateChangedEventArgs e)
+    private void Level4RoomController_OnAnyRoomStateChanged(object sender, Level4RoomController.RoomStateChangedEventArgs e)
     {
-        if (!e.isStartRoom)
+        if(!e.isStarted)
+        {
+            SetEmpty();
+            token.Cancel();
             return;
+        }
 
-        int duration = e.roomRulesetData.roomDuration;
-        timerCoroutin = SetTimer(duration);
-        StartCoroutine(timerCoroutin);
+        int duration = e.ruleset.roomDuration;
+        token = new CancellationTokenSource();
+        SetTimer(duration, token).Forget();
     }
+
 
     void SetEmpty()
     {
@@ -43,16 +51,15 @@ public class TimerController : MonoBehaviour
         mText.color = baseColor;
     }
 
-    IEnumerator SetTimer(int duration)
+    async UniTask SetTimer(int duration, CancellationTokenSource cancelToken)
     {
-        var _1s = new WaitForSeconds(1);
-        while(duration >= 0)
+        while (duration >= 0 && !cancelToken.IsCancellationRequested)
         {
             mText.text = duration.ToString();
             if (duration <= highlightTime)
                 mText.color = highlightColor;
 
-            yield return _1s;
+            await UniTask.Delay(TimeSpan.FromSeconds(1f));
             duration -= 1;
         }
     }

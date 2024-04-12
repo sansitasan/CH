@@ -20,7 +20,7 @@ public class Level5MapChunk : MonoBehaviour
     [Header("+ Chuck Setting")]
     public ChunkType myChuckType;
     [Range(0, 100)]
-    public byte priority;
+    public int priority;
 
     [Header("+ Bundles")]
     public Transform silverCoins;

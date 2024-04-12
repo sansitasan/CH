@@ -39,16 +39,19 @@ public class RoomGenerator : MonoBehaviour
     ///
     /// --------
 
-    public const string ROOM_DATA_PATH = "Assets/Scripts/LE_CORL/Datas/Level4";
+    public const string ROOM_DATA_PATH = "Assets/Scripts/LE_CORL/Datas/Level4/Rooms";
 
     public Transform roomTriggerBundle;
     public Transform pointA, pointB;
 
     public int roomDuration = 30;
-    public int fallingObstaclesCountMax = 10;
-    public float fallingObstaclesMinDistancing = 1;
-    public float fallingObstclesMinTimeGap = .2f;
-    public AnimationCurve fallingObstacleRatio;
+    public int generationMax = 10;
+    public float minDistancing = 1;
+    public float generationTick = .2f;
+    public AnimationCurve generationRatio;
+    [Range(0, 100)] public int[] generationPrio = new int[8];
+    public int shuffleSeed;
+    public bool isEscapeableRoom;
 
     private void Awake()
     {
