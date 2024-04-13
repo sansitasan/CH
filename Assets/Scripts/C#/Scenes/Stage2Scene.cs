@@ -33,7 +33,14 @@ public class Stage2Scene : GameScene
 
     protected override async UniTask StartAsync()
     {
+<<<<<<< HEAD
         _bd.Init(ResourceManager.Instance.GetScriptableObject());
+=======
+        char name = SceneManager.GetActiveScene().name[0];
+        int stage = name - '0' - 1;
+        LResourcesManager.TryGetStageData(stage, out var stageData);
+        _bd.Init(stageData, _playerModel.transform.position + Vector3.left);
+>>>>>>> f603817 (Divide UICamera, Fix error - Load Resource InComplete and Resource Dictionary Clear with Change Scene)
         _bd.AfterScriptInit().Forget();
 
         await base.StartAsync();

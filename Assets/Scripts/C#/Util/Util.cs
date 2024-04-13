@@ -13,9 +13,11 @@ public static class Util
         Debug.Log(message);
     }
 
-    public static T GetOrAddComponent<T>(GameObject go) where T : Component
+    public static T GetOrAddComponent<T>(GameObject go, bool bActive = true) where T : Component
     {
         T component = null;
+        if (!bActive)
+            go.SetActive(true);
         go.TryGetComponent(out component);
 
         if (component == null)
@@ -23,12 +25,16 @@ public static class Util
             Log($"{nameof(T)} is not exist {go.name}");
             component = go.AddComponent<T>();
         }
+        if (!bActive)
+            go.SetActive(false);
         return component;
     }
 
-    public static T GetOrAddComponent<T>(Transform t) where T : Component
+    public static T GetOrAddComponent<T>(Transform t, bool bActive = true) where T : Component
     {
         T component = null;
+        if (!bActive)
+            t.gameObject.SetActive(true);
         t.gameObject.TryGetComponent(out component);
 
         if (component == null)
@@ -36,22 +42,30 @@ public static class Util
             Log($"{nameof(T)} is not exist {t.name}");
             component = t.gameObject.AddComponent<T>();
         }
+        if (!bActive)
+            t.gameObject.SetActive(false);
         return component;
     }
 
-    public static T GetComponentInChild<T>(Transform t) where T : Component
+    public static T GetComponentInChild<T>(Transform t, bool bActive = true) where T : Component
     {
         T component = null;
+        if (!bActive)
+            t.gameObject.SetActive(true);
         for (int i = 0; i < t.childCount; ++i)
         {
             t.GetChild(i).TryGetComponent(out component);
 
             if (component != null)
             {
+                if (!bActive)
+                    t.gameObject.SetActive(false);
                 return component;
             }
         }
         Log($"{nameof(T)} is not exist {t.name}");
+        if (!bActive)
+            t.gameObject.SetActive(false);
         return null;
     }
 

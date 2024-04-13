@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,19 +12,28 @@ public class BaseCanvas : MonoBehaviour
 
     void Awake()
     {
-        EditInit();
+        EditAwakeInit();
         if (Application.isPlaying)
             Playinit();
     }
 
-    protected virtual void EditInit()
+    private void Start()
     {
-        _canvas = Util.GetOrAddComponent<Canvas>(gameObject);
-        _canvasScaler = Util.GetOrAddComponent<CanvasScaler>(gameObject);
+        EditStartInit();
+    }
+
+    protected virtual void EditAwakeInit()
+    {
+        _canvas = Util.GetOrAddComponent<Canvas>(gameObject, gameObject.activeSelf);
+        _canvasScaler = Util.GetOrAddComponent<CanvasScaler>(gameObject, gameObject.activeSelf);
         _canvas.renderMode = RenderMode.ScreenSpaceCamera;
         _canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         _canvasScaler.referenceResolution = new Vector2(1920, 1080);
-        _canvas.worldCamera = Camera.main;
+    }
+
+    protected virtual void EditStartInit()
+    {
+        _canvas.worldCamera = UICamera.Camera;
     }
 
     protected virtual void Playinit()

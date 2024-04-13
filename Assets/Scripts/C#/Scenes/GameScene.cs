@@ -30,7 +30,14 @@ public class GameScene : MonoBehaviour
     }
     protected virtual async UniTask StartAsync()
     {
+<<<<<<< HEAD
         _playerModel.Init(ResourceManager.Instance.GetScriptableObject());
+=======
+        char name = SceneManager.GetActiveScene().name[0];
+        int stage = name - '0' - 1;
+        LResourcesManager.TryGetStageData(stage, out var stageData);
+        _playerModel.Init(stageData);
+>>>>>>> f603817 (Divide UICamera, Fix error - Load Resource InComplete and Resource Dictionary Clear with Change Scene)
         await _playerModel.AfterScriptInit();
         _playerModel.enabled = true;
         GetEvent(EventTypes.Start);
