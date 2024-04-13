@@ -32,6 +32,7 @@ public class GameMainContoller : MonoBehaviour
     public static bool IsIntitalized { get; private set; }
     public static bool IsTest { get; private set; }
     static Dictionary<Type, ICore> cores;
+    public event Action ActiveScene;
 
     public static T GetCore<T>() where T : ICore
     {
@@ -113,6 +114,7 @@ public class GameMainContoller : MonoBehaviour
             fade.FadeInScene(0.5f, mode)
             );
         await SceneManager.UnloadSceneAsync(OVERRIDE_LOADING_SCENE_ID).ToUniTask();
+        ActiveScene?.Invoke();
     }
 
     public void LoadScriptsScene()

@@ -27,6 +27,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - SO
+  - m_GUID: e4dd40a4bd53bcf46acae2e0ea1149cf
+    m_Address: Data
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Scripts
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c3180ffe2ef849744a2fa8ccc9bc4291, type: 2}
   m_SchemaSet:

@@ -92,6 +92,15 @@ public class GameManager
         ActiveScene?.Invoke(prev, next);
     }
 
+    public async UniTask FadeInOutAsync(Action action, float time = 0.5f, FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base)
+    {
+        await _fadeCanvas.FadeOutScene(time, mode);
+
+        action?.Invoke();
+
+        await _fadeCanvas.FadeInScene(time, mode);
+    }
+
     public void SuccessSave(short stage)
     {
         if (_stage.stage < stage)

@@ -66,14 +66,10 @@ Material:
     - _DistortionStrengthScaled: 0.1
     - _DstBlend: 0
     - _EnableExternalAlpha: 0
-<<<<<<< HEAD
-    - _Fade: 0.9849983
-=======
     - _Fade: 0.015394539
->>>>>>> f603817 (Divide UICamera, Fix error - Load Resource InComplete and Resource Dictionary Clear with Change Scene)
     - _FlipbookBlending: 0
     - _FlipbookMode: 0
-    - _Mode: 1
+    - _Mode: 0
     - _QueueOffset: 0
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1

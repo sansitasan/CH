@@ -42,10 +42,16 @@ public class Character2DAnim : CharacterAnim
         switch (state)
         {
             case PlayerStates.Idle:
-                _anim.SetBool("Move", false);
+                _anim.SetInteger("State", 0);
                 break;
             case PlayerStates.Move:
-                _anim.SetBool("Move", true);
+                _anim.SetInteger("State", 1);
+                break;
+            case PlayerStates.Skill:
+                _anim.SetInteger("State", 2);
+                break;
+            case PlayerStates.Dead:
+                _anim.SetInteger("State", 3);
                 break;
         }
     }

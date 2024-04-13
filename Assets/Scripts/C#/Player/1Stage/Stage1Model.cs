@@ -17,8 +17,8 @@ public class Stage1Model : PlayerModel
     {
         _rb = GetComponent<Rigidbody2D>();
         _pa = new Character1DAnim(transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, _rb);
-        _disposeList.Add(_pa);
         base.Init(so);
+        _disposeList.Add(_pa);
         _rayMask = LayerMask.GetMask("Ground");
     }
 

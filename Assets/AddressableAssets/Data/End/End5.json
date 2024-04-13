@@ -1,0 +1,816 @@
+<<<<<<< HEAD
+{"scripts":[
+    {
+        "talkname": [
+          "<color=#8182b8>???"
+        ],
+        "discription": [
+          1,
+          "0"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "...꿈...이뤄야...하..는..."
+        }
+      },
+      {
+        "talkname": [
+          "<color=#4fa8e0>뿡댕이3"
+        ],
+        "discription": [
+          1,
+          "2"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "...해치웠나?!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "8",
+          "dialog": "야!!!!!!!!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "10",
+          "dialog": "....."
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "5",
+          "dialog": "그래 요즘 이말로 2페이즈 가는건 너무 뻔하긴 했어...우왁?!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#4fa8e0>뿡댕이2"
+        ],
+        "discription": [
+          1,
+          "2"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "야이 씨ㅣㅣㅣㅣㅣㅂ 보물고 다 무너진다!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#4fa8e0>뿡댕이1"
+        ],
+        "discription": [
+          1,
+          "2"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "추락한다아ㅏㅏㅏㅏㅏㅏ!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "5",
+          "dialog": "뿡댕아 침착해! 침착하면 살수 있어!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#4fa8e0>뿡댕이2"
+        ],
+        "discription": [
+          1,
+          "2"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "침착하게 유언이나 남겨 타비야."
+        }
+      },
+      {
+        "talkname": [
+          "<color=#4fa8e0>뿡댕이1"
+        ],
+        "discription": [
+          1,
+          "2"
+        ],
+        "data": {
+          "state": "5",
+          "dialog": "저기 거울! 거울이다!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "거울? 유메의 거울?! 그래 저거다!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "으으으으으읏?! 잡았다!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#4fa8e0>뿡댕이2"
+        ],
+        "discription": [
+          1,
+          "2"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "도동년아 마지막까지 보물 욕심내냐?!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "3",
+          "dialog": "모르면 조용히하고 있어 뿡댕아! 제발...!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "(보물사냥꾼 사이에는 한가지 소문이 있다.)"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "(세상에서 가장 특별한 유물인 '유메의 거울'.\n이 거울에 마음속에서 진심으로 우러나는 소원을 빌면 그 어떤 소원이던 이루어진다고.)"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "(지금 내가 간절히 바라는 소원은)"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "2",
+          "dialog": ".......?"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "8",
+          "dialog": "뭐야?! 아무 소용 없잖아??!!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#4fa8e0>뿡댕이2"
+        ],
+        "discription": [
+          1,
+          "2"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "아오 이년을 믿는게 아니었는데!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "8",
+          "dialog": "이렇게된 이상 뿌대이 똘똘뭉쳐! 뿌대이 쿠션이다!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#4fa8e0>뿡댕이1"
+        ],
+        "discription": [
+          1,
+          "2"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "아오 모르겠다 일단 뭉쳐! 지상이다아아아!!!!!!!!!!!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "0"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "[쾅!!!!!!!!]"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "....."
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "5",
+          "dialog": "...나 살았나?"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#8182b8>강지"
+        ],
+        "discription": [
+          1,
+          "0"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": ".......?"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "6",
+          "dialog": "히익...?!"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#8182b8>강지"
+        ],
+        "discription": [
+          1,
+          "0"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": ".....너."
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "5",
+          "dialog": "ㄴ,네넹...?"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#8182b8>강지"
+        ],
+        "discription": [
+          1,
+          "0"
+        ],
+        "data": {
+          "state": "1",
+          "dialog": "아이돌 한번 해볼래?"
+        }
+      },
+      {
+        "talkname": [
+          "<color=#D1F1FF>아라하시 타비"
+        ],
+        "discription": [
+          1,
+          "1"
+        ],
+        "data": {
+          "state": "6",
+          "dialog": "...뭐라고요?"
+        }
+      }
+    ]}
+=======
+{
+  
+  "scripts": [
+    {
+      "talkname": [
+        "<color=#8182b8>???"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "...꿈...이뤄야...하..는..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이3"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "...해치웠나?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "8",
+        "dialog": "야!!!!!!!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "10",
+        "dialog": "....."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "그래 요즘 이말로 2페이즈 가는건 너무 뻔하긴 했어...우왁?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "야이 씨ㅣㅣㅣㅣㅣㅂ 보물고 다 무너진다!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "추락한다아ㅏㅏㅏㅏㅏㅏ!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "뿡댕아 침착해! 침착하면 살수 있어!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "침착하게 유언이나 남겨 타비야."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "저기 거울! 거울이다!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "거울? 유메의 거울?! 그래 저거다!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "으으으으으읏?! 잡았다!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "도동년아 마지막까지 보물 욕심내냐?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "3",
+        "dialog": "모르면 조용히하고 있어 뿡댕아! 제발...!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "(보물사냥꾼 사이에는 한가지 소문이 있다.)"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "(세상에서 가장 특별한 유물인 '유메의 거울'.\n이 거울에 마음속에서 진심으로 우러나는 소원을 빌면 그 어떤 소원이던 이루어진다고.)"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "(지금 내가 간절히 바라는 소원은)"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "2",
+        "dialog": ".......?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "8",
+        "dialog": "뭐야?! 아무 소용 없잖아??!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이2"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "아오 이년을 믿는게 아니었는데!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "8",
+        "dialog": "이렇게된 이상 뿌대이 똘똘뭉쳐! 뿌대이 쿠션이다!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "아오 모르겠다 일단 뭉쳐! 지상이다아아아!!!!!!!!!!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[쾅!!!!!!!!]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "....."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "...나 살았나?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>강지"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": ".......?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "6",
+        "dialog": "히익...?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>강지"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": ".....너."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "ㄴ,네넹...?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#8182b8>강지"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "아이돌 한번 해볼래?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "6",
+        "dialog": "...뭐라고요?"
+      }
+    }
+  ]
+}
+>>>>>>> KS

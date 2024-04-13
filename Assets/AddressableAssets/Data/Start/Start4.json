@@ -1,0 +1,532 @@
+<<<<<<< HEAD
+{"scripts": [
+
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이1"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "무너진다...용궁이 무너져내리고있어!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "5",
+      "dialog": "흔들린다 뿌대이들 꽉잡아!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이5"
+    ],
+    "discription": [
+      1,
+      "0"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "[데구르르르]"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이5"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "앗?! 주머니에 있던 아싸의 보주가!!!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "8",
+      "dialog": "아오 저 귀한걸 놓쳐?! 위험하니까 일단 빨리가자!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이5"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "잠깐만...잡을수있어 기다려...! 거의 다 잡았..."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이4"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "냠!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이5"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "응?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "5",
+      "dialog": "엥??? 아니 그걸 너가 왜 먹는거야?!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이4"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "으으...따비야...나 몸이 이상해...까매질꺼같아."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "8",
+      "dialog": "바닥에 있는걸 주워먹으니 그렇지!!!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "8",
+      "dialog": "뱉어! 뱉어! 빨리뱉어!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이4"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "나도 같이 다녔는데 왜 나한탠 관심 안주는거야...? 나도 열심히 얘기했는데 다른 애들 말만 듣고."
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "8",
+      "dialog": "그게 대체 무슨 소리야?!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이1"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "타비야 위에!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "5",
+      "dialog": "헉...꺄아아아아악!!!"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이4"
+    ],
+    "discription": [
+      1,
+      "0"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "[훅]"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#1f1c2e>흑화뿡댕이"
+    ],
+    "discription": [
+      1,
+      "4"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "미҉친҉새҉끼҉들҉이҉ ҉원҉래҉ ҉보҉지҉도҉ ҉않҉았҉으҉면҉서 나҉는҉특҉별҉한҉데҉"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#D1F1FF>아라하시 타비"
+    ],
+    "discription": [
+      1,
+      "1"
+    ],
+    "data": {
+      "state": "6",
+      "dialog": "어? 살았어...?"
+    }
+  },
+  {
+    "talkname": [
+      "<color=#4fa8e0>뿡댕이1"
+    ],
+    "discription": [
+      1,
+      "2"
+    ],
+    "data": {
+      "state": "1",
+      "dialog": "멍때릴 시간 없어! 일단 보물고로 달려!!!"
+    }
+  }
+    ]}
+=======
+{
+  
+  "scripts": [
+
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "무너진다...용궁이 무너져내리고있어!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "흔들린다 뿌대이들 꽉잡아!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이5"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[데구르르르]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이5"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "앗?! 주머니에 있던 아싸의 보주가!!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "8",
+        "dialog": "아오 저 귀한걸 놓쳐?! 위험하니까 일단 빨리가자!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이5"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "잠깐만...잡을수있어 기다려...! 거의 다 잡았..."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이4"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "냠!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이5"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "응?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "엥??? 아니 그걸 너가 왜 먹는거야?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이4"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "으으...따비야...나 몸이 이상해...까매질꺼같아."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "8",
+        "dialog": "바닥에 있는걸 주워먹으니 그렇지!!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "8",
+        "dialog": "뱉어! 뱉어! 빨리뱉어!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이4"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "나도 같이 다녔는데 왜 나한탠 관심 안주는거야...? 나도 열심히 얘기했는데 다른 애들 말만 듣고."
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "8",
+        "dialog": "그게 대체 무슨 소리야?!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "타비야 위에!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "5",
+        "dialog": "헉...꺄아아아아악!!!"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이4"
+      ],
+      "discription": [
+        1,
+        "0"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "[훅]"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#1f1c2e>흑화뿡댕이"
+      ],
+      "discription": [
+        1,
+        "4"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "미҉친҉새҉끼҉들҉이҉ ҉원҉래҉ ҉보҉지҉도҉ ҉않҉았҉으҉면҉서 나҉는҉특҉별҉한҉데҉"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#D1F1FF>아라하시 타비"
+      ],
+      "discription": [
+        1,
+        "1"
+      ],
+      "data": {
+        "state": "6",
+        "dialog": "어? 살았어...?"
+      }
+    },
+    {
+      "talkname": [
+        "<color=#4fa8e0>뿡댕이1"
+      ],
+      "discription": [
+        1,
+        "2"
+      ],
+      "data": {
+        "state": "1",
+        "dialog": "멍때릴 시간 없어! 일단 보물고로 달려!!!"
+      }
+    }
+  ]
+}
+>>>>>>> KS
