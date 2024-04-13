@@ -27,7 +27,7 @@ public class GameMainContoller : MonoBehaviour
     const string OVERRIDE_SCRIPT_SCENE_ID = "ScriptScene";
     const string OVERRIDE_SETTING_SCENE_ID = "Menu";
 
-
+    private FadeCanvas fade;
     public static GameMainContoller Instance { get; private set; }
     public static bool IsIntitalized { get; private set; }
     public static bool IsTest { get; private set; }
@@ -64,6 +64,9 @@ public class GameMainContoller : MonoBehaviour
 
     async UniTaskVoid InitProject()
     {
+        fade = GetComponentInChildren<FadeCanvas>(true);
+        fade.gameObject.SetActive(true);
+        fade.gameObject.SetActive(false);
         cores = new Dictionary<Type, ICore>();
         var current = SceneManager.GetActiveScene().buildIndex;
         IsTest = current != 0;
@@ -79,18 +82,18 @@ public class GameMainContoller : MonoBehaviour
         Debug.Log("Init Done");
     }
 
-    public void LoadScene(int targetScene) => ChangeActiveScene(targetScene).Forget();
-    public void ReloadScene() => ChangeActiveScene(SceneManager.GetActiveScene().buildIndex).Forget();
-    public void LoadLobby() => ChangeActiveScene(1).Forget();
+    public void LoadScene(int targetScene, FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base) => ChangeActiveScene(targetScene, mode).Forget();
+    public void ReloadScene(FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base) => ChangeActiveScene(SceneManager.GetActiveScene().buildIndex, mode).Forget();
+    public void LoadLobby(FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base) => ChangeActiveScene(1, mode).Forget();
 
-    async UniTaskVoid ChangeActiveScene(int targetSceneIDX)
+    async UniTaskVoid ChangeActiveScene(int targetSceneIDX, FadeCanvas.FadeMode mode)
     {
         print("Main - ChangeActiveScene");
         Scene lastScene = SceneManager.GetActiveScene();
 
         SceneManager.LoadScene(OVERRIDE_LOADING_SCENE_ID, LoadSceneMode.Additive);
 
-        await UniTask.WaitUntil(() => !LoadingSceneController.OnAnimation);
+        await fade.FadeOutScene(0.5f, mode);
 
         var targetSceneLoader = SceneManager.LoadSceneAsync(targetSceneIDX, LoadSceneMode.Additive);
         targetSceneLoader.allowSceneActivation = false;
@@ -107,8 +110,8 @@ public class GameMainContoller : MonoBehaviour
         print("Main - active scene changed");
 
         await UniTask.WhenAll(
-            SceneManager.UnloadSceneAsync(lastScene).ToUniTask(), 
-            UniTask.WaitUntil(() => !LoadingSceneController.OnAnimation)
+            SceneManager.UnloadSceneAsync(lastScene).ToUniTask(),
+            fade.FadeInScene(0.5f, mode)
             );
         await SceneManager.UnloadSceneAsync(OVERRIDE_LOADING_SCENE_ID).ToUniTask();
         ActiveScene?.Invoke();
@@ -152,14 +155,6 @@ public class GameMainContoller : MonoBehaviour
         foreach (var item in searched)
         {
             print($"{item.GetType().ToString()} : {item}");
-        }
-    }
-
-    private void OnDisable()
-    {
-        foreach (var item in cores)
-        {
-            item.Value.Disable();
         }
     }
 }

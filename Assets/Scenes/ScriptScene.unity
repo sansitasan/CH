@@ -449,7 +449,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1690351674}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TestScript, Assembly-CSharp
         m_MethodName: Click
         m_Mode: 1
@@ -589,83 +589,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1690351669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8811644ba3b1ea48915837b5d0a16a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2adfcfc8c2c62be46a5b8de9845edf1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceManager:
-    _scripts:
-      keys:
-      - End1
-      - End2
-      - End3
-      - End4
-      - End5
-      - Eplilog1
-      - Eplilog2
-      - Start1
-      - Start2
-      - Start3
-      - Start4
-      - Start5
-      - Stage0
-      values:
-      - {fileID: 4900000, guid: 75130c1b4561a0c4ba88a5dfd9a5c3b2, type: 3}
-      - {fileID: 4900000, guid: 041baa0d655155349a6637bc5e51e07d, type: 3}
-      - {fileID: 4900000, guid: bc9d453e468a6ab40b30a6715a68e49c, type: 3}
-      - {fileID: 4900000, guid: b428738631ffa6e4991641fc7dd75197, type: 3}
-      - {fileID: 4900000, guid: 280a175bf2927414396d7a48e1caf379, type: 3}
-      - {fileID: 4900000, guid: e2e574fbb9d11e44e827fa763975aa91, type: 3}
-      - {fileID: 4900000, guid: dfccfd73e3bbdf0469a91e5300cc09ca, type: 3}
-      - {fileID: 4900000, guid: ae235a9125727894a998d532c947a14d, type: 3}
-      - {fileID: 4900000, guid: e17e38d3332b0b341877014b0789a59d, type: 3}
-      - {fileID: 4900000, guid: 0b403ff0921315b40bd8d832215fdedf, type: 3}
-      - {fileID: 4900000, guid: decd47d35e62c8148be85f73801e859b, type: 3}
-      - {fileID: 4900000, guid: fa0059125e7a9cd428b5ec9c7b5cda7c, type: 3}
-      - {fileID: 4900000, guid: 39b08702b55f7d044b5a65ddef97e330, type: 3}
-    _sprites:
-      keys:
-      - Tabi_Angry
-      - Tabi_Curious
-      - Tabi_Disgusting
-      - Tabi_Embarrassment
-      - Tabi_Idle
-      - Tabi_Quip
-      - Tabi_Sad
-      - Tabi_Shy
-      - Tabi_Smile
-      - Tabi_Smile_Big
-      - KakaoTalk_20231219_204716885
-      - KakaoTalk_20231219_204716885_01
-      - KakaoTalk_20231219_204716885_02
-      - KakaoTalk_20231219_204716885_03
-      - KakaoTalk_20231219_204716885_04
-      - KakaoTalk_20231219_204716885_05
-      - KakaoTalk_20231219_204716885_06
-      - KakaoTalk_20231219_204716885_07
-      - KakaoTalk_20231219_204716885_08
-      values:
-      - {fileID: 21300000, guid: d3df9d9360d025f4ea2b9db118f13ba2, type: 3}
-      - {fileID: 21300000, guid: bf144e6d3f91ae34abacb97bf2fa3581, type: 3}
-      - {fileID: 21300000, guid: d8a27111849951d42ab6d5d21088b52b, type: 3}
-      - {fileID: 21300000, guid: f22539386043278489770a80ca7b19df, type: 3}
-      - {fileID: 21300000, guid: 521f5366726864844a00d799a099cbf2, type: 3}
-      - {fileID: 21300000, guid: 274674cdec4f6b54e9a7e7d7dbd3c814, type: 3}
-      - {fileID: 21300000, guid: 1695c843fd9ce9841a01810bb6c891bb, type: 3}
-      - {fileID: 21300000, guid: 942bc87f8a889c04da3cb4ea663b81b9, type: 3}
-      - {fileID: 21300000, guid: f58ae261feab5474783cf5698d7c0210, type: 3}
-      - {fileID: 21300000, guid: b551095ea13975a4cb50aeac848aaea8, type: 3}
-      - {fileID: 21300000, guid: e9c3ae144b3467f41b4515f53bb3a86d, type: 3}
-      - {fileID: 21300000, guid: f97ffd71670f8794f94a60f7181860d5, type: 3}
-      - {fileID: 21300000, guid: 0e920c5c672faa444a660e0f3ebf4335, type: 3}
-      - {fileID: 21300000, guid: 2961841efa7a1d2439ce7c6850427eff, type: 3}
-      - {fileID: 21300000, guid: f7fad7f6afa8ba941961333d509e49fb, type: 3}
-      - {fileID: 21300000, guid: 0f69c2e0b92492a4fbe82f4704c42a0b, type: 3}
-      - {fileID: 21300000, guid: 372e4ffeb899b5b4e86960487c96b812, type: 3}
-      - {fileID: 21300000, guid: 1d385bcafe4dd0b4cba19c77895cc6a4, type: 3}
-      - {fileID: 21300000, guid: 8c767b01d572cbe4abff7d38189a5a8e, type: 3}
-  <State>k__BackingField: 0
-  _scriptName: 
-  _speed: 1
 --- !u!1 &1917783397
 GameObject:
   m_ObjectHideFlags: 0

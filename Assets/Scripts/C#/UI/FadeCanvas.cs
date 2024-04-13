@@ -2,11 +2,13 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FadeCanvas : BaseCanvas
 {
+    [SerializeField]
     private Image _image;
     [SerializeField]
     private Material _m;
@@ -19,17 +21,16 @@ public class FadeCanvas : BaseCanvas
         Circle
     }
 
-    protected override void EditInit()
+    protected override void EditAwakeInit()
     {
-        base.EditInit();
-        _image = Util.GetOrAddComponent<Image>(transform.GetChild(0));
-        _canvas.sortingOrder = 100;
+        base.EditAwakeInit();
+        _image = Util.GetComponentInChild<Image>(transform, gameObject.activeSelf);
+        _canvas.sortingOrder = 20;
     }
 
     protected override void Playinit()
     {
         base.Playinit();
-        DontDestroyOnLoad(gameObject);
         SceneManager.activeSceneChanged += SetCamera;
     }
 
@@ -41,7 +42,10 @@ public class FadeCanvas : BaseCanvas
         if (mode == FadeMode.Base)
             _m.SetInt(_materialMode, 0);
         else
+        {
             _m.SetInt(_materialMode, 1);
+            Debug.Log(Mouse.current.position.x);
+        }
 
         while (temp > 0)
         {
@@ -58,7 +62,10 @@ public class FadeCanvas : BaseCanvas
         if (mode == FadeMode.Base)
             _m.SetInt(_materialMode, 0);
         else
+        {
             _m.SetInt(_materialMode, 1);
+            Debug.Log(Mouse.current.position.y);
+        }
 
         while (temp > 0)
         {

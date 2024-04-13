@@ -67,7 +67,7 @@ public class GameScene : MonoBehaviour, IDisposable
     {
         char name = SceneManager.GetActiveScene().name[0];
         int stage = name - '0' - 1;
-        GameMainContoller.GetCore<LResourcesManager>().TryGetStageData(stage, out var stageData);
+        LResourcesManager.TryGetStageData(stage, out var stageData);
         _playerModel.Init(stageData);
         await _playerModel.AfterScriptInit();
         _playerModel.enabled = true;

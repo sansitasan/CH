@@ -51,7 +51,7 @@ public class LResourcesManager : MonoBehaviour, ICore
     }
 
 
-    private void LoadAsync<T>(string addressableID)
+    private void LoadAsync<T>(string addressableID, int total, Action callback)
     {
         if (_scripts.ContainsKey(addressableID) || _sprites.ContainsKey(addressableID))
             return;
@@ -62,16 +62,22 @@ public class LResourcesManager : MonoBehaviour, ICore
             if (typeof(T) == typeof(TextAsset))
             {
                 _scripts.TryAdd(GetObjectName(addressableID), op.Result as TextAsset);
+                if (total == _scripts.Count)
+                    callback();
             }
 
             else if (typeof(T) == typeof(Sprite))
             {
                 _sprites.TryAdd(GetObjectName(addressableID), op.Result as Sprite);
+                if (total == _sprites.Count)
+                    callback();
             }
 
             else
             {
                 _stageDatas.TryAdd(GetObjectName(addressableID), op.Result as StageData);
+                if (total == _stageDatas.Count)
+                    callback();
             }
         };
     }
@@ -85,9 +91,8 @@ public class LResourcesManager : MonoBehaviour, ICore
             int total = op.Result.Count;
             for (int i = 0; i < total; i++)
             {
-                LoadAsync<T>(op.Result[i].PrimaryKey);
+                LoadAsync<T>(op.Result[i].PrimaryKey, total, callback);
             }
-            callback();
         };
     }
 
@@ -135,4 +140,10 @@ public class LResourcesManager : MonoBehaviour, ICore
     }
 
     #endregion
+
+    public static void CheckInit()
+    {
+        var self = GameMainContoller.GetCore<LResourcesManager>();
+        Debug.Log(self._stageDatas.Count);
+    }
 }

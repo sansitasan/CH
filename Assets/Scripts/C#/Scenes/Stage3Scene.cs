@@ -50,7 +50,7 @@ public class Stage3Scene : GameScene
     {
         char name = SceneManager.GetActiveScene().name[0];
         int stage = name - '0' - 1;
-        GameMainContoller.GetCore<LResourcesManager>().TryGetStageData(stage, out var stageData);
+        LResourcesManager.TryGetStageData(stage, out var stageData);
         _bd.Init(stageData, _playerModel.transform.position + Vector3.left);
         _bd.AfterScriptInit().Forget();
 
@@ -79,7 +79,7 @@ public class Stage3Scene : GameScene
         {
             char name = SceneManager.GetActiveScene().name[0];
             int stage = name - '0' - 1;
-            GameMainContoller.GetCore<LResourcesManager>().TryGetStageData(stage, out var stageData);
+            LResourcesManager.TryGetStageData(stage, out var stageData);
             _playerModel.Init(stageData);
         }
         _playerModel.DisableInput(false);

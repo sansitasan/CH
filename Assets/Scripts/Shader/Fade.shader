@@ -2,9 +2,12 @@ Shader"Unlit/Fade"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+        _MainTex ("Texture", 2D) = "black" {}
+        _Color ("Color", Color) = (0, 0, 0, 1)
         _Mode ("FadeMode", int) = 0
         _Fade ("Fade", range(0, 1.0)) = 0
+        _X ("X", range(0, 1.0)) = 0
+        _Y ("Y", range(0, 1.0)) = 0
     }
     SubShader
     {
@@ -44,6 +47,8 @@ Shader"Unlit/Fade"
             float4 _MainTex_ST;
             int _Mode;
             float _Fade;
+            float _X, _Y;
+            float4 _Color;
             
             v2f vert(appdata v)
             {
@@ -57,14 +62,14 @@ Shader"Unlit/Fade"
             float4 frag(v2f i) : SV_Target
             {
                 UNITY_SETUP_INSTANCE_ID(i);
-                float4 col = tex2D(_MainTex, i.uv);
+                float4 col = _Color;
                 if (_Mode == 0)
                     col.a = _Fade;
                 else if (_Mode == 1)
                 {
-                    float range = sqrt(pow(i.uv.x - 0.5, 2) + pow(i.uv.y - 0.5, 2) * 9 / 16);
+                    float range = sqrt(pow(i.uv.x - _X, 2) + pow(i.uv.y - _Y, 2) * 9 / 16);
                     //비율 때문에 일정한 크기로 줄어들지 않음 - 비율을 맞춤
-                    if (range * 2 < (1.0 - _Fade) * sqrt(2))
+                    if (range < (1.0 - _Fade) * sqrt(2))
                         col.a = 0;
                     else
                         col.a = 1;

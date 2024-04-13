@@ -50,7 +50,7 @@ public class ScriptScene : MonoBehaviour
 
         string targetName = $"{GameScene.Instance.CurrentEventType}{stage}";
 
-        if (!GameMainContoller.GetCore<LResourcesManager>().TryGetScriptData(targetName, out _scripts))
+        if (!LResourcesManager.TryGetScriptData(targetName, out _scripts))
         {
             Debug.LogError("cannot find script!");
         }
@@ -91,7 +91,7 @@ public class ScriptScene : MonoBehaviour
         try
         {
             _name.text = script.talkname[0];
-            GameMainContoller.GetCore<LResourcesManager>().TryGetSprite(script.character, script.emotion, out _temp);
+            LResourcesManager.TryGetSprite(script.character, script.emotion, out _temp);
             if (_temp != null)
             {
                 _image.sprite = _temp;
