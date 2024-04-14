@@ -23,7 +23,6 @@ public class GameMainContoller : MonoBehaviour
     public const int LOBBY_SCENE_IDX = 1;
     const string BASE_LOBBY_SCENE_ID = "Lobby";
     const string BASE_STAGE_SCENE_ID = "Stage";
-    const string OVERRIDE_LOADING_SCENE_ID = "Loading";
     const string OVERRIDE_SCRIPT_SCENE_ID = "ScriptScene";
     const string OVERRIDE_SETTING_SCENE_ID = "Menu";
 
@@ -44,7 +43,7 @@ public class GameMainContoller : MonoBehaviour
         return (T)cores[typeof(T)];
     }
 
-    bool onLoadingScene = false;
+    bool onLoading = false;
     bool onScriptSceneOpen = false;
     bool onPause;
 
@@ -83,19 +82,27 @@ public class GameMainContoller : MonoBehaviour
     }
 
     public void LoadScene(int targetScene, FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base) => ChangeActiveScene(targetScene, mode).Forget();
-    public void ReloadScene(FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base) => ChangeActiveScene(SceneManager.GetActiveScene().buildIndex, mode).Forget();
+    public void ReloadScene(FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base)
+    {
+        ChangeActiveScene(SceneManager.GetActiveScene().buildIndex, mode).Forget();
+        
+    }
     public void LoadLobby(FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base) => ChangeActiveScene(1, mode).Forget();
 
     async UniTaskVoid ChangeActiveScene(int targetSceneIDX, FadeCanvas.FadeMode mode)
     {
+        if (onPause)
+            GamePause();
+        if (onScriptSceneOpen)
+            LoadScriptsScene();
+
         print("Main - ChangeActiveScene");
         Scene lastScene = SceneManager.GetActiveScene();
-
-        SceneManager.LoadScene(OVERRIDE_LOADING_SCENE_ID, LoadSceneMode.Additive);
+        onLoading = true;
 
         await fade.FadeOutScene(0.5f, mode);
 
-        var targetSceneLoader = SceneManager.LoadSceneAsync(targetSceneIDX, LoadSceneMode.Additive);
+        AsyncOperation targetSceneLoader = SceneManager.LoadSceneAsync(targetSceneIDX, LoadSceneMode.Additive);
         targetSceneLoader.allowSceneActivation = false;
 
         await UniTask.WhenAll(
@@ -104,16 +111,14 @@ public class GameMainContoller : MonoBehaviour
             );
 
         targetSceneLoader.allowSceneActivation = true;
-        Scene targetScene = SceneManager.GetSceneByBuildIndex(targetSceneIDX);
-        await UniTask.WaitUntil(() => SceneManager.SetActiveScene(targetScene));
-
-        print("Main - active scene changed");
+        await UniTask.WaitUntil(() => targetSceneLoader.isDone);
 
         await UniTask.WhenAll(
             SceneManager.UnloadSceneAsync(lastScene).ToUniTask(),
             fade.FadeInScene(0.5f, mode)
             );
-        await SceneManager.UnloadSceneAsync(OVERRIDE_LOADING_SCENE_ID).ToUniTask();
+
+        onLoading = false;
         ActiveScene?.Invoke();
     }
 
@@ -134,6 +139,9 @@ public class GameMainContoller : MonoBehaviour
 
     public bool GamePause()
     {
+        if (onLoading || SceneManager.GetActiveScene().buildIndex == 0)
+            return false;
+
         if (!onPause)
         {
             SceneManager.LoadSceneAsync(OVERRIDE_SETTING_SCENE_ID, LoadSceneMode.Additive);
@@ -144,7 +152,7 @@ public class GameMainContoller : MonoBehaviour
             SceneManager.UnloadSceneAsync(OVERRIDE_SETTING_SCENE_ID);
             onPause = false;
         }
-        Time.timeScale = onPause ? 0.0f : 1.0f;
+        Time.timeScale = onPause ? 0 : 1;
         return onPause;
     }
 
@@ -185,5 +193,14 @@ public class GameMainContoller : MonoBehaviour
 ///         
 ///         플레이어 컴포넌트: PlayerControllerBase
 ///         
-///         
+/// 
+/// 24.04.14 fix bug -load scene : 코어 업뎃 3차
+/// 씬 로드 관련
+///     Active Scene 을 넘겨주는 로직 일부 변경
+///     로딩 중 퍼즈가 불가능하게 변경
+///     타이틀 씬에서 퍼즈가 불가능하게 변경
+///     
+///     게임 씬에서 "다시하기"를 선택했을 때, 중복 씬이 활성화되던 문제 해결
+///     게임 씬에서 "다시하기"를 선택했을 때, 페이드 인 상태에서 로딩 진행이 멈추던 문제 해결
+///     
 ///     

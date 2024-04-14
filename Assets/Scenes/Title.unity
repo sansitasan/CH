@@ -705,8 +705,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7571034142066025996}
     - target: {fileID: 8654462361189095617, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654462361189095617, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654462361189095617, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
       propertyPath: m_SortingOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654462361189095617, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1757531589
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 227109385, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
