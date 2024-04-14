@@ -25,13 +25,14 @@ public class FadeCanvas : BaseCanvas
     {
         base.EditAwakeInit();
         _image = Util.GetComponentInChild<Image>(transform, gameObject.activeSelf);
+        _canvas.sortingLayerID = SortingLayer.NameToID("GUI");
         _canvas.sortingOrder = 20;
     }
 
     protected override void Playinit()
     {
         base.Playinit();
-        SceneManager.activeSceneChanged += SetCamera;
+        //SceneManager.activeSceneChanged += SetCamera;
     }
 
     public async UniTask FadeOutScene(float time = 0.5f, FadeMode mode = FadeMode.Base)
