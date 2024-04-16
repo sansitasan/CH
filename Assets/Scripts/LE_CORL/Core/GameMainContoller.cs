@@ -30,7 +30,9 @@ public class GameMainContoller : MonoBehaviour
     public static GameMainContoller Instance { get; private set; }
     public static bool IsIntitalized { get; private set; }
     public static bool IsTest { get; private set; }
+    public static bool IsSkipScript { get; private set; }
     static Dictionary<Type, ICore> cores;
+    public event Action ChangeScene;
     public event Action ActiveScene;
 
     public static T GetCore<T>() where T : ICore
@@ -69,6 +71,7 @@ public class GameMainContoller : MonoBehaviour
         cores = new Dictionary<Type, ICore>();
         var current = SceneManager.GetActiveScene().buildIndex;
         IsTest = current != 0;
+        IsSkipScript = false;
 
         var searched = GetComponentsInChildren<ICore>().ToList();
         foreach (var item in searched)
@@ -84,8 +87,8 @@ public class GameMainContoller : MonoBehaviour
     public void LoadScene(int targetScene, FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base) => ChangeActiveScene(targetScene, mode).Forget();
     public void ReloadScene(FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base)
     {
+        IsSkipScript = true;
         ChangeActiveScene(SceneManager.GetActiveScene().buildIndex, mode).Forget();
-        
     }
     public void LoadLobby(FadeCanvas.FadeMode mode = FadeCanvas.FadeMode.Base) => ChangeActiveScene(1, mode).Forget();
 
@@ -99,6 +102,8 @@ public class GameMainContoller : MonoBehaviour
         print("Main - ChangeActiveScene");
         Scene lastScene = SceneManager.GetActiveScene();
         onLoading = true;
+
+        ChangeScene?.Invoke();
 
         await fade.FadeOutScene(0.5f, mode);
 
@@ -120,6 +125,7 @@ public class GameMainContoller : MonoBehaviour
 
         onLoading = false;
         ActiveScene?.Invoke();
+        IsSkipScript = false;
     }
 
     public void LoadScriptsScene()

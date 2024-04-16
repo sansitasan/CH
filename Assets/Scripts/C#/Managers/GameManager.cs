@@ -30,7 +30,7 @@ public struct Stage
         successcnt = new ushort[5] { 0, 0, 0, 0, 0 };
     }
 }
-
+[Obsolete]
 public class GameManager 
 {
     public static GameManager Instance

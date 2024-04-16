@@ -9,14 +9,6 @@ public class GameSceneInEditor : MonoBehaviour
     private StageData _data;
     private PlayerModel _playerModel;
 
-    private void Awake()
-    {
-        if (!Application.isPlaying)
-        {
-
-        }
-    }
-
     private void Init()
     {
         _playerModel = FindObjectOfType<PlayerModel>();

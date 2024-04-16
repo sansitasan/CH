@@ -559,6 +559,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 163152235144108741, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3372768848920723950, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 7571034142066025996}
+    - target: {fileID: 3372768848920723950, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7571034142094062090, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
       propertyPath: m_RootOrder
       value: 1

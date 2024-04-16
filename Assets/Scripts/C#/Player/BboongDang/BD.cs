@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BD : MonoBehaviour
+public class BD : MonoBehaviour, IDisposable
 {
     private CharacterAnim _pa;
     private Rigidbody2D _rb;
@@ -27,7 +27,7 @@ public class BD : MonoBehaviour
 
     public void UpdateAnim(PlayerStates state)
     {
-        _pa.ChangeAnim(state);
+        _pa?.ChangeAnim(state);
     }
 
     public void SetMoveData(Vector3 position, Vector2 moveDir)
@@ -60,5 +60,10 @@ public class BD : MonoBehaviour
     public async UniTask AfterScriptInit()
     {
         await _pa.StartFadeAsync();
+    }
+
+    public void Dispose()
+    {
+        _pa = null;
     }
 }

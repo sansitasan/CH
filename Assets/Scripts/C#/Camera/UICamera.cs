@@ -30,6 +30,7 @@ public class UICamera : MonoBehaviour
     private void StartInit()
     {
         var camData = MainCamera.Camera.GetUniversalAdditionalCameraData();
-        camData.cameraStack.Add(Camera);
+        if (camData.cameraStack.Count < 1)
+            camData.cameraStack.Add(Camera);
     }
 }
