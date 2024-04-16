@@ -22,6 +22,7 @@ public class TitleController : MonoBehaviour
     {
         await UniTask.WaitUntil(() => GameMainContoller.IsIntitalized);
         startButton.gameObject.SetActive(true);
+        startButton.Select();
     }
 
     public void StartBtnClicked()

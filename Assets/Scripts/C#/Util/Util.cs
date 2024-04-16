@@ -13,9 +13,11 @@ public static class Util
         Debug.Log(message);
     }
 
-    public static T GetOrAddComponent<T>(GameObject go) where T : Component
+    public static T GetOrAddComponent<T>(GameObject go, bool bActive = true) where T : Component
     {
         T component = null;
+        if (!bActive)
+            go.SetActive(true);
         go.TryGetComponent(out component);
 
         if (component == null)
@@ -23,12 +25,16 @@ public static class Util
             Log($"{nameof(T)} is not exist {go.name}");
             component = go.AddComponent<T>();
         }
+        if (!bActive)
+            go.SetActive(false);
         return component;
     }
 
-    public static T GetOrAddComponent<T>(Transform t) where T : Component
+    public static T GetOrAddComponent<T>(Transform t, bool bActive = true) where T : Component
     {
         T component = null;
+        if (!bActive)
+            t.gameObject.SetActive(true);
         t.gameObject.TryGetComponent(out component);
 
         if (component == null)
@@ -36,22 +42,30 @@ public static class Util
             Log($"{nameof(T)} is not exist {t.name}");
             component = t.gameObject.AddComponent<T>();
         }
+        if (!bActive)
+            t.gameObject.SetActive(false);
         return component;
     }
 
-    public static T GetComponentInChild<T>(Transform t) where T : Component
+    public static T GetComponentInChild<T>(Transform t, bool bActive = true) where T : Component
     {
         T component = null;
+        if (!bActive)
+            t.gameObject.SetActive(true);
         for (int i = 0; i < t.childCount; ++i)
         {
             t.GetChild(i).TryGetComponent(out component);
 
             if (component != null)
             {
+                if (!bActive)
+                    t.gameObject.SetActive(false);
                 return component;
             }
         }
         Log($"{nameof(T)} is not exist {t.name}");
+        if (!bActive)
+            t.gameObject.SetActive(false);
         return null;
     }
 
@@ -69,6 +83,49 @@ public static class Util
             return t.GetComponent<T>();
         }
     }
+
+    public static List<T> ShuffleList<T>(List<T> list, int seed)
+    {
+        System.Random r = new System.Random(seed);
+        for (int i = 0; i < list.Count - 1; i++)
+        {
+            int targetIDX = r.Next(i, list.Count);
+            T tmp = list[i];
+            list[i] = list[targetIDX];
+            list[targetIDX] = tmp;
+        }
+        return list;
+    }
+
+
+    public static int TryGetUnityObjectsOfTypeFromPath<T>(string path, out List<T> assetsFound) where T : UnityEngine.Object
+    {
+        string[] filePaths = System.IO.Directory.GetFiles(path);
+
+        int countFound = 0;
+        assetsFound = new List<T>();
+
+        Debug.Log(filePaths.Length);
+        if (filePaths == null || filePaths.Length <= 0)
+            return countFound;
+
+        for (int i = 0; i < filePaths.Length; i++)
+        {
+            UnityEngine.Object obj = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(filePaths[i]);
+            if (obj is T asset)
+            {
+                countFound++;
+                if (!assetsFound.Contains(asset))
+                {
+                    assetsFound.Add(asset);
+                }
+            }
+        }
+
+        return countFound;
+    }
+
+
 
     [Serializable]
     public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
@@ -96,5 +153,7 @@ public static class Util
             for (int i = 0; i < keys.Count; i++)
                 Add(keys[i], values[i]);
         }
+
     }
+
 }

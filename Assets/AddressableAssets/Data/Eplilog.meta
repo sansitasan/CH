@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/AddressableAssets/Data/Eplilog.meta
 guid: 7cc568951681ffa43914dfa751792662
 folderAsset: yes
+========
+guid: 1565f3824b4626547a806fdccf95d514
+>>>>>>>> 2efe3704d7d72d1df7148e901f29af920d92db64:Assets/Scenes/Cores.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

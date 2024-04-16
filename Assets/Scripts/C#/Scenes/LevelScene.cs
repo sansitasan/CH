@@ -27,14 +27,16 @@ public class LevelScene : MonoBehaviour
         GameManager.Instance.ChangeScene += Clear;
     }
 
-
+    private void Start()
+    {
+        _levelButtons[0].Select();
+    }
 
 
 
     private void ChangeScene(int Scene)
     {
-     //   GameManager.Instance.SceneChangeAsync(SceneName.LevelScene, (SceneName)Scene).Forget();
-     GameMainContoller.Instance.LoadScene(Scene);
+        GameMainContoller.Instance.LoadScene(Scene);
     }
 
     private void Clear(SceneName prev, SceneName next)

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using Unity.VisualScripting;
 
 public class LResourcesManager : MonoBehaviour, ICore
 {
@@ -50,7 +51,7 @@ public class LResourcesManager : MonoBehaviour, ICore
     }
 
 
-    private void LoadAsync<T>(string addressableID)
+    private void LoadAsync<T>(string addressableID, int total, Action callback)
     {
         if (_scripts.ContainsKey(addressableID) || _sprites.ContainsKey(addressableID))
             return;
@@ -61,16 +62,22 @@ public class LResourcesManager : MonoBehaviour, ICore
             if (typeof(T) == typeof(TextAsset))
             {
                 _scripts.TryAdd(GetObjectName(addressableID), op.Result as TextAsset);
+                if (total == _scripts.Count)
+                    callback();
             }
 
             else if (typeof(T) == typeof(Sprite))
             {
                 _sprites.TryAdd(GetObjectName(addressableID), op.Result as Sprite);
+                if (total == _sprites.Count)
+                    callback();
             }
 
             else
             {
                 _stageDatas.TryAdd(GetObjectName(addressableID), op.Result as StageData);
+                if (total == _stageDatas.Count)
+                    callback();
             }
         };
     }
@@ -84,9 +91,8 @@ public class LResourcesManager : MonoBehaviour, ICore
             int total = op.Result.Count;
             for (int i = 0; i < total; i++)
             {
-                LoadAsync<T>(op.Result[i].PrimaryKey);
+                LoadAsync<T>(op.Result[i].PrimaryKey, total, callback);
             }
-            callback();
         };
     }
 
@@ -104,30 +110,40 @@ public class LResourcesManager : MonoBehaviour, ICore
     }
 
     #region get assets
-    public bool TryGetSprite(Characters character, Emotions emotion, out Sprite sprite)
+
+    public static bool TryGetSprite(Characters character, Emotions emotion, out Sprite sprite)
     {
+        var self = GameMainContoller.GetCore<LResourcesManager>();
         string key = $"{character}_{emotion}";
-        bool has = _sprites.ContainsKey(key);
+        bool has = self._sprites.ContainsKey(key);
 
-        sprite = has ? _sprites[key] : null;
+        sprite = has ? self._sprites[key] : null;
+        return has;
+        
+    }
+
+    public static bool TryGetScriptData(string key, out List<Script> scriptList)
+    {
+        var self = GameMainContoller.GetCore<LResourcesManager>();
+        bool has = self._scripts.ContainsKey(key);
+        scriptList = has ? JsonUtility.FromJson<ScriptLoad>(self._scripts[key].text).GetScript() : null;
         return has;
     }
 
-    public bool TryGetScriptData(string path, out List<Script> scriptList)
+    public static bool TryGetStageData(int stage, out StageData stageData)
     {
-        bool has = _scripts.ContainsKey(path);
-        scriptList = has ? JsonUtility.FromJson<ScriptLoad>(_scripts[path].text).GetScript() : null;
-        return has;
-    }
-
-    public bool TryGetStageData(int stage, out StageData stageData)
-    {
+        var self = GameMainContoller.GetCore<LResourcesManager>();
         string key = $"Stage {stage} Data";
-        bool has = _stageDatas.ContainsKey(key);
-        stageData = has ? _stageDatas[key] : null;
+        bool has = self._stageDatas.ContainsKey(key);
+        stageData = has ? self._stageDatas[key] : null;
         return has;
     }
-
 
     #endregion
+
+    public static void CheckInit()
+    {
+        var self = GameMainContoller.GetCore<LResourcesManager>();
+        Debug.Log(self._stageDatas.Count);
+    }
 }
