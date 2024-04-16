@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96022927e4e1a4b4cba25090f5199996, type: 3}
-  m_Name: level4_room_0
+  m_Name: level4_room_1
   m_EditorClassIdentifier: 
-  pointA: {x: -24.59, y: 14.64}
-  pointB: {x: -7.43, y: 3.38}
+  pointA: {x: -51.5, y: 14.54}
+  pointB: {x: -35.52, y: 3.49}
   roomDuration: 30
   generationMax: 50
   minDistancing: 1
-  generationTick: 0.075
+  generationTick: 0.1
   generationRatio:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
+      inSlope: 0
       outSlope: 1
-      tangentMode: 34
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -34,8 +34,8 @@ MonoBehaviour:
       time: 1
       value: 1
       inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -43,5 +43,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   generationPrio: 640000005a00000046000000460000001e0000001e0000001e0000001e000000
-  shuffleSeed: 836
+  shuffleSeed: 210
   isEscapeableRoom: 0
