@@ -23404,9 +23404,9 @@ MonoBehaviour:
   camFov: 7.5
   playerAnimator: {fileID: 1923782554}
   skillStateSR: {fileID: 1888990177}
-  moveSpeed: 5
+  moveSpeed: 8
   skillPreDelay: 0.5
-  skillCooldown: 0.1
+  skillCooldown: 10
   skillDuration: 1
   up:
   - {fileID: -2046451711, guid: 0d85f56e0d33e70498b64fc1a3d0e076, type: 3}
