@@ -1,3 +1,4 @@
+using Cinemachine;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Buffers.Text;
@@ -10,6 +11,8 @@ public class Level4RoomController : MonoBehaviour
 {
     [SerializeField] Level4RoomRuleset myRoomRuleset;
     [SerializeField] PlayerEventTrigger myEventTrigger;
+    [SerializeField] CinemachineVirtualCamera myCamera;
+    public Transform myRespawnPosition;
 
     bool isPlaying;
 
@@ -20,17 +23,30 @@ public class Level4RoomController : MonoBehaviour
     public class RoomStateChangedEventArgs : EventArgs
     {
         public bool isStarted;
+        public bool isCleared;
         public Level4RoomRuleset ruleset;
     }
 
     private void Start()
     {
+        myCamera.gameObject.SetActive(false);
         PlayerEventTrigger.OnPlayerEntered += PlayerEventTrigger_OnPlayerEntered;
-        if(myRoomRuleset.isEscapeableRoom)
-            PlayerEventTrigger.OnPlayerExited += PlayerEventTrigger_OnPlayerExited;
-
+        PlayerEventTrigger.OnPlayerExited += PlayerEventTrigger_OnPlayerExited;
         myEventTrigger.SetTriggerActivation(true);
     }
+
+    // room 트라이에 실패
+    private void PlayerEventTrigger_OnPlayerExited(object sender, EventArgs e)
+    {
+        if (!isPlaying) return;
+        var tmp = (PlayerEventTrigger)sender;
+        if (tmp != myEventTrigger)
+            return;
+
+        patternCancellationToken.Cancel();
+    }
+
+    // 방 진입
     private void PlayerEventTrigger_OnPlayerEntered(object sender, EventArgs e)
     {
         if (isPlaying)
@@ -40,7 +56,6 @@ public class Level4RoomController : MonoBehaviour
         if (tmp != myEventTrigger)
             return;
 
-
         OnAnyRoomStateChanged?.Invoke(this, new RoomStateChangedEventArgs
         {
             isStarted = true,
@@ -49,21 +64,8 @@ public class Level4RoomController : MonoBehaviour
 
         patternCancellationToken = new CancellationTokenSource();
         PlayRoomPattern(patternCancellationToken).Forget();
-
-        isPlaying = true;
     }
 
-    private void PlayerEventTrigger_OnPlayerExited(object sender, EventArgs e)
-    {
-        if (!isPlaying)
-            return;
-
-        var tmp = (PlayerEventTrigger)sender;
-        if (tmp != myEventTrigger)
-            return;
-
-        patternCancellationToken.Cancel();
-    }
 
     int GetNextFallingObjectID()
     {
@@ -75,6 +77,9 @@ public class Level4RoomController : MonoBehaviour
 
     async UniTaskVoid PlayRoomPattern(CancellationTokenSource cancellation)
     {
+        myCamera.gameObject.SetActive(true);
+        isPlaying = true;
+
         float startTick = Time.time;
         float finalTick = startTick + (float)myRoomRuleset.roomDuration - myRoomRuleset.generationTick;
         int countMax = myRoomRuleset.generationMax;
@@ -86,13 +91,18 @@ public class Level4RoomController : MonoBehaviour
         float minDistance = myRoomRuleset.minDistancing;
 
         fallingObjectPrioQueue = myRoomRuleset.GetRandomizedFallingObjectQueue();
-        
-        await UniTask.WaitUntil (() => fallingObjectPrioQueue != null);
+
+        await UniTask.WhenAll(
+            UniTask.WaitUntil(() => fallingObjectPrioQueue != null),
+            UniTask.Delay(TimeSpan.FromSeconds(Level4MainContoller.Instance.CinemachineBlendDuration))
+            );
 
         // 패턴
         while (!cancellation.IsCancellationRequested && progress <= 1.0f)
         {
             int generationCount = Mathf.RoundToInt(Mathf.Clamp(ratio.Evaluate(progress), 1, countMax));
+            float fallingObjectRadius = 1f;
+            int wallMask = 1 << LayerMask.NameToLayer("Wall");
 
             // 위지 지정
             List<Vector2> positions = new List<Vector2>();
@@ -101,6 +111,10 @@ public class Level4RoomController : MonoBehaviour
                 Vector2 randomPos;
                 randomPos.x = Mathf.Lerp(pointA.x, pointB.x, UnityEngine.Random.value);
                 randomPos.y = Mathf.Lerp(pointA.y, pointB.y, UnityEngine.Random.value);
+                var checkWall = Physics2D.OverlapCircle(randomPos, fallingObjectRadius, wallMask);
+
+                if (checkWall != null)
+                    continue;
 
                 foreach (Vector2 pos in positions)
                 {
@@ -126,32 +140,41 @@ public class Level4RoomController : MonoBehaviour
             await UniTask.Delay(TimeSpan.FromSeconds(myRoomRuleset.generationTick));
         }
 
-        // 후처리
-        DiposeSelf();
-    }
+        bool isCleared = !cancellation.IsCancellationRequested;
+        if(isCleared)
+            await UniTask.Delay(TimeSpan.FromSeconds(Level4MainContoller.Instance.RoomPostDelay));
 
-    void DiposeSelf()
-    {
+        myCamera.gameObject.SetActive(false);
+        isPlaying = false;
+
         OnAnyRoomStateChanged?.Invoke(this, new RoomStateChangedEventArgs
         {
             isStarted = false,
+            isCleared = isCleared,
             ruleset = null,
         });
+        if (isCleared)
+            gameObject.SetActive(false);
+
+    }
+
+    private void OnDisable()
+    {
         myEventTrigger.SetTriggerActivation(false);
         fallingObjectPrioQueue = null;
         patternCancellationToken.Dispose();
         patternCancellationToken = null;
-        
         PlayerEventTrigger.OnPlayerEntered -= PlayerEventTrigger_OnPlayerEntered;
-        if (myRoomRuleset.isEscapeableRoom)
-            PlayerEventTrigger.OnPlayerExited -= PlayerEventTrigger_OnPlayerExited;
-
-        Destroy(gameObject);
+        PlayerEventTrigger.OnPlayerExited -= PlayerEventTrigger_OnPlayerExited;
     }
 
-    public void SetRoomCtrl(Level4RoomRuleset ruleset, PlayerEventTrigger trigger)
+
+    // 에디터 용
+    public void SetRoomCtrl(Level4RoomRuleset ruleset, PlayerEventTrigger trigger, CinemachineVirtualCamera cam, Transform respawn)
     {
         myRoomRuleset = ruleset;
         myEventTrigger = trigger;
+        myCamera = cam;
+        myRespawnPosition = respawn;
     }
 }
