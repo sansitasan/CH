@@ -6081,7 +6081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1271072908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6933,7 +6933,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1914526010}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -9011,6 +9011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
+--- !u!20 &1914526010 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5703391977439868278, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
+  m_PrefabInstance: {fileID: 1914526009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1958645574
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class LevelScene : MonoBehaviour
             int temp = i;
             _levelButtons[i].onClick.AddListener(() => ChangeScene(temp + 2));
         }
-        GameManager.Instance.ChangeScene += Clear;
+        GameMainContoller.Instance.ChangeScene += Clear;
     }
 
     private void Start()
@@ -39,9 +39,9 @@ public class LevelScene : MonoBehaviour
         GameMainContoller.Instance.LoadScene(Scene);
     }
 
-    private void Clear(SceneName prev, SceneName next)
+    private void Clear()
     {
-        GameManager.Instance.ChangeScene -= Clear;
+        GameMainContoller.Instance.ChangeScene -= Clear;
         _startButton.onClick.RemoveAllListeners();
         
         for (int i = 0; i < _levelButtons.Length; ++i)

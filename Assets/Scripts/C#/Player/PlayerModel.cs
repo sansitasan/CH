@@ -43,7 +43,6 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
         _controller = new PlayerController(GetComponent<PlayerInput>().actions, this);
         _disposeList.Add(_cts);
         _disposeList.Add(_controller);
-        _disposeList.Add(_tree);
         DataInit(so);
         MakeBT(so);
     }
@@ -83,7 +82,7 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
         _tree = null;
         _blackBoard = null;
         for (int i = 0; i < _disposeList.Count; ++i)
-            _disposeList[i].Dispose();
+            _disposeList[i]?.Dispose();
         _disposeList.Clear();
     }
 }

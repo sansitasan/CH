@@ -56,7 +56,7 @@ public class BehaviourTree : IDisposable
 
     public void Update()
     {
-        _curLeaf.Update();
+        _curLeaf?.Update();
     }
 
     public void Dispose()

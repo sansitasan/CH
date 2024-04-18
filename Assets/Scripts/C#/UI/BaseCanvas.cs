@@ -24,6 +24,7 @@ public class BaseCanvas : MonoBehaviour
 
     protected virtual void EditAwakeInit()
     {
+        gameObject.layer = 5;
         _canvas = Util.GetOrAddComponent<Canvas>(gameObject, gameObject.activeSelf);
         _canvasScaler = Util.GetOrAddComponent<CanvasScaler>(gameObject, gameObject.activeSelf);
         _canvas.renderMode = RenderMode.ScreenSpaceCamera;

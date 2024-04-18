@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class Character2DAnim : CharacterAnim
 {
-    public Vector2 LookDir {  get; private set; }
+    public Vector2 LookDir { get; private set; }
+
     public Character2DAnim(GameObject go) : base(go) 
     {
 

@@ -28,8 +28,8 @@ public class Stage2Model : PlayerModel
     public override void Init(StageData so)
     {
         _pa = new Character2DAnim(transform.GetChild(0).gameObject);
-        _disposeList.Add(_pa);
         base.Init(so);
+        _disposeList.Add(_pa);
         _light = GetComponentInChildren<Light2D>(true);
         _skillCoolTime = _skillAnim.runtimeAnimatorController.animationClips[0].length;
     }

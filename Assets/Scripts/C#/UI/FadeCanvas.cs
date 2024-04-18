@@ -77,14 +77,4 @@ public class FadeCanvas : BaseCanvas
         _image.gameObject.SetActive(false);
         _canvas.gameObject.SetActive(false);
     }
-
-    private void SetCamera(Scene cur, Scene next)
-    {
-        if (GameScene.Instance == null)
-            _canvas.worldCamera = Camera.main;
-        else
-        {
-            _canvas.worldCamera = GameScene.Instance.UICam;
-        }
-    }
 }

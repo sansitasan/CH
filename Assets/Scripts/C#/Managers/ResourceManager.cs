@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -32,6 +33,7 @@ public enum Characters
     Yuni
 }
 
+[Obsolete]
 public class ResourceManager
 {
     private Dictionary<string, TextAsset> _scripts = new Dictionary<string, TextAsset>();
