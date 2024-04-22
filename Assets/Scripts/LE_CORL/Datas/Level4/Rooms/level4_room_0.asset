@@ -12,36 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96022927e4e1a4b4cba25090f5199996, type: 3}
   m_Name: level4_room_0
   m_EditorClassIdentifier: 
-  pointA: {x: -11.57, y: 6.26}
-  pointB: {x: 16.56, y: -8.51}
+  pointA: {x: -24.59, y: 14.64}
+  pointB: {x: -7.43, y: 3.38}
   roomDuration: 30
-  generationMax: 10
+  generationMax: 50
   minDistancing: 1
-  generationTick: 0.2
+  generationTick: 0.075
   generationRatio:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
+      value: 0.10614014
+      inSlope: 0.89385986
+      outSlope: 0.89385986
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 0.89385986
+      outSlope: 0.89385986
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  generationPrio: 1e000000170000000a000000050000003d000000360000003000000022000000
-  shuffleSeed: -442
+  generationPrio: 640000005a00000046000000460000001e0000001e0000001e0000001e000000
+  shuffleSeed: 836
   isEscapeableRoom: 0

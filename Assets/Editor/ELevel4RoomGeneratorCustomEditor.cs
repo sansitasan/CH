@@ -1,3 +1,4 @@
+using Cinemachine;
 using log4net.Repository.Hierarchy;
 using System.Collections;
 using System.Collections.Generic;
@@ -174,13 +175,23 @@ public class ELevel4RoomGeneratorCustomEditor : Editor
         go.transform.position = centor;
 
         var box = go.GetComponent<BoxCollider2D>();
-        box.size = new Vector2(Mathf.Abs(pointA.x - pointB.x), Mathf.Abs(pointA.y - pointB.y));
+        box.size = new Vector2(Mathf.Abs(pointA.x - pointB.x) + .5f, Mathf.Abs(pointA.y - pointB.y));
         box.isTrigger = true;
 
         var trigger = go.GetComponent<PlayerEventTrigger>();
         trigger.Init(roomName);
 
         var roomCtrl = go.GetComponent<Level4RoomController>();
-        roomCtrl.SetRoomCtrl(data, trigger);
+
+        var vCam = new GameObject(roomName + " vCam").AddComponent<CinemachineVirtualCamera>();
+        vCam.transform.parent = trigger.transform;
+        vCam.transform.localPosition = new Vector3(0, .5f, -10);
+        vCam.gameObject.SetActive(false);
+
+        var respawnPos = new GameObject(roomName + " respawn");
+        respawnPos.transform.parent = trigger.transform;
+        respawnPos.transform.localPosition = new Vector3(13, 0, 0);
+
+        roomCtrl.SetRoomCtrl(data, trigger, vCam, respawnPos.transform);
     }
 }
