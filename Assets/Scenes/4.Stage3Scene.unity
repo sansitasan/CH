@@ -202,6 +202,10 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 7.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8871455364200478597, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 8151
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba01ad5db80aee545bd9c58a71f01b83, type: 3}
 --- !u!20 &114891660 stripped
@@ -587,7 +591,7 @@ GameObject:
   - component: {fileID: 232903131}
   - component: {fileID: 232903130}
   - component: {fileID: 232903132}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tabi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,7 +1213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 254378018017169769, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: 0.9999933
+      value: 1.4999933
       objectReference: {fileID: 0}
     - target: {fileID: 254378018017169770, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
       propertyPath: m_RootOrder
@@ -1267,6 +1271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 478050387}
   - component: {fileID: 478050388}
+  - component: {fileID: 478050389}
   m_Layer: 0
   m_Name: GameScene
   m_TagString: Untagged
@@ -1304,12 +1309,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerModel: {fileID: 538202467}
+  _taList:
+  - {fileID: 11400000, guid: 00d3c0c965ab2e347845d976f57ad257, type: 2}
   Stage: 3
   _bd: {fileID: 1987832497}
   _spawnPoints:
   - {x: 36, y: -2}
   - {x: 51, y: -24}
+  _mapControllers:
+  - {fileID: 1644276129}
+  - {fileID: 1124328080}
   MaxCount: 2
+--- !u!320 &478050389
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478050385}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -3074745876103075499, guid: 00d3c0c965ab2e347845d976f57ad257, type: 2}
+    value: {fileID: 232903130}
+  - key: {fileID: 5903529596605582719, guid: 00d3c0c965ab2e347845d976f57ad257, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &531479137
 GameObject:
   m_ObjectHideFlags: 3
@@ -1929,7 +1960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 254378018017169769, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: 0.99997807
+      value: 1.4999781
       objectReference: {fileID: 0}
     - target: {fileID: 254378018017169770, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
       propertyPath: m_RootOrder
@@ -1974,6 +2005,10 @@ PrefabInstance:
     - target: {fileID: 254378018017169770, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 254378018017169771, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
@@ -6675,6 +6710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1124328079}
+  - component: {fileID: 1124328080}
   m_Layer: 0
   m_Name: 3-2
   m_TagString: Untagged
@@ -6715,6 +6751,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1124328080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124328078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f657f9762987974d946e15771c0305e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _obstacles: []
+  _originPoses: []
+  _lasers: []
 --- !u!1 &1134783831
 GameObject:
   m_ObjectHideFlags: 0
@@ -12208,6 +12259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1644276128}
+  - component: {fileID: 1644276129}
   m_Layer: 0
   m_Name: 3-1
   m_TagString: Untagged
@@ -12246,6 +12298,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1644276129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644276127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f657f9762987974d946e15771c0305e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _obstacles: []
+  _originPoses: []
+  _lasers: []
 --- !u!1 &1655060975
 GameObject:
   m_ObjectHideFlags: 0
@@ -13488,8 +13555,12 @@ PrefabInstance:
       value: Turret_3
       objectReference: {fileID: 0}
     - target: {fileID: 254378018017169769, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 254378018017169769, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: -4.95
+      value: -4.45
       objectReference: {fileID: 0}
     - target: {fileID: 254378018017169770, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
       propertyPath: m_RootOrder
@@ -13534,6 +13605,10 @@ PrefabInstance:
     - target: {fileID: 254378018017169770, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 254378018017169771, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2dfc310a3e2e34eb8949e0d807c372, type: 3}

@@ -4,13 +4,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
-public class GameScene : MonoBehaviour, IDisposable
+public class GameScene : MonoBehaviour, IDisposable, INotificationReceiver
 {
     [SerializeField]
     protected PlayerModel _playerModel;
+    protected PlayableDirector _pd;
+    protected Dictionary<EventTypes, List<TimelineAsset>> _taDict = new Dictionary<EventTypes, List<TimelineAsset>>();
 
+    [SerializeField]
+    private List<TimelineAsset> _taList = new List<TimelineAsset>();
     public EventTypes CurrentEventType { get; protected set; } 
 
     public static GameScene Instance { get => _instance; }
@@ -37,10 +43,18 @@ public class GameScene : MonoBehaviour, IDisposable
     public virtual void GetEvent(EventTypes type)
     {
         CurrentEventType = type;
-        if (type != EventTypes.Middle)
+
+        if (type == EventTypes.Start || type == EventTypes.End)
         {
             GameMainContoller.Instance.LoadScriptsScene();
             _playerModel.DisableInput(true);
+        }
+
+        else if (type == EventTypes.Dead)
+        {
+            _playerModel.DisableInput(true);
+            MainCamera.SetMask(9);
+            _pd.Play(_taDict[type][0]);
         }
     }
 
@@ -64,11 +78,6 @@ public class GameScene : MonoBehaviour, IDisposable
 
         //TODO Save
         GameMainContoller.Instance.LoadLobby();
-    }
-
-    protected virtual void AwakeInit()
-    {
-        _instance = this;
     }
 
     protected virtual async UniTask StartAsync()
@@ -95,13 +104,25 @@ public class GameScene : MonoBehaviour, IDisposable
         await _playerModel.AfterScriptInit();
         _playerModel.enabled = true;
         _playerModel.DisableInput(false);
+        _pd = GetComponent<PlayableDirector>();
+        _taDict.Add(EventTypes.Dead, _taList);
     }
 
     private void Init()
     {
         _instance = this;
+        _pd = GetComponent<PlayableDirector>();
+        _taDict.Add(EventTypes.Dead, _taList);
+
         GameMainContoller.Instance.ActiveScene -= Init;
         GameMainContoller.Instance.ChangeScene += Restart;
         StartAsync().Forget();
+    }
+
+    public virtual void OnNotify(Playable origin, INotification notification, object context)
+    {
+        if ((EventTypes)notification.id.GetHashCode() == EventTypes.Dead)
+            MainCamera.SetMask(9);
+        _playerModel.DisableInput(false);
     }
 }
