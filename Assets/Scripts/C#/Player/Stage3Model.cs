@@ -20,7 +20,6 @@ public class Stage3Model : PlayerModel
     [SerializeField]
     private TextMeshProUGUI _countText;
     private Character2DAnim _pa;
-    private int _levelCount;
     private int _skillCount;
 
     public override void Init(StageData so)
@@ -28,6 +27,7 @@ public class Stage3Model : PlayerModel
         _pa = new Character2DAnim(transform.GetChild(0).gameObject);
         base.Init(so);
         _disposeList.Add(_pa);
+        _disposeList.Add(_bd);
     }
 
     public override void PlayerInput(PlayerStates state)
@@ -55,11 +55,11 @@ public class Stage3Model : PlayerModel
 
     protected override void DataInit(StageData so)
     {
-        ++_levelCount;
         _data = so as Stage3Data;
-        if (_levelCount == 1)
+        var gameScene = GameScene.Instance as Stage3Scene;
+        if (gameScene.Count == 0)
             _skillCount = _data.MoveCount_1;
-        else if (_levelCount == 2)
+        else if (gameScene.Count == 1)
             _skillCount = _data.MoveCount_2;
         _countText.text = _skillCount.ToString();
     }
@@ -137,7 +137,7 @@ public class Stage3Model : PlayerModel
 
     private void FixedUpdate()
     {
-        _tree.Update();
+        _tree?.Update();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

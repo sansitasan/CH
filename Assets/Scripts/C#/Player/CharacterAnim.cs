@@ -80,9 +80,9 @@ public abstract class CharacterAnim : IDisposable
 
     public void Dispose()
     {
-        _anim = null;
-        _sprite = null;
         _cts.Cancel();
         _cts.Dispose();
+        _anim = null;
+        _sprite = null;
     }
 }

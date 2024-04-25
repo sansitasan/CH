@@ -13,7 +13,7 @@ public class Stage3Scene : GameScene
     private List<Vector2> _spawnPoints = new List<Vector2>();
 
     public int MaxCount;
-    private int _count;
+    public int Count { get; private set; }
 
     public override void GetEvent(EventTypes type)
     {
@@ -21,11 +21,10 @@ public class Stage3Scene : GameScene
 
         if (type == EventTypes.Middle)
         {
-            ++_count;
-            if (_count == MaxCount)
+            ++Count;
+            if (Count == MaxCount)
             {
-                _dialogPanel.StartScript(EventTypes.End);
-                _playerModel.DisableInput(true);
+                GetEvent(EventTypes.End);
             }
 
             else
@@ -38,12 +37,8 @@ public class Stage3Scene : GameScene
 
     public override void Restart()
     {
-        GameManager.Instance.FadeInOutAsync(MoveCharacter).Forget();
-    }
-
-    protected override void AwakeInit()
-    {
-        base.AwakeInit();
+        base.Restart();
+        //TODO: 저장할 때 몇 단계인지 저장한 후 단계를 가져오기
     }
 
     protected override async UniTask StartAsync()
@@ -71,17 +66,18 @@ public class Stage3Scene : GameScene
     private void MoveCharacter()
     {
         _playerModel.Dispose();
-        _playerModel.transform.position = _spawnPoints[_count];
-        _bd.SetPos(_spawnPoints[_count] - Vector2.right);
-        if (GameManager.Instance.BEdit)
-            _playerModel.Init(TResourceManager.Instance.GetScriptableObject(Stage));
-        else
+        _playerModel.transform.position = _spawnPoints[Count];
+
+        int stage = Stage;
+        if (!GameMainContoller.IsTest)
         {
             char name = SceneManager.GetActiveScene().name[0];
-            int stage = name - '0' - 1;
-            LResourcesManager.TryGetStageData(stage, out var stageData);
-            _playerModel.Init(stageData);
+            stage = name - '0' - 1;
         }
+        LResourcesManager.TryGetStageData(stage, out var stageData);
+        _bd.Init(stageData, _playerModel.transform.position + Vector3.left);
+
+        _playerModel.Init(stageData);
         _playerModel.DisableInput(false);
     }
 }

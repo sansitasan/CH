@@ -19,6 +19,10 @@ public class ScriptScene : MonoBehaviour
 
     private CancellationTokenSource _cts;
     private List<Script> _scripts;
+
+    [SerializeField, Header("스크립트 수")]
+    private int _maxCnt;
+    [SerializeField, Header("스크립트 건너뛰기")]
     private int _cnt;
     private bool _btalk;
 
@@ -46,8 +50,6 @@ public class ScriptScene : MonoBehaviour
         char name = SceneManager.GetActiveScene().name[0];
         int stage = name - '0' - 1;
 
-        Debug.Log($"{GameScene.Instance.CurrentEventType}{stage}");
-
         string targetName = $"{GameScene.Instance.CurrentEventType}{stage}";
 
         if (!LResourcesManager.TryGetScriptData(targetName, out _scripts))
@@ -55,6 +57,7 @@ public class ScriptScene : MonoBehaviour
             Debug.LogError("cannot find script!");
         }
         gameObject.SetActive(true);
+        _maxCnt = _scripts.Count;
         Click();
     }
 
@@ -68,7 +71,8 @@ public class ScriptScene : MonoBehaviour
         if (_scripts.Count == _cnt)
         {
             GameScene.Instance.EndEvent();
-            GameMainContoller.Instance.LoadScriptsScene();
+            if (GameScene.Instance != null)
+                GameMainContoller.Instance.LoadScriptsScene();
             return;
         }
 
@@ -126,8 +130,11 @@ public class ScriptScene : MonoBehaviour
         catch
         {
             _dialog.text = script.dialog;
-            _cts.Dispose();
-            _cts = new CancellationTokenSource();
+            if (_cnt < _scripts.Count)
+            {
+                _cts.Dispose();
+                _cts = new CancellationTokenSource();
+            }
         }
     }
 
