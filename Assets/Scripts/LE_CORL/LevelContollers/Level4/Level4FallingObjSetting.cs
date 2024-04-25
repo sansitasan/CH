@@ -61,7 +61,7 @@ public class Level4FallingObjSetting : ScriptableObject
         collider.isTrigger = true;
 
         var playerEventTrigger = triggerGO.AddComponent<PlayerEventTrigger>();
-        playerEventTrigger.Init("level4_falllingObject");
+        playerEventTrigger.Init($"level4_{Level4MainContoller.FALLING_OBJECT_ID}");
 
 
         triggerGO.transform.parent = parent;

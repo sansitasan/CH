@@ -158,7 +158,7 @@ public class Stage2Model : PlayerModel
 
     private void FixedUpdate()
     {
-        _tree.Update();
+        _tree?.Update();
     }
 
     public override void EditInit(StageData so)

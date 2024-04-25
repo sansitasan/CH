@@ -27,6 +27,7 @@ public class Level4PlayerController : PlayerControllerBase
     [SerializeField] Sprite[] right;
     [SerializeField] Color skillStateColor;
 
+
     bool onMove = false;
     public Vector2 MoveInput { get; private set; }
     float skillActedtime;
@@ -82,38 +83,6 @@ public class Level4PlayerController : PlayerControllerBase
     {
         return;
     }
-
-    /*
-    public override void UI_Click(InputAction.CallbackContext callbackContext)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void UI_Escape(InputAction.CallbackContext callbackContext)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void UI_Move_canceled(InputAction.CallbackContext callbackContext)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void UI_Move_performed(InputAction.CallbackContext callbackContext)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void UI_Point(InputAction.CallbackContext callbackContext)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void UI_Submit(InputAction.CallbackContext callbackContext)
-    {
-        throw new System.NotImplementedException();
-    }
-    */
     #endregion
 
     #region Skill
