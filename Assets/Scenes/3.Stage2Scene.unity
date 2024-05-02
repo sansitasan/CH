@@ -34451,7 +34451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerModel: {fileID: 1092990679}
-  UICam: {fileID: 0}
+  _taList: []
   Stage: 2
   _bd: {fileID: 1520238950}
   MaxCount: 5
