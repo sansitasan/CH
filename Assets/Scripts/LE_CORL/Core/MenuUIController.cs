@@ -13,6 +13,7 @@ public class MenuUIController : MonoBehaviour
 
 
     bool isLobby;
+    Selectable last = null;
 
     private void OnEnable()
     {

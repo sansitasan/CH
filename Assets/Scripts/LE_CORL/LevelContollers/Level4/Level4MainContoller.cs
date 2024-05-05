@@ -17,7 +17,7 @@ public class Level4MainContoller : MonoBehaviour
 
     [Header("Object Refer")]
     [SerializeField] List<PlayerEventTrigger> timelineTriggers;
-    [SerializeField] PlayerControllerBase playerController;
+    [SerializeField] Level4PlayerController player;
 
     [Header("Room")]
     [SerializeField] CinemachineBlenderSettings blendSetting;
@@ -26,7 +26,6 @@ public class Level4MainContoller : MonoBehaviour
     [Header("Gamm Play")]
     [SerializeField] GameObject invisibleWall;
     [SerializeField, Range(1,5)] int playerHPMax = 3;
-    [SerializeField, Min(.05f)] float damageableTimeGap = .15f;
 
     [Header("Timeline")]
     [SerializeField] PlayableDirector playerableDicetor;
@@ -51,6 +50,7 @@ public class Level4MainContoller : MonoBehaviour
     {
         public int current;
         public int max;
+        public bool isInit;
     }
 
     int playerHP;
@@ -88,17 +88,23 @@ public class Level4MainContoller : MonoBehaviour
 
     private void Level4RoomController_OnAnyRoomStateChanged(object sender, Level4RoomController.RoomStateChangedEventArgs e)
     {
+        var room = (Level4RoomController)sender;
         if(e.isStarted)
         {
-            respawnPosition = ((Level4RoomController)sender).myRespawnPosition.position;
+            //respawnPosition = ((Level4RoomController)sender).myRespawnPosition.position;
+            room.myCamera.gameObject.SetActive(true);
             invisibleWall.SetActive(true);
             playerHP = playerHPMax;
             lastHitTime = Time.time;
-            OnPlayerHPUpdated(this, new PlayerHPUpdaterEventArgs { current = playerHP, max = playerHPMax });
+            OnPlayerHPUpdated(this, new PlayerHPUpdaterEventArgs { current = playerHP, max = playerHPMax, isInit = true });;
         }
         else
         {
             invisibleWall.SetActive(false);
+            if (!e.isCleared)
+                FailToClear(room.myRespawnPosition.position, room.myCamera.gameObject).Forget();
+            else
+                room.myCamera.gameObject.SetActive(false);
         }
     }
 
@@ -112,36 +118,33 @@ public class Level4MainContoller : MonoBehaviour
             return;
 
         if (id.Contains(FALLING_OBJECT_ID))
-        {
             PlayerHit();
-        }
     }
 
     void PlayerHit()
     {
-        if (playerController.SkillState == PlayerControllerBase.PlayerSkillState.OnActivating)
-            return;
+        if(playerHP <= 0) return;
 
-        if (Time.time < lastHitTime + damageableTimeGap)
-            return;
-
-        lastHitTime = Time.time;
-        playerHP--;
+        playerHP = player.PlayerDamaged(playerHP);
         OnPlayerHPUpdated(this, new PlayerHPUpdaterEventArgs { current = playerHP, max = playerHPMax });
-        print("Player hit time: " + lastHitTime);
-
-        if (playerHP <= 0)
-        {
-            MovePlayerAndDelay().Forget();
-        }
     }
 
-    async UniTaskVoid MovePlayerAndDelay()
+    async UniTaskVoid FailToClear(Vector2 respawnPos, GameObject vCam)
     {
-        playerController.enabled = false;
-        playerController.transform.position = respawnPosition;
+        player.enabled = false;
+        var animator = player.GetComponentInChildren<Animator>();
+        await UniTask.WhenAll(
+            UniTask.WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).length >= 1),
+            UniTask.Delay(TimeSpan.FromSeconds(RoomPostDelay))
+            );
+
+        player.transform.position = respawnPos;
+        vCam.SetActive(false);
         await UniTask.Delay(TimeSpan.FromSeconds(RoomPostDelay));
-        playerController.enabled = true;
+
+        animator.SetBool("OnDead", false);
+        player.enabled = true;
+
     }
 
 
