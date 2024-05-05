@@ -56,16 +56,16 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
     public void DisableInput(bool bDisable)
     {
         if (bDisable)
-            _controller.DisableInput();
+            _controller?.DisableInput();
         else
-            _controller.EnableInput();
+            _controller?.EnableInput();
     }
 
     protected abstract void MakeBT(StageData so);
 
     public virtual void PlayerInput(PlayerStates state)
     {
-        _tree.CheckSeq(state);
+        _tree?.CheckSeq(state);
     }
 
     public virtual void PlayerInput(PlayerStates state, Vector2 vector)
@@ -76,7 +76,7 @@ public abstract class PlayerModel : MonoBehaviour, IDisposable
 
     public virtual void Dispose()
     {
-        _cts.Cancel();
+        _cts?.Cancel();
         _cts = null;
         _controller = null;
         _tree = null;

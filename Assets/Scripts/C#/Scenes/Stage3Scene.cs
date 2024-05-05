@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class Stage3Scene : GameScene
@@ -11,6 +12,8 @@ public class Stage3Scene : GameScene
 
     [SerializeField]
     private List<Vector2> _spawnPoints = new List<Vector2>();
+    [SerializeField]
+    private List<MapController> _mapControllers = new List<MapController>();
 
     public int MaxCount;
     public int Count { get; private set; }
@@ -65,7 +68,7 @@ public class Stage3Scene : GameScene
 
     private void MoveCharacter()
     {
-        _playerModel.Dispose();
+        _playerModel?.Dispose();
         _playerModel.transform.position = _spawnPoints[Count];
 
         int stage = Stage;
@@ -75,9 +78,19 @@ public class Stage3Scene : GameScene
             stage = name - '0' - 1;
         }
         LResourcesManager.TryGetStageData(stage, out var stageData);
-        _bd.Init(stageData, _playerModel.transform.position + Vector3.left);
+        _bd?.Init(stageData, _playerModel.transform.position + Vector3.left);
 
-        _playerModel.Init(stageData);
-        _playerModel.DisableInput(false);
+        _playerModel?.Init(stageData);
+        _playerModel?.DisableInput(false);
+    }
+
+    public override void OnNotify(Playable origin, INotification notification, object context)
+    {
+        base.OnNotify(origin, notification, context);
+        if (_playerModel != null)
+        {
+            MoveCharacter();
+            _mapControllers[Count].Restart();
+        }
     }
 }

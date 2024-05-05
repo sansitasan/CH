@@ -314,8 +314,7 @@ public class DeadLeaf : BehaviourLeaf
 
     protected override void Enter()
     {
-        _blackBoard.PA.ChangeAnim(PlayerStates.Dead);
-        GameScene.Instance.Restart();
+        GameScene.Instance.GetEvent(EventTypes.Dead);
     }
 
     public override void Exit()

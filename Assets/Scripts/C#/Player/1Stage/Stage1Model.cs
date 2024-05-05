@@ -72,7 +72,7 @@ public class Stage1Model : PlayerModel
 
     private void FixedUpdate()
     {
-        _tree.Update();
+        _tree?.Update();
         if (!_bCheck)
             CheckGround().Forget();
     }

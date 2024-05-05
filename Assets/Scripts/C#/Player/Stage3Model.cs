@@ -56,12 +56,15 @@ public class Stage3Model : PlayerModel
     protected override void DataInit(StageData so)
     {
         _data = so as Stage3Data;
-        var gameScene = GameScene.Instance as Stage3Scene;
-        if (gameScene.Count == 0)
-            _skillCount = _data.MoveCount_1;
-        else if (gameScene.Count == 1)
-            _skillCount = _data.MoveCount_2;
-        _countText.text = _skillCount.ToString();
+        if (GameScene.Instance != null && GameScene.Instance is Stage3Scene)
+        {
+            var gameScene = GameScene.Instance as Stage3Scene;
+            if (gameScene.Count == 0)
+                _skillCount = _data.MoveCount_1;
+            else if (gameScene.Count == 1)
+                _skillCount = _data.MoveCount_2;
+            _countText.text = _skillCount.ToString();
+        }
     }
 
     protected override void MakeBT(StageData so)

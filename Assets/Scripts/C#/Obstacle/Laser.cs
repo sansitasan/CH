@@ -15,6 +15,12 @@ public class Laser : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
     }
 
+    public void Init()
+    {
+        _lineRenderer.enabled = true;
+        enabled = true;
+    }
+
     private void Update()
     {
         ShootLaser();
@@ -25,14 +31,22 @@ public class Laser : MonoBehaviour
         var hit = Physics2D.Raycast(transform.position, LookDir);
         if (hit)
         {
-            Draw2DRay(_laserPoint.position, hit.point);
+            if (LookDir.y == 1)
+            {
+                Draw2DRay(_laserPoint.position, hit.point + new Vector2(0, 0.5f));
+            }
+            else
+                Draw2DRay(_laserPoint.position, hit.point);
             if (hit.transform.CompareTag("Player"))
             {
                 //dead
                 hit.transform.TryGetComponent<PlayerModel>(out var player);
-                player.PlayerInput(PlayerStates.Dead);
-                _lineRenderer.enabled = false;
-                enabled = false;
+                if (player != null)
+                {
+                    player?.PlayerInput(PlayerStates.Dead);
+                    _lineRenderer.enabled = false;
+                    enabled = false;
+                }
             }
         }
 

@@ -8,7 +8,8 @@ public enum EventTypes
     None,
     Start,
     Middle,
-    End
+    End,
+    Dead
 }
 
 public class EventTrigger : MonoBehaviour
