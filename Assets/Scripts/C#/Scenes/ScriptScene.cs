@@ -10,6 +10,16 @@ using UnityEngine.UI;
 
 public class ScriptScene : MonoBehaviour
 {
+    public enum ScriptEventType
+    {
+        None,
+        Start,
+        Middle,
+        End,
+        Dead
+    }
+    static string targetScriptID = "";
+
     private Image _image;
     private Sprite _temp;
     private TextMeshProUGUI _name;
@@ -25,6 +35,11 @@ public class ScriptScene : MonoBehaviour
     [SerializeField, Header("스크립트 건너뛰기")]
     private int _cnt;
     private bool _btalk;
+
+    public static void SetScriptData(int sceneIDX, ScriptEventType type)
+    {
+        targetScriptID = $"{type}" + sceneIDX;
+    }
 
     private void Awake()
     {
@@ -42,17 +57,21 @@ public class ScriptScene : MonoBehaviour
         _btalk = false;
         _dialogText = new StringBuilder();
 
+        _nextButton.Select();
+
         StartScript();
     }
 
     public void StartScript()
     {
+        /*
         char name = SceneManager.GetActiveScene().name[0];
         int stage = name - '0' - 1;
 
         string targetName = $"{GameScene.Instance.CurrentEventType}{stage}";
+        */
 
-        if (!LResourcesManager.TryGetScriptData(targetName, out _scripts))
+        if (!LResourcesManager.TryGetScriptData(targetScriptID, out _scripts))
         {
             Debug.LogError("cannot find script!");
         }
@@ -72,7 +91,7 @@ public class ScriptScene : MonoBehaviour
         {
             GameScene.Instance.EndEvent();
             if (GameScene.Instance != null)
-                GameMainContoller.Instance.LoadScriptsScene();
+                GameMainContoller.Instance.LoadScriptsScene(0);
             return;
         }
 
@@ -140,6 +159,7 @@ public class ScriptScene : MonoBehaviour
 
     private void OnDestroy()
     {
+        targetScriptID = "";
         _cts.Cancel();
         _cts.Dispose();
         _cts = null;

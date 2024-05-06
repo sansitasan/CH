@@ -1,8 +1,8 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.Rendering;
 
 /// <summary>
 /// 코어에서 접근하여 사용
@@ -18,26 +18,57 @@ public interface ILevelSceneControllerBase
     public void DiposeScene();
 }
 
-public class LevelControllerBase : MonoBehaviour
+public abstract class LevelControllerBase : MonoBehaviour
 {
-    public static  bool IsSceneReady { get; private set; }
+    [Header("LevelControllerBase")]
+    [SerializeField] protected int myIDX;
 
-    /// <summary>
-    /// 씬 최초 실행시 동작. 씬 로드시 사전작업을 위한 함수
-    /// </summary>
-    protected virtual void InitializeScene()
+
+    private void Awake()
     {
-        IsSceneReady = true;
+        GameMainContoller.OnSceneLoadingOpStarted += GameMainContoller_OnSceneLoadingOpStarted;
+        GameMainContoller.OnSceneLoadingOpComplet += GameMainContoller_OnSceneLoadingOpComplet;
     }
 
+    private void GameMainContoller_OnSceneLoadingOpStarted(object sender, GameMainContoller.SceneChangeEventArgs e)
+    {
+        GameMainContoller.OnSceneLoadingOpStarted -= GameMainContoller_OnSceneLoadingOpStarted;
+
+        if (e.to == GameMainContoller.LOBBY_SCENE_IDX)
+            ToLobbyScene();
+        DiposeScene();
+    }
+
+    private void GameMainContoller_OnSceneLoadingOpComplet(object sender, GameMainContoller.SceneChangeEventArgs e)
+    {
+        GameMainContoller.OnSceneLoadingOpComplet -= GameMainContoller_OnSceneLoadingOpComplet;
+
+        if (e.from == GameMainContoller.LOBBY_SCENE_IDX)
+            InitializeScene();
+        StartSceneWithoutInit();
+    }
 
     /// <summary>
-    /// 씬 벗어날 때 동작. 로비로 돌아갈 때 현재 씬을 파기할 때 사용.
+    /// 씬 최초 실행시 실행
     /// </summary>
-    protected virtual void DiposeScene()
-    {
-        IsSceneReady = false;
-    }
+    protected abstract void InitializeScene();
+
+    /// <summary>
+    /// 씬 재시작시 실행
+    /// </summary>
+    protected abstract void StartSceneWithoutInit();
+
+    /// <summary>
+    /// 씬이 종료될 때 실행. Mono OnDisable() 
+    /// </summary>
+    protected abstract void DiposeScene();
+
+    /// <summary>
+    /// 로비 씬으로 갈때 실행
+    /// </summary>
+    protected abstract void ToLobbyScene();
+
+
 
 
 }

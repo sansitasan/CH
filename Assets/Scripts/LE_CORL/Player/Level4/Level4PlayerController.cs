@@ -8,7 +8,7 @@ using static Assets.Scripts.LE_CORL.Player.PlayerSkillBase;
 
 public class Level4PlayerController : PlayerControllerBase
 {
-    Vector2 startPosition = new Vector2(-1.85f, 8.88f);
+    // Vector2 startPosition = new Vector2(-1.85f, 8.88f);
 
     const string ANIMATOR_KEY_IS_MOVE = "OnMove"; // bool
     const string ANIMATOR_KEY_DEAD_TRIGGER = "Dead"; // trigger

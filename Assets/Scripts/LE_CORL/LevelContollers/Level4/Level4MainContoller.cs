@@ -8,8 +8,9 @@ using Assets.Scripts.LE_CORL.Player;
 using Cinemachine;
 using Unity.VisualScripting;
 using Cysharp.Threading.Tasks;
+using UnityEngine.Timeline;
 
-public class Level4MainContoller : MonoBehaviour
+public class Level4MainContoller : LevelControllerBase
 {
     public const string FALLING_OBJECT_ID = "falling_object_";
 
@@ -54,37 +55,6 @@ public class Level4MainContoller : MonoBehaviour
     }
 
     int playerHP;
-    Vector2 respawnPosition;
-    float lastHitTime;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-
-    private void OnEnable()
-    {
-        Level4RoomController.OnAnyRoomStateChanged += Level4RoomController_OnAnyRoomStateChanged;
-        PlayerEventTrigger.OnPlayerEntered += PlayerEventTrigger_OnPlayerEntered;
-
-        // 메모리풀 등록
-        for (int i = 0; i < fallingObjectPrefabs.Length; i++)
-        {
-            var go = fallingObjectPrefabs[i];
-            var id = FALLING_OBJECT_ID + i;
-            MemoryPoolManager.RegisterMemorypoolObj(id, go);
-        }
-        invisibleWall.SetActive(false);
-    }
-
-    private void OnDestroy()
-    {
-        Level4RoomController.OnAnyRoomStateChanged -= Level4RoomController_OnAnyRoomStateChanged;
-        PlayerEventTrigger.OnPlayerEntered -= PlayerEventTrigger_OnPlayerEntered;
-
-        Instance = null;
-    }
 
     private void Level4RoomController_OnAnyRoomStateChanged(object sender, Level4RoomController.RoomStateChangedEventArgs e)
     {
@@ -95,7 +65,6 @@ public class Level4MainContoller : MonoBehaviour
             room.myCamera.gameObject.SetActive(true);
             invisibleWall.SetActive(true);
             playerHP = playerHPMax;
-            lastHitTime = Time.time;
             OnPlayerHPUpdated(this, new PlayerHPUpdaterEventArgs { current = playerHP, max = playerHPMax, isInit = true });;
         }
         else
@@ -144,13 +113,50 @@ public class Level4MainContoller : MonoBehaviour
 
         animator.SetBool("OnDead", false);
         player.enabled = true;
-
     }
 
 
-    public void PlayTimeline(TimelinePreferences timeline)
+    void PlayTimeline(TimelineAsset timeline)
     {
-        playerableDicetor.Play();
+        playerableDicetor.Play(timeline);
+    }
+
+    protected override void InitializeScene()
+    {
+        // 메모리풀 등록
+        for (int i = 0; i < fallingObjectPrefabs.Length; i++)
+        {
+            var go = fallingObjectPrefabs[i];
+            var id = FALLING_OBJECT_ID + i;
+            MemoryPoolManager.RegisterMemorypoolObj(id, go);
+        }
+    }
+
+    protected override void StartSceneWithoutInit()
+    {
+        Instance = this;
+
+        Level4RoomController.OnAnyRoomStateChanged += Level4RoomController_OnAnyRoomStateChanged;
+        PlayerEventTrigger.OnPlayerEntered += PlayerEventTrigger_OnPlayerEntered;
+    }
+
+    protected override void DiposeScene()
+    {
+        Level4RoomController.OnAnyRoomStateChanged -= Level4RoomController_OnAnyRoomStateChanged;
+        PlayerEventTrigger.OnPlayerEntered -= PlayerEventTrigger_OnPlayerEntered;
+
+        Instance = null;
+    }
+
+    protected override void ToLobbyScene()
+    {
+        // 메모리풀 삭제
+        for (int i = 0; i < fallingObjectPrefabs.Length; i++)
+        {
+            var go = fallingObjectPrefabs[i];
+            var id = FALLING_OBJECT_ID + i;
+            MemoryPoolManager.UnregisterMemoerypool(id);
+        }
     }
 }
 

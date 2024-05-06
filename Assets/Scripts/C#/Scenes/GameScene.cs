@@ -46,7 +46,8 @@ public class GameScene : MonoBehaviour, IDisposable, INotificationReceiver
 
         if (type == EventTypes.Start || type == EventTypes.End)
         {
-            GameMainContoller.Instance.LoadScriptsScene();
+            int tNum = (int)type;
+            GameMainContoller.Instance.LoadScriptsScene((ScriptScene.ScriptEventType)tNum);
             _playerModel.DisableInput(true);
         }
 
