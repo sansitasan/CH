@@ -8,8 +8,9 @@ using Assets.Scripts.LE_CORL.Player;
 using Cinemachine;
 using Unity.VisualScripting;
 using Cysharp.Threading.Tasks;
+using UnityEngine.Timeline;
 
-public class Level4MainContoller : MonoBehaviour
+public class Level4MainContoller : LevelControllerBase
 {
     public const string FALLING_OBJECT_ID = "falling_object_";
 
@@ -17,7 +18,7 @@ public class Level4MainContoller : MonoBehaviour
 
     [Header("Object Refer")]
     [SerializeField] List<PlayerEventTrigger> timelineTriggers;
-    [SerializeField] PlayerControllerBase playerController;
+    [SerializeField] Level4PlayerController player;
 
     [Header("Room")]
     [SerializeField] CinemachineBlenderSettings blendSetting;
@@ -26,7 +27,6 @@ public class Level4MainContoller : MonoBehaviour
     [Header("Gamm Play")]
     [SerializeField] GameObject invisibleWall;
     [SerializeField, Range(1,5)] int playerHPMax = 3;
-    [SerializeField, Min(.05f)] float damageableTimeGap = .15f;
 
     [Header("Timeline")]
     [SerializeField] PlayableDirector playerableDicetor;
@@ -51,54 +51,29 @@ public class Level4MainContoller : MonoBehaviour
     {
         public int current;
         public int max;
+        public bool isInit;
     }
 
     int playerHP;
-    Vector2 respawnPosition;
-    float lastHitTime;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-
-    private void OnEnable()
-    {
-        Level4RoomController.OnAnyRoomStateChanged += Level4RoomController_OnAnyRoomStateChanged;
-        PlayerEventTrigger.OnPlayerEntered += PlayerEventTrigger_OnPlayerEntered;
-
-        // 메모리풀 등록
-        for (int i = 0; i < fallingObjectPrefabs.Length; i++)
-        {
-            var go = fallingObjectPrefabs[i];
-            var id = FALLING_OBJECT_ID + i;
-            MemoryPoolManager.RegisterMemorypoolObj(id, go);
-        }
-        invisibleWall.SetActive(false);
-    }
-
-    private void OnDestroy()
-    {
-        Level4RoomController.OnAnyRoomStateChanged -= Level4RoomController_OnAnyRoomStateChanged;
-        PlayerEventTrigger.OnPlayerEntered -= PlayerEventTrigger_OnPlayerEntered;
-
-        Instance = null;
-    }
 
     private void Level4RoomController_OnAnyRoomStateChanged(object sender, Level4RoomController.RoomStateChangedEventArgs e)
     {
+        var room = (Level4RoomController)sender;
         if(e.isStarted)
         {
-            respawnPosition = ((Level4RoomController)sender).myRespawnPosition.position;
+            //respawnPosition = ((Level4RoomController)sender).myRespawnPosition.position;
+            room.myCamera.gameObject.SetActive(true);
             invisibleWall.SetActive(true);
             playerHP = playerHPMax;
-            lastHitTime = Time.time;
-            OnPlayerHPUpdated(this, new PlayerHPUpdaterEventArgs { current = playerHP, max = playerHPMax });
+            OnPlayerHPUpdated(this, new PlayerHPUpdaterEventArgs { current = playerHP, max = playerHPMax, isInit = true });;
         }
         else
         {
             invisibleWall.SetActive(false);
+            if (!e.isCleared)
+                FailToClear(room.myRespawnPosition.position, room.myCamera.gameObject).Forget();
+            else
+                room.myCamera.gameObject.SetActive(false);
         }
     }
 
@@ -112,42 +87,76 @@ public class Level4MainContoller : MonoBehaviour
             return;
 
         if (id.Contains(FALLING_OBJECT_ID))
-        {
             PlayerHit();
-        }
     }
 
     void PlayerHit()
     {
-        if (playerController.SkillState == PlayerControllerBase.PlayerSkillState.OnActivating)
-            return;
+        if(playerHP <= 0) return;
 
-        if (Time.time < lastHitTime + damageableTimeGap)
-            return;
-
-        lastHitTime = Time.time;
-        playerHP--;
+        playerHP = player.PlayerDamaged(playerHP);
         OnPlayerHPUpdated(this, new PlayerHPUpdaterEventArgs { current = playerHP, max = playerHPMax });
-        print("Player hit time: " + lastHitTime);
+    }
 
-        if (playerHP <= 0)
+    async UniTaskVoid FailToClear(Vector2 respawnPos, GameObject vCam)
+    {
+        player.enabled = false;
+        var animator = player.GetComponentInChildren<Animator>();
+        await UniTask.WhenAll(
+            UniTask.WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).length >= 1),
+            UniTask.Delay(TimeSpan.FromSeconds(RoomPostDelay))
+            );
+
+        player.transform.position = respawnPos;
+        vCam.SetActive(false);
+        await UniTask.Delay(TimeSpan.FromSeconds(RoomPostDelay));
+
+        animator.SetBool("OnDead", false);
+        player.enabled = true;
+    }
+
+
+    void PlayTimeline(TimelineAsset timeline)
+    {
+        playerableDicetor.Play(timeline);
+    }
+
+    protected override void InitializeScene()
+    {
+        // 메모리풀 등록
+        for (int i = 0; i < fallingObjectPrefabs.Length; i++)
         {
-            MovePlayerAndDelay().Forget();
+            var go = fallingObjectPrefabs[i];
+            var id = FALLING_OBJECT_ID + i;
+            MemoryPoolManager.RegisterMemorypoolObj(id, go);
         }
     }
 
-    async UniTaskVoid MovePlayerAndDelay()
+    protected override void StartSceneWithoutInit()
     {
-        playerController.enabled = false;
-        playerController.transform.position = respawnPosition;
-        await UniTask.Delay(TimeSpan.FromSeconds(RoomPostDelay));
-        playerController.enabled = true;
+        Instance = this;
+
+        Level4RoomController.OnAnyRoomStateChanged += Level4RoomController_OnAnyRoomStateChanged;
+        PlayerEventTrigger.OnPlayerEntered += PlayerEventTrigger_OnPlayerEntered;
     }
 
-
-    public void PlayTimeline(TimelinePreferences timeline)
+    protected override void DiposeScene()
     {
-        playerableDicetor.Play();
+        Level4RoomController.OnAnyRoomStateChanged -= Level4RoomController_OnAnyRoomStateChanged;
+        PlayerEventTrigger.OnPlayerEntered -= PlayerEventTrigger_OnPlayerEntered;
+
+        Instance = null;
+    }
+
+    protected override void ToLobbyScene()
+    {
+        // 메모리풀 삭제
+        for (int i = 0; i < fallingObjectPrefabs.Length; i++)
+        {
+            var go = fallingObjectPrefabs[i];
+            var id = FALLING_OBJECT_ID + i;
+            MemoryPoolManager.UnregisterMemoerypool(id);
+        }
     }
 }
 
