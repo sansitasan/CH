@@ -92,6 +92,8 @@ public class Level4RoomController : MonoBehaviour
 
         float startTick = Time.time;
         float finalTick = startTick + (float)myRoomRuleset.roomDuration - myRoomRuleset.generationTick;
+        var start = Time.realtimeSinceStartupAsDouble;
+
         int countMax = myRoomRuleset.generationMax;
         AnimationCurve ratio = myRoomRuleset.generationRatio;
 
@@ -101,11 +103,11 @@ public class Level4RoomController : MonoBehaviour
         float minDistance = myRoomRuleset.minDistancing;
 
         fallingObjectPrioQueue = myRoomRuleset.GetRandomizedFallingObjectQueue();
-
         await UniTask.WhenAll(
             UniTask.WaitUntil(() => fallingObjectPrioQueue != null),
             UniTask.Delay(TimeSpan.FromSeconds(Level4MainContoller.Instance.CinemachineBlendDuration))
             );
+
 
         // 패턴
         while (!cancellation.IsCancellationRequested && progress <= 1.0f)
@@ -148,6 +150,8 @@ public class Level4RoomController : MonoBehaviour
             // 프레임 진행
             await UniTask.Delay(TimeSpan.FromSeconds(myRoomRuleset.generationTick));
         }
+        var end = Time.realtimeSinceStartupAsDouble;
+        print(end - start);
 
         bool isCleared = !cancellation.IsCancellationRequested;
         if(isCleared)
