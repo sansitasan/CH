@@ -35,6 +35,21 @@ public class GameMainContoller : MonoBehaviour
     public event Action ChangeScene;
     public event Action ActiveScene;
 
+
+    public static event EventHandler<SceneChangeEventArgs> OnSceneLoadingOpStarted;
+    public static event EventHandler<SceneChangeEventArgs> OnSceneLoadingOpComplet;
+    public class SceneChangeEventArgs : EventArgs
+    {
+        public int from;
+        public int to;
+
+        public SceneChangeEventArgs(int from, int to)
+        {
+            this.from = from;
+            this.to = to;
+        }
+    }
+
     public static T GetCore<T>() where T : ICore
     {
         if (!cores.ContainsKey(typeof(T)))
@@ -69,6 +84,7 @@ public class GameMainContoller : MonoBehaviour
         fade.gameObject.SetActive(true);
         fade.gameObject.SetActive(false);
         cores = new Dictionary<Type, ICore>();
+
         var current = SceneManager.GetActiveScene().buildIndex;
         IsTest = current != 0;
         IsSkipScript = false;
@@ -97,13 +113,15 @@ public class GameMainContoller : MonoBehaviour
         if (onPause)
             GamePause();
         if (onScriptSceneOpen)
-            LoadScriptsScene();
+            LoadScriptsScene(0);
 
         print("Main - ChangeActiveScene");
         Scene lastScene = SceneManager.GetActiveScene();
         onLoading = true;
 
         ChangeScene?.Invoke();
+        var sceneChangeEventArgs = new SceneChangeEventArgs(lastScene.buildIndex, targetSceneIDX);
+        OnSceneLoadingOpStarted?.Invoke(this, sceneChangeEventArgs);
 
         await fade.FadeOutScene(0.5f, mode);
 
@@ -118,6 +136,8 @@ public class GameMainContoller : MonoBehaviour
         targetSceneLoader.allowSceneActivation = true;
         await UniTask.WaitUntil(() => targetSceneLoader.isDone);
 
+        OnSceneLoadingOpComplet?.Invoke(this, sceneChangeEventArgs);
+
         await UniTask.WhenAll(
             SceneManager.UnloadSceneAsync(lastScene).ToUniTask(),
             fade.FadeInScene(0.5f, mode)
@@ -128,10 +148,13 @@ public class GameMainContoller : MonoBehaviour
         IsSkipScript = false;
     }
 
-    public void LoadScriptsScene()
+
+    public void LoadScriptsScene(ScriptScene.ScriptEventType type)
     {
+
         if (!onScriptSceneOpen)
         {
+            ScriptScene.SetScriptData(SceneManager.GetActiveScene().buildIndex, type);
             SceneManager.LoadSceneAsync(OVERRIDE_SCRIPT_SCENE_ID, LoadSceneMode.Additive);
             onScriptSceneOpen = true;
         }

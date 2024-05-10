@@ -95,12 +95,13 @@ public class MemoryPoolManager : MonoBehaviour, ICore
             Debug.LogError("등록되지 않은 오브젝트입니다");
             return;
         }
-
+        self.DeleteMemoerypool(objName).Forget();
+        /*
 #if UNITY_EDITOR
         self.DestroyMemorypoolImmediatly(objName);
 #else
-        self.DeleteMemoerypool(objName).Forget();
 #endif
+        */
     }
 
     void DestroyMemorypoolImmediatly(string objName)
@@ -113,26 +114,28 @@ public class MemoryPoolManager : MonoBehaviour, ICore
         }
         pool.Clear();
         pools.Remove(objName);
-        Destroy(originals[objName]);
+        // Destroy(originals[objName]);
         originals.Remove(objName);
     }
 
     async UniTaskVoid DeleteMemoerypool(string objName)
     {
-        var pool = pools[objName];
+       // var pool = pools[objName];
 
-        foreach (var item in pool)
+        if(!pools.Remove(objName, out var destroyList))
         {
-            Destroy(item.gameObject);
-            await UniTask.Yield();
+            Debug.LogError($"{objName} does not exist");
+            return;
         }
-
-        pool.Clear();
-        pools.Remove(objName);
-
-        await UniTask.Yield();
-        Destroy(originals[objName]);
         originals.Remove(objName);
+
+        foreach (var item in destroyList)
+            Destroy(item.gameObject);
+        await UniTask.WaitUntil(() => destroyList.Count != 0);
+        destroyList = null;
+        await UniTask.Yield();
+
+        print("memorypool - delete");
     }
 
 
@@ -145,6 +148,18 @@ public class MemoryPoolManager : MonoBehaviour, ICore
         }
         pool.Clear();
         pools.Remove(objectName);
+    }
+
+    [ContextMenu("Editor: Print Pool List")]
+    void Edit_PrintPoolList()
+    {
+        print($"총 개수: {pools.Count}");
+        foreach (var pool in pools)
+            print(pool.Key);
+
+        print($"총 오리지널 개수: {originals.Count}");
+        foreach (var item in originals)
+            print(item.Key);
     }
 
     public void Disable()
