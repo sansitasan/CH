@@ -1,0 +1,31 @@
+1스테이지
+051_use_item_01 (점프)
+Footsteps_Grass_Jump_Land_05 (착지(풀))
+Footsteps_Grass_Run_03 (이동(풀))
+Footsteps_Rock_Jump_Land_03 (착지(돌))
+Footsteps_Rock_Run_02 (이동(돌))
+
+2스테이지
+Footsteps_Tile_Walk_07 (이동)
+SFX_UI_Button_Keyboard_Enter_Thick_2(버튼)
+BellTree(스킬 사용)
+(공포 이벤트용 사운드)
+
+3스테이지
+(오브젝트 밀기)
+(오브젝트 이동)
+(큐브 파괴)
+(사망)
+
+4스테이지
+(장애물 낙하)
+(피격)
+(스킬 사용)
+(사망)
+
+5스테이지
+(점프)
+(와이어)
+(사망)
+(보스 스킬)
+(에너지 먹기)
