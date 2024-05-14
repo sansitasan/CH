@@ -22,12 +22,20 @@ public abstract class LevelControllerBase : MonoBehaviour
 {
     [Header("LevelControllerBase")]
     [SerializeField] protected int myIDX;
-
+    [SerializeField] bool isTest;
 
     private void Awake()
     {
-        GameMainContoller.OnSceneLoadingOpStarted += GameMainContoller_OnSceneLoadingOpStarted;
-        GameMainContoller.OnSceneLoadingOpComplet += GameMainContoller_OnSceneLoadingOpComplet;
+        if(GameMainContoller.IsTest)
+        {
+            InitializeScene();
+            StartSceneWithoutInit();
+        }
+        else
+        {
+            GameMainContoller.OnSceneLoadingOpStarted += GameMainContoller_OnSceneLoadingOpStarted;
+            GameMainContoller.OnSceneLoadingOpComplet += GameMainContoller_OnSceneLoadingOpComplet;
+        }
     }
 
     private void GameMainContoller_OnSceneLoadingOpStarted(object sender, GameMainContoller.SceneChangeEventArgs e)

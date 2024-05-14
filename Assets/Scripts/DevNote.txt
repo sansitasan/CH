@@ -47,8 +47,13 @@
             ScriptScene.SetScriptData()함수로 미리 데이터를 입력하고 스크립트 씬을 로드함
             
     변경 ScriptScene
-        SetScriptData 함수 추가 
-        더 이상 ScriptScene 클래스에서 자체적으로 불러올 대본을 판단하지 않음
+        신규
+            SetScriptData() 함수 추가 
+            대본창 진입시, 자동으로 다음 버튼으로 키보드 커서가 이동(스페이스바로 진행)
+
+        변경
+            더 이상 ScriptScene 클래스에서 자체적으로 불러올 대본을 판단하지 않음
+
 
     변경 MemoryPoolManager
         UnregisterMemoerypool 및 DeleteMemoerypool 작동 방식 변경
