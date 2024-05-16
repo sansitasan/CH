@@ -87,6 +87,7 @@ MonoBehaviour:
     - Scripts
     - Image
     - SO
+    - Sound
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 929393544a7b8994fb77ce56a47f0faf, type: 2}

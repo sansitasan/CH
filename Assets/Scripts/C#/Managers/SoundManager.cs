@@ -4,6 +4,18 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+public enum ESoundType
+{
+    Stage1_Jump,
+    Stage1_Grass_Move,
+    Stage1_Grass_Land,
+    Stage1_Rock_Move,
+    Stage1_Rock_Land,
+    Stage2_Move,
+    Stage2_Skill,
+    Stage2_PressButton
+}
+
 public class SoundManager : MonoBehaviour, ICore
 {
     public static SoundVolume Volume { 

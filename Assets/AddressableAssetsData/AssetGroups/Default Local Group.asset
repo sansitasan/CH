@@ -32,6 +32,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Scripts
+  - m_GUID: 76229e0c292c77f4a8d8dddc508f39ef
+    m_Address: Sound
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c3180ffe2ef849744a2fa8ccc9bc4291, type: 2}
   m_SchemaSet:

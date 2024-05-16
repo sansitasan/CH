@@ -1,5 +1,8 @@
 using Cysharp.Threading.Tasks;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Threading;
+using UniRx;
 using UnityEngine;
 
 public class Stage1Model : PlayerModel
@@ -11,6 +14,9 @@ public class Stage1Model : PlayerModel
     private Animator _skillAnim;
     private Character1DAnim _pa;
 
+    private CustomAudio _ca;
+    private Dictionary<ESoundType, AudioClip> _clips = new Dictionary<ESoundType, AudioClip>();
+
     private bool _bCheck;
 
     public override void Init(StageData so)
@@ -20,6 +26,48 @@ public class Stage1Model : PlayerModel
         base.Init(so);
         _disposeList.Add(_pa);
         _rayMask = LayerMask.GetMask("Ground");
+        //LResourcesManager.TryGetSoundClip(ESoundType.Stage1_Jump, out var jump);
+        //_clips.Add(ESoundType.Stage1_Jump, jump);
+        //LResourcesManager.TryGetSoundClip(ESoundType.Stage1_Grass_Move, out var gm);
+        //_clips.Add(ESoundType.Stage1_Grass_Move, gm);
+        //LResourcesManager.TryGetSoundClip(ESoundType.Stage1_Grass_Land, out var gl);
+        //_clips.Add(ESoundType.Stage1_Grass_Land, gl);
+        //LResourcesManager.TryGetSoundClip(ESoundType.Stage1_Rock_Move, out var rm);
+        //_clips.Add(ESoundType.Stage1_Rock_Move, gm);
+        //LResourcesManager.TryGetSoundClip(ESoundType.Stage1_Rock_Land, out var rl);
+        //_clips.Add(ESoundType.Stage1_Rock_Land, rl);
+        //_ca = new CustomAudio(GetComponent<AudioSource>(), ESound.Effect);
+        //
+        //this.ObserveEveryValueChanged(_ => _blackBoard.PlayerState).Subscribe(_ =>
+        //{
+        //    switch (_blackBoard.PlayerState)
+        //    {
+        //        case PlayerStates.Idle:
+        //            _ca.StopSound(); break;
+        //
+        //        case PlayerStates.Move:
+        //            if (transform.position.y < 54)
+        //                _ca.PlaySound(_clips[ESoundType.Stage1_Grass_Move], ESound.Bgm);
+        //            else
+        //                _ca.PlaySound(_clips[ESoundType.Stage1_Rock_Move], ESound.Bgm);
+        //            break;
+        //
+        //        case PlayerStates.InTheSky:
+        //            _ca.PlaySound(_clips[ESoundType.Stage1_Jump]);
+        //            break;
+        //
+        //        case PlayerStates.Skill:
+        //            _ca.PlaySound(_clips[ESoundType.Stage1_Jump]);
+        //            break;
+        //
+        //        case PlayerStates.Landing:
+        //            if (transform.position.y < 54)
+        //                _ca.PlaySound(_clips[ESoundType.Stage1_Grass_Land]);
+        //            else
+        //                _ca.PlaySound(_clips[ESoundType.Stage1_Rock_Land]);
+        //            break;
+        //    }
+        //});
     }
 
     protected override void DataInit(StageData so)
@@ -92,6 +140,7 @@ public class Stage1Model : PlayerModel
 
     private void SkillEffect()
     {
+        //_ca.PlaySound(_clips[ESoundType.Stage1_Jump]);
         _skillAnim.gameObject.SetActive(true);
         _skillAnim.Play("Skill", 0, 0);
     }
@@ -120,7 +169,14 @@ public class Stage1Model : PlayerModel
             await UniTask.DelayFrame(30, cancellationToken: _cts.Token);
             _blackBoard.PlayerState = PlayerStates.Idle;
         }
-        
+
+        RayCastGround();
+
+        _bCheck = false;
+    }
+
+    private bool RayCastGround()
+    {
         Vector2 left = _rb.position - new Vector2(0.45f, 1.125f);
         Vector2 right = _rb.position - new Vector2(-0.45f, 1.125f);
 
@@ -129,16 +185,17 @@ public class Stage1Model : PlayerModel
 
         if (leftRay.collider == null && rightRay.collider == null)
         {
-            _rb.sharedMaterial = _data.WallMaterial;
+            _rb.sharedMaterial = _data?.WallMaterial;
             _tree.CheckSeq(PlayerStates.InTheSky);
+            return true;
         }
 
         else
         {
-            _rb.sharedMaterial = _data.GroundMaterial;
+            _rb.sharedMaterial = _data?.GroundMaterial;
             _tree.CheckSeq(PlayerStates.Landing);
+            return false;
         }
-        _bCheck = false;
     }
 
     public override void EditInit(StageData so)

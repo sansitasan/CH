@@ -18,6 +18,7 @@ public enum PlayerStates
     Jump = 101,
     InTheSky = 102,
     Landing = 103,
+    InTheSky2,
     Dead,
     Success = 99999
 }

@@ -255,6 +255,7 @@ public class BlackBoard : IDisposable
     public Vector2 MoveDir { get; set; }
     public PlayerStates PlayerState { get; set; }
     public StageData Data { get; protected set; }
+    public CustomAudio CA {  get; protected set; }
 
     public BlackBoard(Transform t, CharacterAnim pa, Rigidbody2D rd, BehaviourTree tree, StageData so)
     {
@@ -263,6 +264,7 @@ public class BlackBoard : IDisposable
         Tree = tree;
         Player = t;
         Data = so;
+        CA = new CustomAudio(t.GetComponent<AudioSource>(), ESound.Effect);
     }
 
     public void Dispose()

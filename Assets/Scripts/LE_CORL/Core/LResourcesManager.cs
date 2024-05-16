@@ -17,6 +17,7 @@ public class LResourcesManager : MonoBehaviour, ICore
     Dictionary<string, TextAsset> _scripts;
     Dictionary<string, Sprite> _sprites;
     Dictionary<string, StageData> _stageDatas;
+    Dictionary<string, AudioClip> _audioClips;
 
 
     public void Init()
@@ -24,6 +25,7 @@ public class LResourcesManager : MonoBehaviour, ICore
         _scripts = new Dictionary<string, TextAsset>();
         _sprites = new Dictionary<string, Sprite>();
         _stageDatas = new Dictionary<string, StageData>();
+        _audioClips = new Dictionary<string, AudioClip>();
 
         LoadAllAssets().Forget();
     }
@@ -33,6 +35,7 @@ public class LResourcesManager : MonoBehaviour, ICore
         _scripts.Clear();
         _sprites.Clear();
         _stageDatas.Clear();
+        _audioClips.Clear();
     }
 
     async UniTaskVoid LoadAllAssets()
@@ -41,9 +44,10 @@ public class LResourcesManager : MonoBehaviour, ICore
         bool isSpriteLoaded = false;
         bool isStageDataLoaded = false;
 
-        LoadAsyncAll<TextAsset>("Scripts", () => { isScriptLoaded = true; Debug.Log("Script - loaded"); });
-        LoadAsyncAll<Sprite>("Image", () => { isSpriteLoaded = true; Debug.Log("Sprites - loaded"); });
-        LoadAsyncAll<StageData>("SO", () => { isStageDataLoaded = true; Debug.Log("Data - loaded"); });
+        LoadAsyncAll("Scripts", () => { isScriptLoaded = true; Debug.Log("Script - loaded"); }, _scripts);
+        LoadAsyncAll("Image", () => { isSpriteLoaded = true; Debug.Log("Sprites - loaded"); }, _sprites);
+        LoadAsyncAll("SO", () => { isStageDataLoaded = true; Debug.Log("Data - loaded"); }, _stageDatas);
+        LoadAsyncAll("Sound", () => { isStageDataLoaded = true; Debug.Log("Data - loaded");}, _audioClips);
 
         await UniTask.WaitUntil(() => isScriptLoaded && isSpriteLoaded && isStageDataLoaded);
 
@@ -51,7 +55,7 @@ public class LResourcesManager : MonoBehaviour, ICore
     }
 
 
-    private void LoadAsync<T>(string addressableID, int total, Action callback)
+    private void LoadAsync<T>(string addressableID, int total, Action callback, Dictionary<string, T> dict)
     {
         if (_scripts.ContainsKey(addressableID) || _sprites.ContainsKey(addressableID))
             return;
@@ -59,30 +63,13 @@ public class LResourcesManager : MonoBehaviour, ICore
         var asyncOperation = Addressables.LoadAssetAsync<T>(addressableID);
         asyncOperation.Completed += (op) =>
         {
-            if (typeof(T) == typeof(TextAsset))
-            {
-                _scripts.TryAdd(GetObjectName(addressableID), op.Result as TextAsset);
-                if (total == _scripts.Count)
-                    callback();
-            }
-
-            else if (typeof(T) == typeof(Sprite))
-            {
-                _sprites.TryAdd(GetObjectName(addressableID), op.Result as Sprite);
-                if (total == _sprites.Count)
-                    callback();
-            }
-
-            else
-            {
-                _stageDatas.TryAdd(GetObjectName(addressableID), op.Result as StageData);
-                if (total == _stageDatas.Count)
-                    callback();
-            }
+            dict.TryAdd(GetObjectName(addressableID), op.Result);
+            if (total == dict.Count)
+                callback();
         };
     }
 
-    private void LoadAsyncAll<T>(string path, Action callback)
+    private void LoadAsyncAll<T>(string path, Action callback, Dictionary<string, T> dict)
     {
         var asyncOperation = Addressables.LoadResourceLocationsAsync(path, typeof(T));
 
@@ -91,7 +78,7 @@ public class LResourcesManager : MonoBehaviour, ICore
             int total = op.Result.Count;
             for (int i = 0; i < total; i++)
             {
-                LoadAsync<T>(op.Result[i].PrimaryKey, total, callback);
+                LoadAsync<T>(op.Result[i].PrimaryKey, total, callback, dict);
             }
         };
     }
@@ -136,6 +123,15 @@ public class LResourcesManager : MonoBehaviour, ICore
         string key = $"Stage {stage} Data";
         bool has = self._stageDatas.ContainsKey(key);
         stageData = has ? self._stageDatas[key] : null;
+        return has;
+    }
+
+    public static bool TryGetSoundClip(ESoundType type, out AudioClip clip)
+    {
+        var self = GameMainContoller.GetCore<LResourcesManager>();
+        string key = $"{type}";
+        bool has = self._audioClips.ContainsKey(key);
+        clip = has ? self._audioClips[key] : null;
         return has;
     }
 

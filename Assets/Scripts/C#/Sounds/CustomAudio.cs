@@ -9,13 +9,15 @@ public enum ESound
 {
     Total,
     Effect,
-    Bgm
+    Bgm,
+    None
 }
 
 public class CustomAudio : IDisposable
 {
     private AudioSource _audioSource;
     private ESound _type;
+    private ESound _currentType;
     public float OwnVolume { get; set; }
 
     public CustomAudio(AudioSource a, ESound type, float ownVolume = 1)
@@ -63,7 +65,6 @@ public class CustomAudio : IDisposable
 
     public void PlaySound(AudioClip clip, ESound type, float pitch = 1f)
     {
-
         if (_audioSource.isPlaying)
         {
             if (_audioSource.clip != clip)
@@ -71,6 +72,11 @@ public class CustomAudio : IDisposable
             else
                 return;
         }
+
+        if (_type != type)
+            _currentType = type;
+        else
+            _currentType = ESound.None;
 
         _audioSource.pitch = pitch;
 
@@ -92,6 +98,12 @@ public class CustomAudio : IDisposable
     public void StopSound()
     {
         if (_audioSource.isPlaying)
+            _audioSource.Stop();
+    }
+
+    public void StopLoopSound()
+    {
+        if (_currentType == ESound.Bgm && _audioSource.isPlaying)
             _audioSource.Stop();
     }
 
