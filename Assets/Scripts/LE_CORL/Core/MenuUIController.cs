@@ -20,7 +20,7 @@ public class MenuUIController : MonoBehaviour
         isLobby = SceneManager.GetActiveScene().buildIndex == GameMainContoller.LOBBY_SCENE_IDX ? true : false;
 
         print("todo: 슬라이더 벨류 받아오기");
-        SoundVolume volume = GameMainContoller.GetCore<SoundManager>().Volume;
+        SoundVolume volume = SoundManager.Volume;
         
         sliders[0].value = volume.TotalVolume;
         sliders[0].onValueChanged.AddListener((v) => OnSliderValueChanged(v, ESound.Total));
@@ -57,14 +57,14 @@ public class MenuUIController : MonoBehaviour
         sliders[2].onValueChanged.RemoveAllListeners();
         buttons[0].onClick.RemoveAllListeners();
         buttons[1].onClick.RemoveAllListeners();
-        GameMainContoller.GetCore<SoundManager>().SaveSound(new SoundVolume(sliders[0].value, sliders[1].value, sliders[2].value));
+        SoundManager.SaveSound(new SoundVolume(sliders[0].value, sliders[1].value, sliders[2].value));
     }
 
     void OnSliderValueChanged(float v, ESound type) 
     {
         print("테스트 코드입니다.\n메뉴-슬라이더-벨류체인지 / value: " + v);
         print("todo: 옵션에 연결");
-        GameMainContoller.GetCore<SoundManager>().SetVolumeTemporary(v, type);
+        SoundManager.SetVolumeTemporary(v, type);
     }
 
 }
