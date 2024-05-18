@@ -131,6 +131,7 @@ public class Stage2MoveLeaf : MoveLeaf
     {
         _bB.BD.UpdateAnim(PlayerStates.Idle);
         _blackBoard.RD.velocity = Vector2.zero;
+        _blackBoard.CA.StopLoopSound();
     }
 
     public override void Update()
@@ -167,6 +168,7 @@ public abstract class BehaveLeaf : BehaviourLeaf
     protected override void Enter()
     {
         base.Enter();
+        _blackBoard.CA.StopLoopSound();
     }
 
     protected abstract void Behave();
@@ -204,14 +206,14 @@ public class Stage1BehaveLeaf : BehaveLeaf
         }
 
         _chargeTime = 0;
-        BehaveAsync().Forget();
-    }
-
-    private async UniTask BehaveAsync()
-    {
-        await UniTask.DelayFrame(1);
         _blackBoard.Tree.CheckSeq(PlayerStates.InTheSky2);
     }
+
+    //private async UniTask BehaveAsync()
+    //{
+    //    await UniTask.DelayFrame(1);
+    //    _blackBoard.Tree.CheckSeq(PlayerStates.InTheSky2);
+    //}
 
     public override void Update()
     {
