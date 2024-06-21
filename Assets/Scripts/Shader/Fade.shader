@@ -17,7 +17,6 @@ Shader"Unlit/Fade"
             "Queue" = "Transparent"
         }
         Blend SrcAlpha OneMinusSrcAlpha
-        LOD 100
 
         Pass
         {

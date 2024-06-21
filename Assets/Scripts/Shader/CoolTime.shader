@@ -16,7 +16,6 @@ Shader "Unlit/CoolTime"
             "Queue" = "Transparent"
         }
         Blend SrcAlpha OneMinusSrcAlpha
-        LOD 100
 
         Pass
         {

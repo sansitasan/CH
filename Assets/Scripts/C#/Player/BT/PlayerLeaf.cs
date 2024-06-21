@@ -36,13 +36,8 @@ public class IdleLeaf : BehaviourLeaf
 
 public abstract class MoveLeaf : BehaviourLeaf
 {
-    private AudioClip _grassClip;
-    private AudioClip _rockClip;
-
     public MoveLeaf(BlackBoard board) : base(board, PlayerStates.Move) 
     {
-        LResourcesManager.TryGetSoundClip(ESoundType.Stage1_Grass_Move, out _grassClip);
-        LResourcesManager.TryGetSoundClip(ESoundType.Stage1_Rock_Move, out _rockClip);
     }
 
     public override sealed SeqStates CheckLeaf(PlayerStates ps)
@@ -66,10 +61,6 @@ public abstract class MoveLeaf : BehaviourLeaf
     {
         base.Enter();
         _blackBoard.PA.ChangeDir(_blackBoard.MoveDir);
-        if (_blackBoard.Player.position.y < 54)
-            _blackBoard.CA.PlaySound(_grassClip, ESound.Bgm);
-        else
-            _blackBoard.CA.PlaySound(_rockClip, ESound.Bgm);
     }
 
     public override void CancelBehaviour()
@@ -80,12 +71,28 @@ public abstract class MoveLeaf : BehaviourLeaf
 
 public class Stage1MoveLeaf : MoveLeaf
 {
-    public Stage1MoveLeaf(BlackBoard board) : base(board) { }
+    private AudioClip _grassClip;
+    private AudioClip _rockClip;
+
+    public Stage1MoveLeaf(BlackBoard board) : base(board) 
+    {
+        LResourcesManager.TryGetSoundClip(ESoundType.Stage1_Grass_Move, out _grassClip);
+        LResourcesManager.TryGetSoundClip(ESoundType.Stage1_Rock_Move, out _rockClip);
+    }
 
     public override void Update()
     {
         _blackBoard.RD.velocity = new Vector2(_blackBoard.MoveDir.x, 0).normalized 
             * _blackBoard.Data.Speed;
+    }
+
+    protected override void Enter()
+    {
+        base.Enter();
+        if (_blackBoard.Player.position.y < 54)
+            _blackBoard.CA.PlaySound(_grassClip, ESound.Bgm);
+        else
+            _blackBoard.CA.PlaySound(_rockClip, ESound.Bgm);
     }
 
     public override void Exit()
@@ -97,6 +104,7 @@ public class Stage1MoveLeaf : MoveLeaf
 public class Stage2MoveLeaf : MoveLeaf
 {
     private BlackBoard2D _bB;
+    private AudioClip _moveClip;
 
     private struct MoveData
     {
@@ -119,12 +127,14 @@ public class Stage2MoveLeaf : MoveLeaf
         {
             _moveQueue.Enqueue(new MoveData(_blackBoard.Player.position - Vector3.right * (1f - (float)i / 10), Vector2.right));
         }
+        LResourcesManager.TryGetSoundClip(ESoundType.Stage2_Move, out _moveClip);
     }
 
     protected override void Enter()
     {
         base.Enter();
         _bB.BD.UpdateAnim(PlayerStates.Move);
+        _blackBoard.CA.PlaySound(_moveClip, ESound.Bgm);
     }
 
     public override void Exit()
@@ -141,7 +151,6 @@ public class Stage2MoveLeaf : MoveLeaf
         _bB.BD.SetMoveData(data.Position, data.MoveDir);
         _blackBoard.RD.velocity = new Vector3(_blackBoard.MoveDir.x, _blackBoard.MoveDir.y, 0).normalized
             * _blackBoard.Data.Speed;
-
     }
 }
 

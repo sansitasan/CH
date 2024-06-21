@@ -10,7 +10,6 @@ Shader "Unlit/Laser"
     SubShader
     {
         Tags { "RenderPipeline" = "UniversalPipeline" "RenderType" = "Transparent" "Queue" = "Transparent" }
-        LOD 100
         Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
