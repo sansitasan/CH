@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ghost : MonoBehaviour
 {
     private Rigidbody2D _rb;
+    private Material _mat;
 
     [SerializeField, Header("Player")]
     private Transform _player;
@@ -12,11 +13,14 @@ public class Ghost : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _mat = GetComponent<SpriteRenderer>().material;
     }
 
     private void FixedUpdate()
     {
-       _rb.velocity = (_player.position - transform.position).normalized;
+        Vector3 vector = _player.position - transform.position;
+       _rb.velocity = vector.normalized;
+        _mat.SetFloat("_Distance", vector.magnitude);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

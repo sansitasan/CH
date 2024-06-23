@@ -3,7 +3,9 @@ Shader "Unlit/Ghost"
     Properties
     {
         _MainTex("Diffuse", 2D) = "white" {}
-        _Minimum("선명도", range(0, 1)) = 0.05
+        _Minimum("선명도 최소값", range(0, 1)) = 0.05
+        _Distance("플레이어와의 거리", range(1, 10000)) = 100
+        _Alpha("투명도", range(0, 1)) = 0.5
     }
 
     SubShader
@@ -55,6 +57,8 @@ Shader "Unlit/Ghost"
             half4 _ShapeLightInvertedFilter0;
 
             float _Minimum;
+            float _Distance;
+            float _Alpha;
 
             Varyings CombinedShapeLightVertex(Attributes v)
             {
@@ -93,8 +97,9 @@ Shader "Unlit/Ghost"
                 
                 half4 finalOutput = _HDREmulationScale * (color * shapeLight0Modulate + shapeLight0Additive);
 
-                finalOutput.a = alpha;
+                finalOutput.a = _Alpha;
                 finalOutput = lerp(color, finalOutput, _UseSceneLighting);
+                finalOutput = finalOutput * min(1, 5 / _Distance);
 
                 return max(_Minimum, finalOutput);
             }

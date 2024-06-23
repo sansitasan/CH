@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Test
+  m_Name: Ghost
   m_Shader: {fileID: 4800000, guid: 45ecbe2d1131112418a1612b116bb4db, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -38,9 +38,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 0.5
     - _Bias: 0
+    - _Distance: 1
     - _EnableExternalAlpha: 0
-    - _Minimum: 0.1
+    - _Minimum: 0.15
     m_Colors:
     - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
