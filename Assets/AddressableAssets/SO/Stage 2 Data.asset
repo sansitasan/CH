@@ -16,9 +16,9 @@ MonoBehaviour:
   FadeInTime: 0.5
   FadeOutTime: 0.5
   LightOnTime: 2
-  SkillCoolTime: 10
+  SkillCoolTime: 15
   Intensity: 1
   InnerCircleSize: 0
   OuterCircleSize: 2
   FallOffStrength: 0.5
-  MaxCircleSize: 5
+  MaxCircleSize: 12
